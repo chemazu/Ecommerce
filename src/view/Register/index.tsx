@@ -8,8 +8,8 @@ export default function Register() {
   return (
     <div>
       <form>
-        <input {...change}/>
-        <Button title={"Sign Up"}/>
+        <input {...change} />
+        <Button title={"Sign Up"} />
       </form>
     </div>
   );
