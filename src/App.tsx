@@ -1,25 +1,18 @@
 import React from "react";
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 
-
-import app from './utils/firebase'
+import app from "./utils/firebase";
 import Register from "./view/Register";
 
-
-
 function App() {
-  
+  console.log(app);
 
-  console.log(app)
-
-
-
- 
-  
-  return <div className="App">
-    <Register/>
-  </div>;
+  return (
+    <div className="App">
+      <Register />
+    </div>
+  );
 }
 
 export default App;
