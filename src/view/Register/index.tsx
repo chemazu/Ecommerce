@@ -60,16 +60,18 @@ export default function Register() {
 
               
             </div>
-            <div className="button-wrapper">
+       
           <Button title="Register" className="pry" type="submit" />
               
-            </div>
+     
           </form>
          
           <div style={{display:"flex"}}>
-          <hr/>or<hr/>
+          {/* <hr/>or<hr/> */}
           </div>
+          
           <Button title=" Sign up with Google" className="google" type="" />
+          
 
           <p>Already have an account Log in</p>
         </div>
