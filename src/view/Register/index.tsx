@@ -6,7 +6,17 @@ import { createUser } from "../../utils/firebase";
 import importContent from "../../resources/importContent";
 
 export default function Register() {
-  const { value: name, change: changeName, reset: resetName } = useInput("");
+  const {
+    value: firstName,
+    change: changeFirstName,
+    reset: resetFirstName,
+  } = useInput("");
+  const {
+    value: LastName,
+    change: changeLastName,
+    reset: resetLastName,
+  } = useInput("");
+
   const { value: email, change: changeEmail, reset: resetEmail } = useInput("");
   const {
     value: password,
@@ -19,24 +29,31 @@ export default function Register() {
       <div className="left"></div>
       <div className="right">
         <div className="form-wrapper">
-          <h2>Get Started</h2>
+          <h2>Get started</h2>
+          <p>Create an account to start using stacked</p>
 
           <form>
             <div className="name">
               <div className="auth-form-item">
-                <p>Name: </p>
+                <p>First name: </p>
                 <div className="input-item">
                   <img src={contact} alt="" />
-                  <input placeholder="Enter your full name" {...changeName} />
+                  <input
+                    placeholder="Enter your first name"
+                    {...changeFirstName}
+                  />
                 </div>
               </div>
               <p style={{ width: "20px" }}>&nbsp;</p>
 
               <div className="auth-form-item">
-                <p>Name: </p>
+                <p>Last name: </p>
                 <div className="input-item">
                   <img src={contact} alt="" />
-                  <input placeholder="Enter your full name" {...changeName} />
+                  <input
+                    placeholder="Enter your last name"
+                    {...changeLastName}
+                  />
                 </div>
               </div>
             </div>
