@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.scss";
 import { useInput } from "../../hooks/input-hook";
 import Button from "../../components/Button";
@@ -12,7 +12,7 @@ export default function Register() {
     reset: resetFirstName,
   } = useInput("");
   const {
-    value: LastName,
+    value: lastName,
     change: changeLastName,
     reset: resetLastName,
   } = useInput("");
@@ -24,6 +24,7 @@ export default function Register() {
     reset: resetPassword,
   } = useInput("");
   const { mail, contact, lock } = importContent();
+  const activateSubmit = (): void => {};
   return (
     <div className="register">
       <div className="left"></div>
@@ -44,7 +45,9 @@ export default function Register() {
                   />
                 </div>
               </div>
-              <p style={{ width: "20px" }}>&nbsp;</p>
+              <p className="spacer" style={{ width: "20px" }}>
+                &nbsp;
+              </p>
 
               <div className="auth-form-item">
                 <p>Last name: </p>

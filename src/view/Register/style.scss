@@ -7,17 +7,22 @@
     display: none;
   }
   .right {
-    // padding: 50px 5%;
     display: flexbox;
     .form-wrapper {
       display: grid;
-      padding: 40px;
-      grid-row-gap: 40px;
+      padding: 20px 30px;
+      grid-row-gap: 20px;
       form {
         display: grid;
         grid-row-gap: 20px;
         .name {
-          display: flex;
+          display: grid;
+          justify-content: space-between;
+          grid-template-columns: 1fr 1fr;
+          grid-column-gap: 5%;
+          .spacer {
+            display: none;
+          }
         }
         .auth-form-item {
           p {
@@ -70,6 +75,18 @@
   .register {
     .right {
       padding: 0;
+      .form-wrapper {
+        form {
+          .name {
+            display: flex;
+            grid-column-gap: 0px;
+
+            .spacer {
+              display: block;
+            }
+          }
+        }
+      }
     }
   }
 }

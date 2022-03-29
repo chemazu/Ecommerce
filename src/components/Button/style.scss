@@ -66,3 +66,15 @@ button {
     cursor: not-allowed;
   }
 }
+.pry-unselected {
+  background-color: #be9eae;
+  border: 1px solid $sec;
+  &:hover {
+    background-color: $sec;
+    border-color: #999;
+    color: #000;
+  }
+  &:active {
+    background-color: #eeeeee;
+  }
+}
