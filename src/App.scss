@@ -4,7 +4,11 @@ $sec: #fff;
   padding: 0;
   margin: 0;
 }
-// .App{
-//     max-height: 100vh;
-//     height: 100vh;
-// }
+.App {
+  max-height: 100vh;
+  height: 100vh;
+}
+.highlight {
+  color: #c6538c;
+  display: inline;
+}

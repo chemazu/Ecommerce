@@ -18,15 +18,15 @@
       form {
         display: grid;
         grid-row-gap: 20px;
-        .name {
-          display: grid;
-          justify-content: space-between;
-          grid-template-columns: 1fr 1fr;
-          grid-column-gap: 5%;
-          .spacer {
-            display: none;
-          }
-        }
+        // .name {
+        //   display: grid;
+        //   justify-content: space-between;
+        //   grid-template-columns: 1fr 1fr;
+        //   grid-column-gap: 5%;
+        //   .spacer {
+        //     display: none;
+        //   }
+        // }
         .auth-form-item {
           span{
             font-size: 85%;
@@ -96,11 +96,6 @@
          
           .name {
             display: flex;
-            grid-column-gap: 0px;
-
-            .spacer {
-              display: block;
-            }
           }
         }
       }

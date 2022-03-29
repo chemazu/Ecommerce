@@ -5,7 +5,7 @@ import Button from "../../components/Button";
 import { createUser,signInWithGoogle} from "../../utils/firebase";
 import importContent from "../../resources/importContent";
 
-export default function Register() {
+export default function Login() {
   const {
     value: firstName,
     change: changeFirstName,
@@ -33,8 +33,8 @@ export default function Register() {
       <div className="left"></div>
       <div className="right">
         <div className="form-wrapper">
-          <h2>Get started</h2>
-          <p>Create an account to start using <h4 className="highlight">Stacked</h4></p>
+          <h2>Login</h2>
+          <p>Sign in to your <h4 className="highlight">Stacked</h4> account</p>
 
           <form >
             <div className="name">
@@ -48,9 +48,7 @@ export default function Register() {
                   />
                 </div>
               </div>
-              <p className="spacer" style={{ width: "20px" }}>
-                &nbsp;
-              </p>
+
 
               <div className="auth-form-item">
                 <p>Last name: </p>
