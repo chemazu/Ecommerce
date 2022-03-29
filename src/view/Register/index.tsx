@@ -13,65 +13,72 @@ export default function Register() {
     change: changePassword,
     reset: resetPassword,
   } = useInput("");
-  const { mail,contact ,lock} = importContent();
+  const { mail, contact, lock } = importContent();
   return (
     <div className="register">
       <div className="left"></div>
       <div className="right">
         <div className="form-wrapper">
           <h2>Get Started</h2>
-       
+
           <form>
             <div className="name">
-            <div className="auth-form-item">
-            <p>Name: </p>
-              <div className="input-item">
-              <img src={contact} alt="" />
-              <input placeholder="Enter your full name" {...changeName} />
+              <div className="auth-form-item">
+                <p>Name: </p>
+                <div className="input-item">
+                  <img src={contact} alt="" />
+                  <input placeholder="Enter your full name" {...changeName} />
+                </div>
               </div>
-            </div>
-            <div className="auth-form-item">
-            <p>Name: </p>
-              <div className="input-item">
-              <img src={contact} alt="" />
-              <input placeholder="Enter your full name" {...changeName} />
-              </div>
-            </div>
-            </div>
-            <div className="auth-form-item">
-            <p>Email: </p>
-              <div className="input-item">
-              <img src={mail} alt="" />
-              <input  type="email" placeholder="Enter your email" {...changeEmail} />
-              </div>
-            </div>
-            <div className="auth-form-item">
-            <p>Password: </p>
-              <div className="input-item">
-              <img src={lock} alt="" />
-              <input type="password" placeholder="Enter your password" {...changePassword} />
-              </div>
-            </div>
-            <div className="auth-form-item">
-            
-      
-              <input type="checkbox"  />
-              <span>I agree to the apps terms and conditions and privacy policy </span>
+              <p style={{ width: "20px" }}>&nbsp;</p>
 
-              
+              <div className="auth-form-item">
+                <p>Name: </p>
+                <div className="input-item">
+                  <img src={contact} alt="" />
+                  <input placeholder="Enter your full name" {...changeName} />
+                </div>
+              </div>
             </div>
-       
-          <Button title="Register" className="pry" type="submit" />
-              
-     
+            <div className="auth-form-item">
+              <p>Email: </p>
+              <div className="input-item">
+                <img src={mail} alt="" />
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  {...changeEmail}
+                />
+              </div>
+            </div>
+            <div className="auth-form-item">
+              <p>Password: </p>
+              <div className="input-item">
+                <img src={lock} alt="" />
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  {...changePassword}
+                />
+              </div>
+            </div>
+            <div className="auth-form-item">
+              <input type="checkbox" />
+              <span style={{ paddingLeft: "15px" }}>
+                I agree to the apps terms and conditions and privacy policy{" "}
+              </span>
+            </div>
+
+            <Button title="Register" className="pry" type="submit" />
           </form>
-         
-          <div style={{display:"flex"}}>
-          {/* <hr/>or<hr/> */}
+
+          <div className="divider">
+            <hr />
+            or
+            <hr />
           </div>
-          
+
           <Button title=" Sign up with Google" className="google" type="" />
-          
 
           <p>Already have an account Log in</p>
         </div>

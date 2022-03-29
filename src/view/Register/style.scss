@@ -1,53 +1,52 @@
 @import "../../App.scss";
-.register{
+.register {
   display: grid;
-  grid-template-columns: 1fr 1fr ;
+  grid-template-columns: 1fr 1fr;
   height: 100%;
-  .left{
+  .left {
     display: none;
   }
-  .right{
+  .right {
     padding: 50px 5%;
     display: flexbox;
-    .form-wrapper{
+    .form-wrapper {
       display: grid;
       padding: 40px;
-      grid-row-gap:40px ;
-      form{
-      display: grid;
-      grid-row-gap:20px ;
-        .name{
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-column-gap:5% ;
+      grid-row-gap: 40px;
+      form {
+        display: grid;
+        grid-row-gap: 20px;
+        .name {
+          display: flex;
+          //   justify-content: space-between;
+
+          //   grid-template-columns: 1fr 1fr;
+          //   grid-column-gap: 5%;
         }
-        .auth-form-item{
-          p{
-        
-            padding:10px 0;
+        .auth-form-item {
+          p {
+            padding: 10px 0;
           }
           .input-item {
             padding: 5px 10px;
             display: flex;
             align-items: center;
-
             border-radius: 4px;
             border: 1px solid #c5c3c3;
             transition: all 0.2s ease-in-out;
-          
+
             &:hover {
               border: 2px solid $pry;
               box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.04), 0 2px 2px #c6538c98;
             }
-          
+
             img {
               width: 15px;
               padding: 5px;
             }
             input {
               border: 0px;
-        
-          
+
               &:focus {
                 outline: none;
               }
@@ -55,8 +54,26 @@
           }
         }
       }
+      .divider {
+        display: grid;
+        grid-template-columns: 4fr 1fr 4fr;
+
+        text-align: center;
+        align-items: center;
+        hr {
+          //   height: 0.5px;
+          //   color: $pry;
+          border: 0.5px solid black;
+        }
+      }
     }
   }
 }
 
-
+@media screen and (max-width: 480px) {
+  .register {
+    .right {
+      padding: 0;
+    }
+  }
+}
