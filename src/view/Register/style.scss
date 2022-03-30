@@ -1,5 +1,5 @@
 @import "../../App.scss";
-.register {
+.register{
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 100%;
@@ -27,7 +27,9 @@
             display: none;
           }
         }
+
         .auth-form-item {
+          width: 100%;
           span{
             font-size: 85%;
           }
@@ -78,6 +80,21 @@
 }
 
 @media screen and (max-width: 480px) {
+.name{
+  display: flex;
+  div{
+
+    input{
+      width: 90%;
+    }
+  }
+ 
+
+}
+  input {
+    font-size: 16px;
+
+  }
   .input-item{
     input{
       background: transparent;
@@ -89,21 +106,11 @@
       display: none;
     }
     .right {
-    padding: 10vh 0;
- 
-      .form-wrapper {
-        form {
-         
-          .name {
-            display: flex;
-            grid-column-gap: 0px;
+    padding: 10vh 0px;
+    padding-left: 0;
 
-            .spacer {
-              display: block;
-            }
-          }
-        }
-      }
+    width: 100vw;
+ 
     }
   }
 }

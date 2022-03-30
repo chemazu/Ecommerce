@@ -4,6 +4,8 @@ import { useInput } from "../../hooks/input-hook";
 import Button from "../../components/Button";
 import { createUser,signInWithGoogle} from "../../utils/firebase";
 import importContent from "../../resources/importContent";
+import { Link } from "react-router-dom";
+
 
 export default function Register() {
   const {
@@ -27,6 +29,7 @@ export default function Register() {
   const handleSubmit = (e: React.FormEvent<HTMLInputElement>): void => {
     e.preventDefault()
     createUser(email,password)
+    console.log(email,password)
   };
   return (
     <div className="register">
@@ -43,7 +46,7 @@ export default function Register() {
                 <div className="input-item">
                   <img src={contact} alt="" />
                   <input
-                    placeholder="Enter your first name"
+                    placeholder="First name"
                     {...changeFirstName}
                   />
                 </div>
@@ -51,13 +54,13 @@ export default function Register() {
               <p className="spacer" style={{ width: "20px" }}>
                 &nbsp;
               </p>
-
+              
               <div className="auth-form-item">
                 <p>Last name: </p>
                 <div className="input-item">
                   <img src={contact} alt="" />
                   <input
-                    placeholder="Enter your last name"
+                    placeholder="Last name"
                     {...changeLastName}
                   />
                 </div>
@@ -69,7 +72,7 @@ export default function Register() {
                 <img src={mail} alt="" />
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="Email"
                   {...changeEmail}
                 />
               </div>
@@ -80,7 +83,7 @@ export default function Register() {
                 <img src={lock} alt="" />
                 <input
                   type="password"
-                  placeholder="Enter your password"
+                  placeholder="Password"
                   {...changePassword}
                 />
               </div>
@@ -88,7 +91,7 @@ export default function Register() {
             <div className="auth-form-item">
               <input type="checkbox" />
               <span style={{ paddingLeft: "15px" }}>
-                I agree to  <h4 className="highlight">Stacked terms of service</h4>  and <h4 className="highlight">privacy policy</h4>{" "}
+                I agree to  <h4 className="highlight">Stacked's terms of service</h4>  and <h4 className="highlight">privacy policy</h4>{" "}
               </span>
             </div>
 
@@ -103,7 +106,7 @@ export default function Register() {
 
           <Button title=" Sign up with Google" className="google" type="" onClick={signInWithGoogle}/>
 
-          <p>Already have an account <h4 className="highlight">Log in</h4></p>
+          <p>Already have an account <h4 className="highlight"> <Link to ="/login">Log in </Link></h4></p>
         </div>
       </div>
     </div>

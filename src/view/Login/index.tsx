@@ -4,6 +4,7 @@ import { useInput } from "../../hooks/input-hook";
 import Button from "../../components/Button";
 import { createUser,signInWithGoogle} from "../../utils/firebase";
 import importContent from "../../resources/importContent";
+import { Link } from "react-router-dom";
 
 export default function Login() {
 
@@ -19,7 +20,7 @@ export default function Login() {
     createUser(email,password)
   };
   return (
-    <div className="register">
+    <div className="login">
       <div className="left"></div>
       <div className="right">
         <div className="form-wrapper">
@@ -33,7 +34,7 @@ export default function Login() {
                 <img src={mail} alt="" />
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="Email"
                   {...changeEmail}
                 />
               </div>
@@ -44,7 +45,7 @@ export default function Login() {
                 <img src={lock} alt="" />
                 <input
                   type="password"
-                  placeholder="Enter your password"
+                  placeholder="Password"
                   {...changePassword}
                 />
               </div>
@@ -67,7 +68,8 @@ export default function Login() {
 
           <Button title=" Sign up with Google" className="google" type="" onClick={signInWithGoogle}/>
 
-          <p>Already have an account <h4 className="highlight">Log in</h4></p>
+          <p>Already have an account <h4 className="highlight">
+            <Link to ="/register">Register </Link></h4></p>
         </div>
       </div>
     </div>

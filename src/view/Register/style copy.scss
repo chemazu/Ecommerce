@@ -1,5 +1,5 @@
 @import "../../App.scss";
-.login{
+.register {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 100%;
@@ -18,9 +18,16 @@
       form {
         display: grid;
         grid-row-gap: 20px;
-
+        .name {
+          display: grid;
+          justify-content: space-between;
+          grid-template-columns: 1fr 1fr;
+          grid-column-gap: 5%;
+          .spacer {
+            display: none;
+          }
+        }
         .auth-form-item {
-          width: 100%;
           span{
             font-size: 85%;
           }
@@ -71,26 +78,34 @@
 }
 
 @media screen and (max-width: 480px) {
-  input {
-    font-size: 16px;
-
-  }
   .input-item{
     input{
       background: transparent;
+    
 
     }
   }
-  .login {
+  .register {
     .left{
       display: none;
     }
     .right {
-    padding: 10vh 0px;
-    padding-left: 0;
-
-    width: 100vw;
+    padding: 10vh 0;
  
+      .form-wrapper {
+        form {
+         
+          .name {
+  // display: flex;
+  width: 100%;
+  background: yellow;
+
+            .spacer {
+              display: block;
+            }
+          }
+        }
+      }
     }
   }
 }
