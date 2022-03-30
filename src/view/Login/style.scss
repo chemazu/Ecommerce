@@ -73,6 +73,7 @@
 @media screen and (max-width: 480px) {
   input {
     font-size: 16px;
+
   }
   .input-item{
     input{
@@ -85,17 +86,11 @@
       display: none;
     }
     .right {
-    padding: 10vh 0;
-    width: max-content;
+    padding: 10vh 0px;
+    padding-left: 0;
+
+    width: 100vw;
  
-      .form-wrapper {
-        form {
-         
-          .name {
-            display: flex;
-          }
-        }
-      }
     }
   }
 }
