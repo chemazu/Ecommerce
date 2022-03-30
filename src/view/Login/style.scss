@@ -18,16 +18,9 @@
       form {
         display: grid;
         grid-row-gap: 20px;
-        // .name {
-        //   display: grid;
-        //   justify-content: space-between;
-        //   grid-template-columns: 1fr 1fr;
-        //   grid-column-gap: 5%;
-        //   .spacer {
-        //     display: none;
-        //   }
-        // }
+
         .auth-form-item {
+          width: 100%;
           span{
             font-size: 85%;
           }
@@ -90,6 +83,7 @@
     }
     .right {
     padding: 10vh 0;
+    width: max-content;
  
       .form-wrapper {
         form {
