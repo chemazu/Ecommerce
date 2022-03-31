@@ -1,0 +1,14 @@
+.dashboard{
+    display: grid;
+    grid-template-columns: 1fr 12fr;
+    height: 100%;
+    grid-gap: 50px;
+    padding: 50px 5%;
+    .right{
+
+        .top{
+            display: flex;
+            background-color: rebeccapurple;
+        }
+    }
+}

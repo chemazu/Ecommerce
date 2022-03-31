@@ -15,6 +15,8 @@ This is an Ecommerce app built with react and typescript that makes use of the m
 
 The project is hosted on Netlify via the link below :
 
+https://stacked-ecommerce.netlify.app/
+
 # server
 
 this will be connected to a firebase server
