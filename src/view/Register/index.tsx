@@ -4,10 +4,12 @@ import { useInput } from "../../hooks/input-hook";
 import Button from "../../components/Button";
 import { createUser,signInWithGoogle} from "../../utils/firebase";
 import importContent from "../../resources/importContent";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 
 export default function Register() {
+  const history = useNavigate()
   const {
     value: firstName,
     change: changeFirstName,
@@ -29,7 +31,7 @@ export default function Register() {
   const handleSubmit = (e: React.FormEvent<HTMLInputElement>): void => {
     e.preventDefault()
     createUser(email,password)
-    console.log(email,password)
+  
   };
   return (
     <div className="register">
@@ -37,7 +39,7 @@ export default function Register() {
       <div className="right">
         <div className="form-wrapper">
           <h2>Get started</h2>
-          <p>Create an account to start using <h4 className="highlight">Stacked</h4></p>
+          <div>Create an account to start using <h4 className="highlight">Stacked</h4></div>
 
           <form >
             <div className="name">
