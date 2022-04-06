@@ -8,7 +8,14 @@
 
         .top{
             display: flex;
-            background-color: rebeccapurple;
+            justify-content: space-between;
+            .one{
+                background-color: aliceblue;
+                padding: 50px;
+                img{
+                    width :20px;
+                }
+            }            
         }
     }
 }

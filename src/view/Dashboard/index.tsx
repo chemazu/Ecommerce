@@ -1,7 +1,10 @@
 import React from 'react'
 import "./style.scss"
+import importContent from "../../resources/importContent"
+
 
 export default function Dashboard() {
+  const {contact}= importContent()
   return (
     <div className='dashboard'>
         <div className="left">
@@ -15,7 +18,10 @@ export default function Dashboard() {
         Dashboard
         Hi ,Chukwuemeka
             <div className="top">
-                <div className="one">Users</div>
+                <div className="one">
+                  <img src={contact} alt="Users"/>
+                  Users
+                  </div>
                 <div className="one">Sales</div>
                 <div className="one">trending</div>
             </div>
