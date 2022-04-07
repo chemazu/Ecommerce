@@ -30,7 +30,7 @@ export default function Register() {
     e.preventDefault();
     createUser(email, password, firstName, lastName);
     if (firstName && lastName && email && password) {
-      history("/login");
+      history("/dashboard");
     }
   };
   return (

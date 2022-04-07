@@ -6,6 +6,7 @@ import OrderItem from "../../components/OrderItem";
 export default function Dashboard() {
   const { contact,bag,trend } = importContent();
   const n = 3; // Or something else you want to get the length of
+  //  get signed in user
 
   return (
     <div className="dashboard">
