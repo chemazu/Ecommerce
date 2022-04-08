@@ -5,7 +5,7 @@ import Button from "../../components/Button";
 import { createUser, signInWithGoogle } from "../../utils/firebase";
 import importContent from "../../resources/importContent";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useAuth } from "../../context/AuthContex"
 export default function Register() {
   const history = useNavigate();
   const {
