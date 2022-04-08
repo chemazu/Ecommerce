@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import "./style.scss";
 import { useInput } from "../../hooks/input-hook";
 import Button from "../../components/Button";
 import { createUser, signInWithGoogle } from "../../utils/firebase";
 import importContent from "../../resources/importContent";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContex"
+// import { useAuth } from "../../context/AuthContex"
+import { TodoContext } from '../../context/AuthContext';
+import { TodoContextType, ITodo } from "../../@types/auth.d";
 export default function Register() {
   const history = useNavigate();
+  // console.log(dispatch,"here")
+  // dispatch({})
+  const { todos } = React.useContext(TodoContext) as TodoContextType;
+  console.log(todos)
   const {
     value: firstName,
     change: changeFirstName,
@@ -18,7 +24,7 @@ export default function Register() {
     change: changeLastName,
     reset: resetLastName,
   } = useInput("");
-
+  // const { signup } = useAuth()
   const { value: email, change: changeEmail, reset: resetEmail } = useInput("");
   const {
     value: password,
