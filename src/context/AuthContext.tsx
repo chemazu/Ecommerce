@@ -1,45 +1,85 @@
 import * as React from 'react';
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import app from "../firebase"
+import { AuthContextType, Api } from '../@types/auth.d';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+  
+} from "firebase/auth";
+ 
+export const AuthContext = React.createContext<AuthContextType | null>(null);
 
-import { TodoContextType, ITodo } from '../@types/auth.d';
+const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
+  const auth = getAuth();
+  const [currentUser, setCurrentUser] = React.useState< Api>({uid:""});
+  const [loading, setLoading] = React.useState(true)
+  const db = getFirestore(app);
 
-export const TodoContext = React.createContext<TodoContextType | null>(null);
-
-const TodoProvider: React.FC<React.ReactNode> = ({ children }) => {
-  const [todos, setTodos] = React.useState<ITodo[]>([
-    {
-      id: 1,
-      title: 'post 1',
-      description: 'this is a description',
-      status: false,
-    },
-    {
-      id: 2,
-      title: 'post 2',
-      description: 'this is a description',
-      status: true,
-    },
-  ]);
-
-  const saveTodo = (todo: ITodo) => {
-    const newTodo: ITodo = {
-      id: Math.random(), // not really unique - but fine for this example
-      title: todo.title,
-      description: todo.description,
-      status: false,
-    };
-    setTodos([...todos, newTodo]);
+  const addData = async (name: string, data: {name:string,email:any}) => {
+    console.log(data.email)
+    try {
+      const docRef = await addDoc(collection(db, name), data);
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
 
-  const updateTodo = (id: number) => {
-    todos.filter((todo: ITodo) => {
-      if (todo.id === id) {
-        todo.status = true;
-        setTodos([...todos]);
-      }
-    });
-  };
+  const signup = async(name:string ,email:any, password:any) =>{
+    const data = await (await createUserWithEmailAndPassword(auth,email, password)).user
+    addData("user",{name,email})
+    return data
+  } 
 
-  return <TodoContext.Provider value={{ todos, saveTodo, updateTodo }}>{children}</TodoContext.Provider>;
+  function login(email:any, password:any) {
+    return signInWithEmailAndPassword(auth,email, password)
+  }
+
+  function logout() {
+    localStorage.removeItem('LoggedIn');
+    return signOut(auth)
+  }
+
+  React.useEffect(()=>{
+    const unsubscribe = auth.onAuthStateChanged((user:any)=>{
+      setCurrentUser(user)
+      setLoading(false)
+    })
+    return unsubscribe
+  },[])
+
+  // function resetPassword(email:any) {
+  //   return sendPasswordResetEmail(auth,email)
+  // }
+
+  // function updateEmail(email:any) {
+  //   return updateEmail(email)
+  // }
+
+  // function updatePassword(password) {
+  //   return currentUser.updatePassword(password)
+  // }
+ 
+ 
+
+  // const updateTodo = (id: number) => {
+  //   todos.filter((todo: ITodo) => {
+  //     if (todo.id === id) {
+  //       todo.status = true;
+  //       setTodos([...todos]);
+  //     }
+  //   });
+  // };
+ 
+ 
+
+  return <AuthContext.Provider value={{ signup,currentUser,loading,login,logout }}>  {!loading && children}</AuthContext.Provider>;
 };
 
-export default TodoProvider;
+export default AuthProvider;

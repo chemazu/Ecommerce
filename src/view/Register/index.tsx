@@ -1,19 +1,22 @@
 import React, { useState,useContext } from "react";
+import Button from "../../components/Button";
 import "./style.scss";
 import { useInput } from "../../hooks/input-hook";
-import Button from "../../components/Button";
-import { createUser, signInWithGoogle } from "../../utils/firebase";
+import { signInWithGoogle } from "../../utils/firebase";
 import importContent from "../../resources/importContent";
 import { Link, useNavigate } from "react-router-dom";
-// import { useAuth } from "../../context/AuthContex"
-import { TodoContext } from '../../context/AuthContext';
-import { TodoContextType, ITodo } from "../../@types/auth.d";
+import { AuthContext } from '../../context/AuthContext';
+import { AuthContextType} from "../../@types/auth.d";
+
+
+
+
 export default function Register() {
+
   const history = useNavigate();
-  // console.log(dispatch,"here")
-  // dispatch({})
-  const { todos } = React.useContext(TodoContext) as TodoContextType;
-  console.log(todos)
+
+  const { signup,currentUser} = React.useContext(AuthContext) as AuthContextType;
+  console.log(currentUser)
   const {
     value: firstName,
     change: changeFirstName,
@@ -32,12 +35,21 @@ export default function Register() {
     reset: resetPassword,
   } = useInput("");
   const { mail, contact, lock } = importContent();
-  const handleSubmit = (e: React.FormEvent<HTMLInputElement>): void => {
+  const handleSubmit = async (e: React.FormEvent<HTMLInputElement>): Promise<any> => {
     e.preventDefault();
-    createUser(email, password, firstName, lastName);
-    if (firstName && lastName && email && password) {
-      history("/dashboard");
-    }
+    // createUser(email, password, firstName, lastName);
+    // if (firstName && lastName && email && password) {
+    //   history("/dashboard");
+    // }
+    const data = await signup(`${firstName}${lastName}`,email,password)
+
+    console.log(data)
+//     changeCurrentUser(data)
+//     console.log(currentUser,"here")
+history("/dashboard")
+
+
+ 
   };
   return (
     <div className="register">

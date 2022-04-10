@@ -4,9 +4,15 @@ import { useInput } from "../../hooks/input-hook";
 import Button from "../../components/Button";
 import { createUser, signInWithGoogle } from "../../utils/firebase";
 import importContent from "../../resources/importContent";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
+import { AuthContext } from '../../context/AuthContext';
+import { AuthContextType } from "../../@types/auth.d";
 export default function Login() {
+const history = useNavigate();
+  
+  const { login,currentUser} = React.useContext(AuthContext) as AuthContextType;
+
   const { value: email, change: changeEmail, reset: resetEmail } = useInput("");
   const {
     value: password,
@@ -16,8 +22,11 @@ export default function Login() {
   const { mail, lock } = importContent();
   const handleSubmit = (e: React.FormEvent<HTMLInputElement>): void => {
     e.preventDefault();
-    // createUser(email,password)
+    login(email,password)
+    history("/dashboard")
+
   };
+
   return (
     <div className="login">
       <div className="left"></div>
@@ -47,17 +56,10 @@ export default function Login() {
                 />
               </div>
             </div>
-            <div className="auth-form-item">
-              <input type="checkbox" />
-              <span style={{ paddingLeft: "15px" }}>
-                I agree to{" "}
-                <h4 className="highlight">Stacked terms of service</h4> and{" "}
-                <h4 className="highlight">privacy policy</h4>{" "}
-              </span>
-            </div>
+
 
             <Button
-              title="Register"
+              title="Login"
               className="pry"
               type="submit"
               onClick={handleSubmit}

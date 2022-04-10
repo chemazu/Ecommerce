@@ -1,12 +1,21 @@
 // @types.todo.ts
-export interface ITodo {
-    id: number;
-    title: string;
-    description: string;
-    status: boolean;
+
+  export type Api= {
+    uid:string
   }
-  export type TodoContextType = {
-    todos: ITodo[];
-    saveTodo: (todo: ITodo) => void;
-    updateTodo: (id: number) => void;
-  };
+  export type AuthContextType = {
+    currentUser:{uid:string}
+    loading:boolean
+    logout:()=>{}
+    signup:(name:string,email:any, password:any)=>{}
+    login:(email:any, password:any)=>{}
+    // resetPassword:(email:any)=>{}
+    // updateEmail:(email:any)=>{}
+    // updatePassword:(password:any)=>{}
+  
+  }
+ 
+ 
+
+
+  

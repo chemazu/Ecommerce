@@ -2,11 +2,36 @@ import React from "react";
 import "./style.scss";
 import importContent from "../../resources/importContent";
 import OrderItem from "../../components/OrderItem";
+import { AuthContext } from '../../context/AuthContext';
+import { AuthContextType  } from "../../@types/auth.d";
+import { useNavigate } from "react-router-dom";
+
+import Button from "../../components/Button";
+
 
 export default function Dashboard() {
+  const history = useNavigate()
   const { contact,bag,trend } = importContent();
   const n = 3; // Or something else you want to get the length of
   //  get signed in user
+  const {   currentUser,logout } = React.useContext(AuthContext) as AuthContextType;
+  
+console.log(currentUser)
+if (currentUser){
+  localStorage.setItem("LoggedIn",JSON.stringify(currentUser.uid))
+}
+
+const loggedInUser=JSON.parse(localStorage.getItem(("LoggedIn")) || '{}')
+
+const handleLogout = ()=>{
+  logout()
+  localStorage.removeItem("LoggedIn")
+  history("/login")
+  console.log(currentUser,"user")
+  console.log("storage",localStorage)
+  
+
+}
 
   return (
     <div className="dashboard">
@@ -15,7 +40,15 @@ export default function Dashboard() {
       <p>Shop</p>
       <p>Profile</p>
       <p>Cart</p>
-      <p>logout</p>   </div>
+      {/* <p >logout</p>   
+       */}
+       <Button
+              title="Log Out"
+              className="pry"
+              type="submit"
+              onClick={handleLogout}
+            />
+      </div>
    
       <div className="right">
         <h2>
