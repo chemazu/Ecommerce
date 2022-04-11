@@ -5,9 +5,10 @@ import Button from "../../components/Button";
 import { createUser, signInWithGoogle } from "../../utils/firebase";
 import importContent from "../../resources/importContent";
 import { Link, useNavigate } from "react-router-dom";
-
 import { AuthContext } from '../../context/AuthContext';
 import { AuthContextType } from "../../@types/auth.d";
+
+
 export default function Login() {
 const history = useNavigate();
   

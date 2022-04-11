@@ -41,7 +41,7 @@ export default function Register() {
     // if (firstName && lastName && email && password) {
     //   history("/dashboard");
     // }
-    const data = await signup(`${firstName}${lastName}`,email,password)
+    const data = await signup(`${firstName} ${lastName}`,email,password)
 
     console.log(data)
 //     changeCurrentUser(data)

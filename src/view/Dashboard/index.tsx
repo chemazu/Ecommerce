@@ -12,27 +12,18 @@ import Button from "../../components/Button";
 export default function Dashboard() {
   const history = useNavigate()
   const { contact,bag,trend } = importContent();
-  const n = 3; // Or something else you want to get the length of
-  //  get signed in user
-  const {   currentUser,logout } = React.useContext(AuthContext) as AuthContextType;
+  const {currentUser,logout,getLoggedIn } = React.useContext(AuthContext) as AuthContextType;
   
-console.log(currentUser)
 if (currentUser){
   localStorage.setItem("LoggedIn",JSON.stringify(currentUser.uid))
 }
-
 const loggedInUser=JSON.parse(localStorage.getItem(("LoggedIn")) || '{}')
-
+const user= getLoggedIn(loggedInUser)
 const handleLogout = ()=>{
   logout()
   localStorage.removeItem("LoggedIn")
   history("/login")
-  console.log(currentUser,"user")
-  console.log("storage",localStorage)
-  
-
 }
-
   return (
     <div className="dashboard">
       <div className="left"> 
@@ -52,8 +43,7 @@ const handleLogout = ()=>{
    
       <div className="right">
         <h2>
-        Dashboard Hi ,Chukwuemeka
-
+        Dashboard Hi ,Chukwuemeka 
         </h2>
         <div className="top">
         
@@ -81,10 +71,7 @@ const handleLogout = ()=>{
                 Lorem ipsum dolor.
               </p>
             </div>
- 
-          {/* [...Array(n)].map((e, i) => <span className="busterCards" key={i}>♦</span>) */}
-          {/* <div className="one">Sales</div>
-                <div className="one">trending</div> */}
+
         </div>
         <div className="bottom">
           <div className="two">
@@ -102,13 +89,7 @@ const handleLogout = ()=>{
             </div>
             <div className="body">
               <OrderItem/>
-              <OrderItem/>
-              <OrderItem/>
-              <OrderItem/>
-              <OrderItem/>
-              <OrderItem/>
-              <OrderItem/>
-              <OrderItem/>
+              
             </div>
           </div>
           <div className="three">Wishlist</div>
