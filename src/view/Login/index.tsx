@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import "./style.scss";
 import { useInput } from "../../hooks/input-hook";
 import Button from "../../components/Button";
-import { createUser, signInWithGoogle } from "../../utils/firebase";
 import importContent from "../../resources/importContent";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from "../../context/AuthContext";
 import { AuthContextType } from "../../@types/auth.d";
 
-
 export default function Login() {
-const history = useNavigate();
-  
-  const { login,currentUser} = React.useContext(AuthContext) as AuthContextType;
+  const history = useNavigate();
+
+  const { login, signInWithGoogle } = React.useContext(
+    AuthContext
+  ) as AuthContextType;
 
   const { value: email, change: changeEmail, reset: resetEmail } = useInput("");
   const {
@@ -23,9 +23,14 @@ const history = useNavigate();
   const { mail, lock } = importContent();
   const handleSubmit = (e: React.FormEvent<HTMLInputElement>): void => {
     e.preventDefault();
-    login(email,password)
-    history("/dashboard")
-
+    const data = login(email, password);
+    if (data) {
+      history("/dashboard");
+    } else {
+      console.log(data);
+    }
+    resetPassword();
+    resetEmail();
   };
 
   return (
@@ -57,7 +62,6 @@ const history = useNavigate();
                 />
               </div>
             </div>
-
 
             <Button
               title="Login"

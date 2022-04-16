@@ -13,6 +13,7 @@
     signup:(name:string,email:any, password:any)=>{}
     login:(email:any, password:any)=>{}
     getLoggedIn:(uid:string)=>{}
+    signInWithGoogle :()=> void
     // resetPassword:(email:any)=>{}
     // updateEmail:(email:any)=>{}
     // updatePassword:(password:any)=>{}

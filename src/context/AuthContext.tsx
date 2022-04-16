@@ -18,10 +18,11 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
   const [currentUser, setCurrentUser] = React.useState<Api>({ uid: "" });
   const [loading, setLoading] = React.useState(true);
   const db = getFirestore(app);
-  const addData = async (name: string, data: { name: string; email: any,uid:string,creationTime:any }) => {
-    console.log(data.email);
+  const provider = new GoogleAuthProvider();
+  const addData = async (dbname: string, data: { name: any; email: any,uid:string,creationTime:any }) => {
+ 
     try {
-      const docRef = await addDoc(collection(db, name), data);
+      const docRef = await addDoc(collection(db, dbname), data);
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -44,7 +45,32 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
   function login(email: any, password: any) {
     return signInWithEmailAndPassword(auth, email, password);
   }
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential!.accessToken;
+        // The signed-in user info.
 
+
+        const { displayName, email, uid, photoURL, metadata } = result.user;
+        const { creationTime } = metadata;
+  
+  
+        addData("users",{name:displayName,email,uid,creationTime})
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
   function logout() {
     localStorage.removeItem("LoggedIn");
     return signOut(auth);
@@ -58,7 +84,7 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  const value = { signup, currentUser, loading, login, logout,getLoggedIn };
+  const value = { signup, currentUser, loading, login, logout,getLoggedIn,signInWithGoogle };
 
   return (
     <AuthContext.Provider value={value}>

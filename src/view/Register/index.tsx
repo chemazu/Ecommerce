@@ -1,55 +1,53 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import Button from "../../components/Button";
 import "./style.scss";
 import { useInput } from "../../hooks/input-hook";
-import { signInWithGoogle } from "../../utils/firebase";
+// import { signInWithGoogle } from "../../utils/firebase";
 import importContent from "../../resources/importContent";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from '../../context/AuthContext';
-import { AuthContextType} from "../../@types/auth.d";
-
-
-
+import { AuthContext } from "../../context/AuthContext";
+import { AuthContextType } from "../../@types/auth.d";
 
 export default function Register() {
-
   const history = useNavigate();
 
-  const { signup,currentUser} = React.useContext(AuthContext) as AuthContextType;
-  console.log(currentUser)
+  const { signup,signInWithGoogle} = React.useContext(
+    AuthContext
+  ) as AuthContextType;
+
   const {
     value: firstName,
     change: changeFirstName,
     reset: resetFirstName,
   } = useInput("");
+
   const {
     value: lastName,
     change: changeLastName,
     reset: resetLastName,
   } = useInput("");
-  // const { signup } = useAuth()
+
   const { value: email, change: changeEmail, reset: resetEmail } = useInput("");
+
   const {
     value: password,
     change: changePassword,
     reset: resetPassword,
   } = useInput("");
+
   const { mail, contact, lock } = importContent();
-  const handleSubmit = async (e: React.FormEvent<HTMLInputElement>): Promise<any> => {
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLInputElement>
+  ): Promise<any> => {
     e.preventDefault();
-    // createUser(email, password, firstName, lastName);
-    // if (firstName && lastName && email && password) {
-    //   history("/dashboard");
-    // }
-    const data = await signup(`${firstName} ${lastName}`,email,password)
-
-    console.log(data)
-//     changeCurrentUser(data)
-//     console.log(currentUser,"here")
-history("/dashboard")
-
-
- 
+    const data = await signup(`${firstName} ${lastName}`, email, password);
+    if (data) {
+      history("/dashboard");
+    } else console.log(data); 
+    resetFirstName()
+    resetLastName()
+    resetPassword()
   };
   return (
     <div className="register">
