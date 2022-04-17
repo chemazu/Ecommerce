@@ -13,10 +13,10 @@ import ProtectedRoute from "../../components/PrivateRoute";
   const history = useNavigate()
   const { contact,bag,trend } = importContent();
   const {currentUser,logout } = React.useContext(AuthContext) as AuthContextType;
-if (currentUser){
-  localStorage.setItem("LoggedIn",JSON.stringify(currentUser.uid))
-}
-console.log(currentUser,localStorage)
+// if (currentUser){
+//   localStorage.setItem("LoggedIn",JSON.stringify(currentUser.uid))
+// }
+// console.log(currentUser,localStorage)
 
 
 const handleLogout = ()=>{
@@ -98,3 +98,4 @@ const handleLogout = ()=>{
   );
 }
 export default  Dashboard
+

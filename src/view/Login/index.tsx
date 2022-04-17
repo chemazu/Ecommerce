@@ -9,6 +9,8 @@ import { AuthContextType } from "../../@types/auth.d";
 
 export default function Login() {
   const history = useNavigate();
+  const { mail, lock } = importContent();
+
 
   const { login, signInWithGoogle } = React.useContext(
     AuthContext
@@ -20,18 +22,29 @@ export default function Login() {
     change: changePassword,
     reset: resetPassword,
   } = useInput("");
-  const { mail, lock } = importContent();
-  const handleSubmit = (e: React.FormEvent<HTMLInputElement>): void => {
-    e.preventDefault();
-    const data = login(email, password);
- 
-      history("/dashboard");
- 
-   
   
+  const handleSubmit = async (e: React.FormEvent<HTMLInputElement>): Promise<any>  => {
+    e.preventDefault();
+    const data = await login(email, password);
+    console.log(data)
+    // localStorage.setItem("LoggedIn",JSON.stringify(currentUser.uid))
+    history("/dashboard");
     resetPassword();
     resetEmail();
   };
+
+  // const handleSubmit = async (
+  //   e: React.FormEvent<HTMLInputElement>
+  // ): Promise<any> => {
+  //   e.preventDefault();
+  //   const data = await signup(`${firstName} ${lastName}`, email, password);
+ 
+  //     history("/dashboard");
+    
+  //   resetFirstName()
+  //   resetLastName()
+  //   resetPassword()
+  // };
 
   return (
     <div className="login">

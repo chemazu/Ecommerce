@@ -39,7 +39,7 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
     return data;
   };
   
-  function login(email: any, password: any) {
+  async function login(email: any, password: any) {
     return signInWithEmailAndPassword(auth, email, password);
   }
   const signInWithGoogle = () => {

@@ -42,9 +42,7 @@ export default function Register() {
   ): Promise<any> => {
     e.preventDefault();
     const data = await signup(`${firstName} ${lastName}`, email, password);
- 
       history("/dashboard");
-    
     resetFirstName()
     resetLastName()
     resetPassword()
