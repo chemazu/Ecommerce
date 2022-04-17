@@ -24,11 +24,11 @@ export default function Login() {
   const handleSubmit = (e: React.FormEvent<HTMLInputElement>): void => {
     e.preventDefault();
     const data = login(email, password);
-    if (data) {
+ 
       history("/dashboard");
-    } else {
-      console.log(data);
-    }
+ 
+   
+  
     resetPassword();
     resetEmail();
   };

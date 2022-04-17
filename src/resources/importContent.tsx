@@ -8,15 +8,32 @@ import users from "./users.jpg";
 import trendbg from "./trend.jpg";
 import sales from "./sales.jpg";
 import batman from "./batman.jpeg";
-
-
-
-
-
-
-
+import facebook from "./facebook.svg";
+import instagram from "./instagram.svg";
+import twitter from "./twitter.svg";
+import youtube from "./youtube.svg";
+import pinterest from "./pinterest.svg";
+import sample from "./sample.jpeg";
+import marvel from "./marvel.png";
 
 
 export default function importContent() {
-  return { mail,contact ,lock,bag,trend,users,trendbg,sales,batman};
+  return {
+    mail,
+    contact,
+    lock,
+    bag,
+    trend,
+    users,
+    trendbg,
+    sales,
+    batman,
+    facebook,
+    instagram,
+    twitter,
+    youtube,
+    pinterest,
+    sample,
+    marvel
+  };
 }

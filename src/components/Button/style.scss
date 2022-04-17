@@ -22,11 +22,12 @@ button {
   }
 }
 .sec {
-  background-color: $sec;
-  border: 1px solid $pry;
+  background-color: black;
+  border: 1px solid black;
+  color: #fff;
   &:hover {
     background-color: $pry;
-    color: #000;
+    color: #fff;
   }
   &:active {
     background-color: #eeeeee;

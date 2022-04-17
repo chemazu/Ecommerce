@@ -7,23 +7,24 @@ import { AuthContextType  } from "../../@types/auth.d";
 import { useNavigate } from "react-router-dom";
 
 import Button from "../../components/Button";
+import ProtectedRoute from "../../components/PrivateRoute";
 
-
-export default function Dashboard() {
+ function Dashboard() {
   const history = useNavigate()
   const { contact,bag,trend } = importContent();
-  const {currentUser,logout,getLoggedIn } = React.useContext(AuthContext) as AuthContextType;
-  
+  const {currentUser,logout } = React.useContext(AuthContext) as AuthContextType;
 if (currentUser){
   localStorage.setItem("LoggedIn",JSON.stringify(currentUser.uid))
 }
-const loggedInUser=JSON.parse(localStorage.getItem(("LoggedIn")) || '{}')
-const user= getLoggedIn(loggedInUser)
+console.log(currentUser,localStorage)
+
+
 const handleLogout = ()=>{
   logout()
   localStorage.removeItem("LoggedIn")
   history("/login")
 }
+
   return (
     <div className="dashboard">
       <div className="left"> 
@@ -31,8 +32,6 @@ const handleLogout = ()=>{
       <p>Shop</p>
       <p>Profile</p>
       <p>Cart</p>
-      {/* <p >logout</p>   
-       */}
        <Button
               title="Log Out"
               className="pry"
@@ -98,3 +97,4 @@ const handleLogout = ()=>{
     </div>
   );
 }
+export default  Dashboard

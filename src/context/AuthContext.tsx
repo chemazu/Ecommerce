@@ -15,7 +15,7 @@ export const AuthContext = React.createContext<AuthContextType | null>(null);
 
 const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
   const auth = getAuth();
-  const [currentUser, setCurrentUser] = React.useState<Api>({ uid: "" });
+  const [currentUser, setCurrentUser] = React.useState<Api>(JSON.parse(localStorage.getItem(("LoggedIn")) || '{}'));
   const [loading, setLoading] = React.useState(true);
   const db = getFirestore(app);
   const provider = new GoogleAuthProvider();
@@ -38,10 +38,7 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
     addData("user", { name, email,uid,creationTime });
     return data;
   };
-  function getLoggedIn(item:string){
-    console.log(item)
-    return item
-  }
+  
   function login(email: any, password: any) {
     return signInWithEmailAndPassword(auth, email, password);
   }
@@ -73,6 +70,7 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
   };
   function logout() {
     localStorage.removeItem("LoggedIn");
+    setCurrentUser({uid:""})
     return signOut(auth);
   }
 
@@ -84,7 +82,7 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  const value = { signup, currentUser, loading, login, logout,getLoggedIn,signInWithGoogle };
+  const value = { signup, currentUser, loading, login, logout,signInWithGoogle };
 
   return (
     <AuthContext.Provider value={value}>
