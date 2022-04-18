@@ -12,7 +12,7 @@ import ProtectedRoute from "../../components/PrivateRoute";
  function Dashboard() {
   const history = useNavigate()
   const { contact,bag,trend } = importContent();
-  const {currentUser,logout } = React.useContext(AuthContext) as AuthContextType;
+  const {logout } = React.useContext(AuthContext) as AuthContextType;
 // if (currentUser){
 //   localStorage.setItem("LoggedIn",JSON.stringify(currentUser.uid))
 // }

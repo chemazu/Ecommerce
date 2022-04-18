@@ -7,7 +7,7 @@
   }
 
   export type AuthContextType = {
-    currentUser:Api
+    // currentUser:Api
     loading:boolean
     logout:()=>{}
     signup:(name:string,email:any, password:any)=>{}

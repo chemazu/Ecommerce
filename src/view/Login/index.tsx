@@ -25,9 +25,7 @@ export default function Login() {
   
   const handleSubmit = async (e: React.FormEvent<HTMLInputElement>): Promise<any>  => {
     e.preventDefault();
-    const data = await login(email, password);
-    console.log(data)
-    // localStorage.setItem("LoggedIn",JSON.stringify(currentUser.uid))
+    login(email, password);
     history("/dashboard");
     resetPassword();
     resetEmail();

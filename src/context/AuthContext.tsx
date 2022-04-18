@@ -15,7 +15,7 @@ export const AuthContext = React.createContext<AuthContextType | null>(null);
 
 const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
   const auth = getAuth();
-  const [currentUser, setCurrentUser] = React.useState<Api>(JSON.parse(localStorage.getItem(("LoggedIn")) || '{}'));
+  // const [currentUser, setCurrentUser] = React.useState<Api>(JSON.parse(localStorage.getItem(("LoggedIn")) || '{}'));
   const [loading, setLoading] = React.useState(true);
   const db = getFirestore(app);
   const provider = new GoogleAuthProvider();
@@ -36,11 +36,18 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
     const { uid, metadata } = data
     const { creationTime } = metadata;
     addData("user", { name, email,uid,creationTime });
+    localStorage.setItem("LoggedIn",JSON.stringify(uid))
     return data;
   };
   
   async function login(email: any, password: any) {
-    return signInWithEmailAndPassword(auth, email, password);
+    const data = await (
+      await signInWithEmailAndPassword(auth, email, password)
+    ).user;
+    const { uid } = data
+    localStorage.setItem("LoggedIn",JSON.stringify(uid))
+    return data
+
   }
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
@@ -70,19 +77,17 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
   };
   function logout() {
     localStorage.removeItem("LoggedIn");
-    setCurrentUser({uid:""})
     return signOut(auth);
   }
 
   React.useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user: any) => {
-      setCurrentUser(user);
       setLoading(false);
     });
     return unsubscribe;
   }, []);
 
-  const value = { signup, currentUser, loading, login, logout,signInWithGoogle };
+  const value = { signup, loading, login, logout,signInWithGoogle };
 
   return (
     <AuthContext.Provider value={value}>
