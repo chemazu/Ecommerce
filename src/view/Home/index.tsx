@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import importContent from "../../resources/importContent";
@@ -20,6 +21,9 @@ export default function Home() {
           accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
           ab illo inventore veritatis
         </p>
+         <Link to="/login">Login   {process.env.REACT_APP_APIKEY}</Link>
+        <Link to="/register">Register   </Link>
+        <Link to="/dashboard">Dashboard</Link> 
         <Button
           title="Shop Now"
           onClick={() => {

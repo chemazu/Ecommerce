@@ -19,8 +19,10 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
   const [loading, setLoading] = React.useState(true);
   const db = getFirestore(app);
   const provider = new GoogleAuthProvider();
-  const addData = async (dbname: string, data: { name: any; email: any,uid:string,creationTime:any }) => {
- 
+  const addData = async (
+    dbname: string,
+    data: { name: any; email: any; uid: string; creationTime: any }
+  ) => {
     try {
       const docRef = await addDoc(collection(db, dbname), data);
       console.log("Document written with ID: ", docRef.id);
@@ -30,24 +32,31 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
   };
 
   const signup = async (name: string, email: any, password: any) => {
-    const data = await (
-      await createUserWithEmailAndPassword(auth, email, password)
-    ).user;
-    const { uid, metadata } = data
-    const { creationTime } = metadata;
-    addData("user", { name, email,uid,creationTime });
-    localStorage.setItem("LoggedIn",JSON.stringify(uid))
-    return data;
+    try {
+      const data = await (
+        await createUserWithEmailAndPassword(auth, email, password)
+      ).user;
+      const { uid, metadata } = data;
+      const { creationTime } = metadata;
+      addData("user", { name, email, uid, creationTime });
+      localStorage.setItem("LoggedIn", JSON.stringify(uid));
+      return data;
+    } catch (e) {
+      console.error("Error in Registering customer ", e);
+    }
   };
-  
-  async function login(email: any, password: any) {
-    const data = await (
-      await signInWithEmailAndPassword(auth, email, password)
-    ).user;
-    const { uid } = data
-    localStorage.setItem("LoggedIn",JSON.stringify(uid))
-    return data
 
+  async function login(email: any, password: any) {
+    try {
+      const data = await (
+        await signInWithEmailAndPassword(auth, email, password)
+      ).user;
+      const { uid } = data;
+      localStorage.setItem("LoggedIn", JSON.stringify(uid));
+      return data;
+    } catch (e) {
+      console.error("Error in Registering customer ", e);
+    }
   }
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
@@ -57,12 +66,10 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
         const token = credential!.accessToken;
         // The signed-in user info.
 
-
         const { displayName, email, uid, photoURL, metadata } = result.user;
         const { creationTime } = metadata;
-  
-  
-        addData("users",{name:displayName,email,uid,creationTime})
+
+        addData("users", { name: displayName, email, uid, creationTime });
       })
       .catch((error) => {
         // Handle Errors here.
@@ -87,7 +94,7 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  const value = { signup, loading, login, logout,signInWithGoogle };
+  const value = { signup, loading, login, logout, signInWithGoogle };
 
   return (
     <AuthContext.Provider value={value}>
