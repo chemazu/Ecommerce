@@ -5,7 +5,10 @@ $sec: #fff;
   background-position: center;
   background-size: cover;
   display: flex;
+  height: 70vh;
+  padding: 70px 5%;
   .text {
+    padding: 10px;
     .highlight {
       padding: 5px 7.5px;
       background-color: $pry;
@@ -17,11 +20,15 @@ $sec: #fff;
     }
     h2 {
       font-size: 60px;
+      padding-top: 20px;
     }
     p {
       max-width: 50%;
+      padding:10px 0;
+      padding-bottom: 20px;
     }
     .socials {
+      padding: 20px 0;
       max-width: 20%;
       display: flex;
       // justify-content: space-between;
@@ -40,13 +47,14 @@ $sec: #fff;
 }
 .card-front {
   background-color: slategray;
-  height: 420px;
+  height: 450px;
   width: 300px;
-  padding: 20px 10px;
   display: flex;
   flex-direction: column;
-  .upper{
+  padding: 10px;
 
+  .upper{
+padding: 0;
   }
   .image {
     background: url("../../resources/sample.jpeg");
@@ -55,5 +63,20 @@ $sec: #fff;
     height: 80%;
     width: 100%;
     align-self: center;
+    padding:0;
+  }
+  .text{
+    width: 100%;
+    h4{
+      padding: 10px 0;
+    }
+    p{
+      max-width: 100%;
+      padding: 5px 0;
+    }
+    .div{
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }

@@ -12,7 +12,6 @@ import {
 } from "firebase/auth";
 
 export const AuthContext = React.createContext<AuthContextType | null>(null);
-
 const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
   const auth = getAuth();
   // const [currentUser, setCurrentUser] = React.useState<Api>(JSON.parse(localStorage.getItem(("LoggedIn")) || '{}'));
@@ -33,7 +32,7 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   const signup = async (name: string, email: any, password: any) => {
     try {
-      const data = await (
+      const data =  (
         await createUserWithEmailAndPassword(auth, email, password)
       ).user;
       const { uid, metadata } = data;
@@ -47,8 +46,8 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
   };
 
   async function login(email: any, password: any) {
-    try {
-      const data = await (
+    try { 
+      const data =  (
         await signInWithEmailAndPassword(auth, email, password)
       ).user;
       const { uid } = data;

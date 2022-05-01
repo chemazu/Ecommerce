@@ -14,7 +14,7 @@ import twitter from "./twitter.svg";
 import youtube from "./youtube.svg";
 import pinterest from "./pinterest.svg";
 import sample from "./sample.jpeg";
-import marvel from "./marvel.png";
+import marvel from "./marvel.webp";
 
 
 export default function importContent() {
