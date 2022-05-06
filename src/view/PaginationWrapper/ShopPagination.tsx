@@ -3,7 +3,13 @@ import Card from "../Card";
 import Pagination from "../../components/Pagination/Pagination";
 import "./style.scss";
 import ShopItem from "../../components/ShopItem";
-export default function ShopPagination({ data: data }: { data: any }) {
+export default function ShopPagination({
+  data,
+  filter,
+}: {
+  data: any;
+  filter: any;
+}) {
   const [PageSize, setPageSize] = useState(10);
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setPageSize(Number(e.target.value));
@@ -20,7 +26,7 @@ export default function ShopPagination({ data: data }: { data: any }) {
         {currentTableData.map((item: any, index: any) => {
           return (
             <div className="card-holder" key={index}>
-            <ShopItem title={item.name} key={index}/>
+              <ShopItem filter={filter} title={item.name} key={index} />
             </div>
           );
         })}

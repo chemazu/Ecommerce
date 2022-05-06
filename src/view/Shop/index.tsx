@@ -7,17 +7,17 @@ import resultFilter from "../../helpers/fitler";
 
 export default function Shop() {
   // the api call will be made here
-  const [filter, setFitler] = useState({});
-  let testFitler = {  };
-
+  const [filter, setFilter] = useState({});
+  const [sort, setSort] = useState({});
   console.log(product);
   const productArray = product.products.data.items;
-  console.log(productArray.filter(resultFilter(testFitler)));
+  console.log(productArray.filter(resultFilter(filter)));
+  
 
   return (
     <div className="shop">
-      <ShopFilter />
-      {/* <ShopPagination data={productArray} /> */}
+      <ShopFilter filter={filter} setFilter={setFilter} />
+      <ShopPagination data={productArray} filter={filter} />
     </div>
   );
 }
