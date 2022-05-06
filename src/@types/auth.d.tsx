@@ -5,7 +5,9 @@
     // updateEmail:any,
     // updatePassword:any
   }
-
+export type filteredOption={
+  category:string
+}
   export type AuthContextType = {
     // currentUser:Api
     loading:boolean

@@ -7,6 +7,7 @@ import Dashboard from "./view/Dashboard";
 import AuthProvider from "../src/context/AuthContext";
 import Home from "./view/Home";
 import ProtectedRoute from "./view/ProtectedRoute";
+import Shop from "./view/Shop";
 
 function App() {
    const getLoggedIn=()=>{
@@ -19,6 +20,8 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
+
           <Route
             path="/dashboard"
             element={

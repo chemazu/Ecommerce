@@ -1,0 +1,31 @@
+.shop-pagination {
+  width: 100%;
+  .cardWrapper {
+    display: grid;
+    grid-gap: 30px;
+
+
+      .card-holder{
+          display: flex;
+          justify-content: center;
+
+      }
+  }
+}
+@media screen and (min-width: 480px) {
+  .shop-pagination {
+    padding: 10px 2.5%;
+
+    width: 100%;
+    .cardWrapper {
+      padding: 10px 2.5%;
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      grid-gap: 30px;
+      //   grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .pagination-holder {
+      padding: 10px 2.5%;
+    }
+  }
+}
