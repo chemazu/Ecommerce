@@ -3,21 +3,23 @@ import "./style.scss";
 import product from "./result.json";
 import ShopPagination from "../PaginationWrapper/ShopPagination";
 import ShopFilter from "../../components/ShopFilter";
-import resultFilter from "../../helpers/fitler";
+import resultFilter from "../../helpers/filter";
+import resultSort from "../../helpers/sort";
 
 export default function Shop() {
   // the api call will be made here
   const [filter, setFilter] = useState({});
-  const [sort, setSort] = useState({});
-  console.log(product);
+  const [sort, setSort] = useState("");
   const productArray = product.products.data.items;
-  console.log(productArray.filter(resultFilter(filter)));
-  
+  const finalProduct = productArray
+    .filter(resultFilter(filter))
+    .sort(resultSort(sort));
 
+  // create a context to pass the data
   return (
     <div className="shop">
-      <ShopFilter filter={filter} setFilter={setFilter} />
-      <ShopPagination data={productArray} filter={filter} />
+      <ShopFilter filter={filter} setFilter={setFilter} setSort={setSort} />
+      <ShopPagination data={finalProduct} filter={filter} />
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from "react";
-import Card from "../Card";
 import Pagination from "../../components/Pagination/Pagination";
 import "./style.scss";
 import ShopItem from "../../components/ShopItem";
@@ -10,7 +9,7 @@ export default function ShopPagination({
   data: any;
   filter: any;
 }) {
-  const [PageSize, setPageSize] = useState(10);
+  const [PageSize, setPageSize] = useState(12);
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setPageSize(Number(e.target.value));
   };
@@ -40,9 +39,9 @@ export default function ShopPagination({
             value={PageSize}
             onChange={handleChange}
           >
-            <option value={10}>10</option>
-            <option value={20}>20</option>
-            <option value={50}>50</option>
+            <option value={12}>12</option>
+            <option value={24}>24</option>
+            <option value={48}>48</option>
           </select>
           <p>out of {data.length}</p>
         </div>
