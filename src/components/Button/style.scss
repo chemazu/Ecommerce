@@ -79,3 +79,21 @@ button {
     background-color: #eeeeee;
   }
 }
+.checkout{
+  background-color: $sec;
+  border: 1px solid $pry;
+  color:$pry;
+  &:hover {
+    border-color: #999;
+    background-color: $pry;
+    border: 1px solid $sec;
+    color:#fff;
+  }
+  &:active {
+  background-color: rgb(254, 187, 2);
+  background-color: $pry;
+  border: 1px solid $sec;
+  color:#fff;
+
+  }
+}

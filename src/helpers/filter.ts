@@ -3,10 +3,7 @@ import { stringify } from "querystring";
 
 const resultFilter = (query:any) => {
     return (item:any) => {
-
-
-  
-      for (var key in query) {
+        for (var key in query) {
         if (item[key] == query[key]) {
           return true;
         }

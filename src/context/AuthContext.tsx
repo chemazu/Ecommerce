@@ -32,9 +32,8 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   const signup = async (name: string, email: any, password: any) => {
     try {
-      const data =  (
-        await createUserWithEmailAndPassword(auth, email, password)
-      ).user;
+      const data = (await createUserWithEmailAndPassword(auth, email, password))
+        .user;
       const { uid, metadata } = data;
       const { creationTime } = metadata;
       addData("user", { name, email, uid, creationTime });
@@ -46,10 +45,9 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
   };
 
   async function login(email: any, password: any) {
-    try { 
-      const data =  (
-        await signInWithEmailAndPassword(auth, email, password)
-      ).user;
+    try {
+      const data = (await signInWithEmailAndPassword(auth, email, password))
+        .user;
       const { uid } = data;
       localStorage.setItem("LoggedIn", JSON.stringify(uid));
       return data;

@@ -10,11 +10,6 @@ const resultSort = (sortType: string) => {
       default:
         break;
     }
-    // price low to high
-    //price high to low
-    //alphabetical
-    // recommended
-    return parseFloat(b.price) - parseFloat(a.price);
   };
 };
 export default resultSort;

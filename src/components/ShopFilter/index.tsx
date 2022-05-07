@@ -12,7 +12,6 @@ export default function ShopFilter({
 }) {
   const [showFilter, setShowFilter] = useState(false);
   const [showSort, setShowSort] = useState(false);
-
   const filterArrayContent = {
     title: "category",
     content: ["accessories", "apparel", "bags", "drinkware", "five"],
