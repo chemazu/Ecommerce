@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { ShopContext } from "../../context/ShopContext";
 import "./style.scss";
+import { ShopContextType } from "../../@types/shop.d";
+
 
 export default function ShopFilter({
   filter,
@@ -10,6 +13,10 @@ export default function ShopFilter({
   setFilter: any;
   setSort: any;
 }) {
+  const { cart } = React.useContext(
+    ShopContext
+  ) as ShopContextType;
+  console.log(cart)
   const [showFilter, setShowFilter] = useState(false);
   const [showSort, setShowSort] = useState(false);
   const filterArrayContent = {

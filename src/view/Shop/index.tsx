@@ -5,6 +5,7 @@ import ShopPagination from "../PaginationWrapper/ShopPagination";
 import ShopFilter from "../../components/ShopFilter";
 import resultFilter from "../../helpers/filter";
 import resultSort from "../../helpers/sort";
+import ShopProvider from "../../context/ShopContext";
 
 export default function Shop() {
   // the api call will be made here
@@ -18,8 +19,11 @@ export default function Shop() {
   // create a context to pass the data
   return (
     <div className="shop">
+      <ShopProvider>
       <ShopFilter filter={filter} setFilter={setFilter} setSort={setSort} />
       <ShopPagination data={finalProduct} filter={filter} />
+      </ShopProvider>
+
     </div>
   );
 }
