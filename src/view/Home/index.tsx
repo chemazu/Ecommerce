@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import importContent from "../../resources/importContent";
 import "./style.scss";
 
 export default function Home() {
+  const history = useNavigate();
   const { facebook, instagram, twitter, youtube, pinterest, marvel } =
     importContent();
   const social = [facebook, instagram, twitter, youtube, pinterest];
@@ -26,7 +27,7 @@ export default function Home() {
           <Button
             title="Shop Now"
             onClick={() => {
-              console.log("shop now");
+            history("/shop");
             }}
             type=""
             className="sec"
