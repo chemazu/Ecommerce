@@ -8,39 +8,35 @@ import AuthProvider from "../src/context/AuthContext";
 import Home from "./view/Home";
 import ProtectedRoute from "./view/ProtectedRoute";
 import Shop from "./view/Shop";
+import Cart from "./view/Cart";
+import ShopProvider from "./context/ShopContext";
 
 function App() {
-   const getLoggedIn=()=>{
-    const token = localStorage.getItem(("LoggedIn")) || null
-    if (token == null) {return false}
-     return true
-   }
+  const getLoggedIn = () => {
+    const token = localStorage.getItem("LoggedIn") || null;
+    if (token == null) {
+      return false;
+    }
+    return true;
+  };
   return (
     <div className="App">
       <AuthProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-
-          <Route
-            path="/dashboard"
-            element={
-              // <ProtectedRoute >
-              //   <Dashboard />
-              // </ProtectedRoute>
-
-              ProtectedRoute({children:<Dashboard/>})
-            }
-          />
-
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="*" element={<p>There's nothing here: 404!</p>} />
-        </Routes>
+        <ShopProvider>
+          <Routes>
+            <Route path="/shop/*" element={<Shop />} />
+            <Route path="/shop/cart" element={<Cart />} />
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/dashboard"
+              element={ProtectedRoute({ children: <Dashboard /> })}
+            />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="*" element={<p>There's nothing here: 404!</p>} />
+          </Routes>
+        </ShopProvider>
       </AuthProvider>
-      {/* <Link to="/login">Login   {process.env.REACT_APP_APIKEY}</Link>
-        <Link to="/register">Register   </Link>
-        <Link to="/dashboard">Dashboard</Link>  */}
     </div>
   );
 }

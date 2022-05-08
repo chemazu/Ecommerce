@@ -7,20 +7,29 @@ import { ShopContext } from "../../context/ShopContext";
 
 export default function ShopItem({ item, filter }: { item: any; filter: any }) {
   const [front, setFront] = useState(true);
-  // addToCart
   const { price, name, id } = item;
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
-  console.log(cart, JSON.parse(localStorage.getItem("cart") || "[]"), "ONE");
 
+  let checkifItemExists = cart.find((item: any) => item.id === id);
   const addToCart = () => {
-    setCart([...cart, { id, name, price }]);
-    localStorage.setItem(
-      "cart",
-      JSON.stringify([...cart, { id, name, price }])
-    );
-    console.log(cart, JSON.parse(localStorage.getItem("cart") || "[]"), "TWO");
-  };
+    if (checkifItemExists) {
+      cart.map((item: any) => {
+        if (item.id === id) {
+          item.quantity += 1;
+        }
+      });
+      setCart([...cart]);
+    } else {
+      setCart([...cart, { id, name, price, quantity: 1 }]);
+    }
+    // check if this is correct
+    localStorage.setItem("cart", JSON.stringify(cart));
 
+  };
+  const clearCart = () => {
+    localStorage.setItem("cart", JSON.stringify([]));
+    setCart([]);
+  };
   return (
     <div>
       <Card title={name} front={front} />
@@ -32,6 +41,7 @@ export default function ShopItem({ item, filter }: { item: any; filter: any }) {
           setFront(!front);
         }}
       />
+      <Button title="Clear Cart" className="pry" onClick={clearCart} />
     </div>
   );
 }
