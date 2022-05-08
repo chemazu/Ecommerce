@@ -5,4 +5,6 @@ export type CartItem = {
 export type ShopContextType = {
   cart:CartItem[];
   setCart:any
+  productData:any;
+  setProductData:any;
 };

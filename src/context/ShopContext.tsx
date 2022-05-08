@@ -12,11 +12,12 @@ export default function ShopProvider({
   console.log(localStorage.getItem("cart"));
  
   const [cart, setCart] = useState( JSON.parse(localStorage.getItem("cart")||"[]"));
+  const [productData, setProductData] = useState([]);
   // const cart = [
   //   { id: "1", title: "hmm", price: "100" },
   //   { id: "2", title: "hmm2",price: "200" },
   // ];
 
-  const value = { cart,setCart };
+  const value = { cart,setCart,productData,setProductData };
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;
 }

@@ -24,7 +24,25 @@ export default function ShopItem({ item, filter }: { item: any; filter: any }) {
     }
     // check if this is correct
     localStorage.setItem("cart", JSON.stringify(cart));
+  };
+  const removeFromCart = () => {
+    if (checkifItemExists) {
+      cart.map((item: any) => {
+        if (item.id === id) {
+          if (item.quantity > 1) {
+            item.quantity -= 1;
+          } else {
+            cart.splice(cart.indexOf(item), 1);
+          }
+        }
+      });
+      setCart([...cart]);
+    } else {
+      cart.map((item: any) => item.filter((item: any) => item.id !== id));
+      setCart([...cart]);
+    }
 
+    localStorage.setItem("cart", JSON.stringify(cart));
   };
   const clearCart = () => {
     localStorage.setItem("cart", JSON.stringify([]));
@@ -41,6 +59,8 @@ export default function ShopItem({ item, filter }: { item: any; filter: any }) {
           setFront(!front);
         }}
       />
+      <Button title="Remove" className="pry" onClick={removeFromCart} />
+
       <Button title="Clear Cart" className="pry" onClick={clearCart} />
     </div>
   );
