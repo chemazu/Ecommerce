@@ -1,7 +1,8 @@
 export type CartItem = {
   id: string;
-  title: string;
+  name: string;
 };
 export type ShopContextType = {
-  cart: CartItem;
+  cart:CartItem[];
+  setCart:any
 };

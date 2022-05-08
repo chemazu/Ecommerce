@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ShopContext } from "../../context/ShopContext";
 import "./style.scss";
 import { ShopContextType } from "../../@types/shop.d";
-
+import Button from "../Button";
 
 export default function ShopFilter({
   filter,
@@ -13,10 +13,7 @@ export default function ShopFilter({
   setFilter: any;
   setSort: any;
 }) {
-  const { cart } = React.useContext(
-    ShopContext
-  ) as ShopContextType;
-  console.log(cart)
+  const { cart } = React.useContext(ShopContext) as ShopContextType;
   const [showFilter, setShowFilter] = useState(false);
   const [showSort, setShowSort] = useState(false);
   const filterArrayContent = {
@@ -76,6 +73,10 @@ export default function ShopFilter({
         >
           Filter
         </p>
+        <div>
+          Search <input />
+          <Button title="Search" className="pry" />
+        </div>
         {showFilter && (
           <div className="filter-mobile">
             <h4>filter</h4>

@@ -17,22 +17,21 @@ export default function Home() {
         <div className="text">
           <p className="highlight">Stacked</p>
           <h2>Buy Trading Cards Fast</h2>
-          <h2 style={{paddingBottom:"10px"}}>Stay Connected</h2>
+          <h2 style={{ paddingBottom: "10px" }}>Stay Connected</h2>
           <p>
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae ab illo inventore
           </p>
-    
           <Button
             title="Shop Now"
             onClick={() => {
-            history("/shop");
+              history("/shop");
             }}
             type=""
             className="sec"
           />
-          
+
           <div className="socials">
             {social.map((item) => {
               return <img src={item} />;
@@ -50,14 +49,12 @@ export default function Home() {
               <p>
                 Lorem ipsum dolor sit ametonsectetur adipiscing elit, sed do
                 eiusmod tempor, consectetur adipiscing elit, sed do
-              
               </p>
               <div className="div">
                 <p> incididunt </p>
                 <p> incididunt </p>
 
                 <p> incididunt </p>
-
               </div>
             </div>
           </div>

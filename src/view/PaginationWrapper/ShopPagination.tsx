@@ -25,7 +25,7 @@ export default function ShopPagination({
         {currentTableData.map((item: any, index: any) => {
           return (
             <div className="card-holder" key={index}>
-              <ShopItem filter={filter} title={item.name} key={index} />
+              <ShopItem filter={filter}  item={item} key={index} />
             </div>
           );
         })}

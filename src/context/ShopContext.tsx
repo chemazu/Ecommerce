@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { ShopContextType } from "../@types/shop.d";
 // export const AuthContext = React.createContext<AuthContextType | null>(null);
 
@@ -9,8 +9,14 @@ export default function ShopProvider({
 }: {
   children: React.ReactNode;
 }) {
-  // this will hold card items
-  const hmm ={id:"1",title:"hmm"};
- ;
-  return <ShopContext.Provider value={{cart:hmm}}>{children}</ShopContext.Provider>;
+  console.log(localStorage.getItem("cart"));
+ 
+  const [cart, setCart] = useState( JSON.parse(localStorage.getItem("cart")||"[]"));
+  // const cart = [
+  //   { id: "1", title: "hmm", price: "100" },
+  //   { id: "2", title: "hmm2",price: "200" },
+  // ];
+
+  const value = { cart,setCart };
+  return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;
 }
