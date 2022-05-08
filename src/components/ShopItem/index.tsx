@@ -9,8 +9,8 @@ export default function ShopItem({ item, filter }: { item: any; filter: any }) {
   const [front, setFront] = useState(true);
   const { price, name, id } = item;
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
-
   let checkifItemExists = cart.find((item: any) => item.id === id);
+  
   const addToCart = () => {
     if (checkifItemExists) {
       cart.map((item: any) => {
@@ -25,6 +25,7 @@ export default function ShopItem({ item, filter }: { item: any; filter: any }) {
     // check if this is correct
     localStorage.setItem("cart", JSON.stringify(cart));
   };
+  
   const removeFromCart = () => {
     if (checkifItemExists) {
       cart.map((item: any) => {
