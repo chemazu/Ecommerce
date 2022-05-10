@@ -11,7 +11,6 @@ import { ShopContext } from "../../context/ShopContext";
 export default function Shop() {
   // the api call will be made here
   const [showCart, setShowCart] = useState(false);
-
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
   const [filter, setFilter] = useState({});
   const [sort, setSort] = useState("");
