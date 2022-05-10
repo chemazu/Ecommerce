@@ -1,71 +1,19 @@
-import React, { useState } from "react";
-import "./style.scss";
-import product from "./result.json";
-import ShopPagination from "../PaginationWrapper/ShopPagination";
+import React from "react";
 import ShopFilter from "../../components/ShopFilter";
-import resultFilter from "../../helpers/filter";
-import resultSort from "../../helpers/sort";
-import Header from "../../components/Header";
-import { ShopContextType } from "../../@types/shop.d";
-import { ShopContext } from "../../context/ShopContext";
+
+import ShopHeader from "../../components/ShopHeader";
+import "./style.scss";
+
 export default function Shop() {
-  // the api call will be made here
-  const [showCart, setShowCart] = useState(false);
-  const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
-  const [filter, setFilter] = useState({});
-  const [sort, setSort] = useState("");
-  const productArray = product.products.data.items;
-  const finalProduct = productArray
-    .filter(resultFilter(filter))
-    .sort(resultSort(sort));
-  //
   return (
-    <div className="shop">
-      <p
-        onClick={() => {
-          setShowCart(!showCart);
-        }}
-      >
-        Cart, {cart.length}
-      </p>
-      <CartDropDown showCart={showCart} />
-      <p>CheckOut
-      </p>
-      <ShopFilter filter={filter} setFilter={setFilter} setSort={setSort} />
-      <ShopPagination data={finalProduct} filter={filter} />
-    </div>
+    <>
+      <ShopHeader />
+      <div className="shop">
+   <div className="shop-filter">
+     <div className="sort"></div>
+     <div className="filter"></div>
+   </div>
+      </div>
+    </>
   );
 }
-const CartDropDown = ({ showCart }: { showCart: boolean }) => {
-  const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
-
-  return (
-    <div className="cart-drop-down">
-      {showCart && (
-        <>
-          {cart.map((item: any, index: any) => {
-            const increaseQuantity = () => {
-              item.quantity = item.quantity + 1;
-              setCart([...cart]);
-            };
-            const reduceQuantity = () => {
-              if (item.quantity < 2) {
-                cart.splice(cart.indexOf(item), 1);
-              } else {
-                item.quantity = item.quantity - 1;
-              }
-              setCart([...cart]);
-            };
-            return (
-              <p className="drop-down-options" key={index}>
-                {item.name}
-                <h2 onClick={increaseQuantity}>+</h2> {item.quantity}{" "}
-                <h2 onClick={reduceQuantity}>-</h2>
-              </p>
-            );
-          })}
-        </>
-      )}
-    </div>
-  );
-};

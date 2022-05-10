@@ -25,6 +25,7 @@ export default function ShopFilter({
     <div className="shop-filter">
       <div className="header">
         <p
+          className="sort-button"
           onClick={() => {
             setShowSort(!showSort);
             setShowFilter(false);

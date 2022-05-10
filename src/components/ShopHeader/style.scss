@@ -1,0 +1,23 @@
+.shop-header {
+  border: 1px solid #fff;
+  background: #ffffff;
+  box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  padding: 10px 5%;
+  justify-content: space-between;
+  .search-div {
+    border: 1px solid black;
+    width: fit-content;
+    input {
+      background: transparent;
+      border: 0px;
+      width: 300px;
+      padding: 10px;
+    }
+  }
+  .auth-wrapper {
+    display: flex;
+    grid-gap: 20px;
+  }
+}
