@@ -1,0 +1,33 @@
+.shop-filter {
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .sort-button {
+      display: flex;
+      background-color: #f5f5f5;
+      border: 1px solid #000;
+      border-left: 0px;
+      border-right: 0px;
+      padding: 7.5px;
+      width: 100px;
+      align-items: center;
+      // justify-content: center;
+      background-color: transparent;
+      border: 1px solid #ddd;
+      border-left: none;
+      border-radius: 0;
+      border-right: none;
+      color: #666;
+      font-family: futura-pt, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      height: 42px;
+      letter-spacing: 0.3px;
+      line-height: 1.12;
+      padding: 3px 20px 3px 6px;
+      position: relative;
+      text-align: left;
+    //   width: 100%;
+    }
+  }
+}

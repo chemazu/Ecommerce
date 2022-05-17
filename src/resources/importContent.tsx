@@ -15,6 +15,9 @@ import youtube from "./youtube.svg";
 import pinterest from "./pinterest.svg";
 import sample from "./sample.jpeg";
 import marvel from "./marvel.webp";
+import hammenu from "./hammenu.svg";
+import cartsvg from "./cart.svg";
+
 
 
 export default function importContent() {
@@ -34,6 +37,8 @@ export default function importContent() {
     youtube,
     pinterest,
     sample,
-    marvel
+    marvel,
+    hammenu,
+    cartsvg
   };
 }

@@ -1,104 +1,77 @@
 import React, { useState } from "react";
-import { ShopContext } from "../../context/ShopContext";
-import "./style.scss";
-import { ShopContextType } from "../../@types/shop.d";
 import Button from "../Button";
+import importContent from "../../resources/importContent";
+import { ShopContext } from "../../context/ShopContext";
+import { ShopContextType } from "../../@types/shop.d";
+import "./style.scss";
 
-export default function ShopFilter({
-  filter,
-  setFilter,
-  setSort,
-}: {
-  filter: any;
-  setFilter: any;
-  setSort: any;
-}) {
-  const { cart } = React.useContext(ShopContext) as ShopContextType;
+export default function ShopFilter() {
+  const { cartsvg } = importContent();
   const [showFilter, setShowFilter] = useState(false);
-  const [showSort, setShowSort] = useState(false);
+
   const filterArrayContent = {
     title: "category",
     content: ["accessories", "apparel", "bags", "drinkware", "five"],
   };
-  const filterArray = [filterArrayContent];
+  const filterArray = [
+    {
+      title: "Catergory",
+      content: ["accessories", "apparel", "bags", "drinkware", "five"],
+    },
+    {
+      title: "Size",
+      content: ["accessories", "apparel", "bags", "drinkware", "five"],
+    },
+    {
+      title: "Color",
+      content: ["accessories", "apparel", "bags", "drinkware", "five"],
+    },
+    {
+      title: "Age",
+      content: ["accessories", "apparel", "bags", "drinkware", "five"],
+    },
+  ];
   return (
-    <div className="shop-filter">
-      <div className="header">
-        <p
-          className="sort-button"
-          onClick={() => {
-            setShowSort(!showSort);
-            setShowFilter(false);
-          }}
-        >
-          Sort
-        </p>
-        {showSort && (
-          <div className="sort-drop-down">
-            <p
-              onClick={() => {
-                setSort("nothing");
-              }}
-            >
-              Recommended
-            </p>
-            <p
-              onClick={() => {
-                setSort("alphabetically");
-              }}
-            >
-              Alphabetically
-            </p>
-            <p
-              onClick={() => {
-                setSort("priceLow");
-              }}
-            >
-              Price: low to high
-            </p>
-            <p
-              onClick={() => {
-                setSort("priceHigh");
-              }}
-            >
-              Price: high to low
-            </p>
-          </div>
-        )}
-
-        <p
-          onClick={() => {
-            setShowFilter(!showFilter);
-            setShowSort(false);
-          }}
-        >
-          Filter
-        </p>
-        <div>
-          Search <input />
+    <div className="shop-filter-wrapper">
+      <div className="shop-filter">
+        <div className="sort">
+          <h3>Sort</h3>
+          <div className="sort-items"></div>
+        </div>
+        <div className="filter">
+          <h3
+            onClick={() => {
+              setShowFilter(!showFilter);
+            }}
+          >
+            Filter{" "}
+          </h3>
+        </div>
+        <div className="search-div">
+          <input type="text" placeholder="Search" className="searchBox" />
           <Button title="Search" className="pry" />
         </div>
-        {showFilter && (
-          <div className="filter-mobile">
-            <h4>filter</h4>
-            {filterArray.map((item: any, index) => {
-              return (
-                <FilterDropDown
-                  item={item}
-                  key={index}
-                  filter={filter}
-                  setFilter={setFilter}
-                  control={item.title}
-                />
-              );
-            })}
-          </div>
-        )}
+
+        <img src={cartsvg} alt="svg" />
       </div>
+      {showFilter && (
+        <div className="show-filter-options">
+          {filterArray.map((item: any, index: any) => {
+            return (
+              <FilterDropDown
+                item={item}
+                key={index}
+                filter={showFilter}
+                setFilter={setShowFilter}
+                control={item.title}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
-
 //memomize the function below "USE MEMO"
 const FilterDropDown = ({
   item,
@@ -117,28 +90,33 @@ const FilterDropDown = ({
     console.log(filter);
   };
   return (
-    <div>
-      {" "}
-      <p
-        onClick={() => {
-          setIsOpen(!isOpen);
-        }}
-      >
-        {item.title}
-      </p>
-      {isOpen &&
-        item.content.map((item, index, array) => {
-          return (
-            <p
-              onClick={() => {
-                createFilter(control, item);
-              }}
-              key={index}
-            >
-              {item}
-            </p>
-          );
-        })}
-    </div>
+    <>
+      <div className="filter-dropdown">
+        {" "}
+        <p
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          {item.title}
+        </p>
+      </div>
+            {isOpen && (
+        <div className="sub-filter">
+          {item.content.map((item, index, array) => {
+            return (
+              <p
+                onClick={() => {
+                  createFilter(control, item);
+                }}
+                key={index}
+              >
+                {item}
+              </p>
+            );
+          })}
+        </div>
+      )}
+    </>
   );
 };
