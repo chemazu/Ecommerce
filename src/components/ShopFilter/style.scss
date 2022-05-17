@@ -1,10 +1,8 @@
 .shop-filter-wrapper {
   padding: 10px 5%;
-
   .shop-filter {
     display: flex;
     justify-content: space-between;
-
     align-items: center;
     .search-div {
       border: 1px solid black;
@@ -20,13 +18,15 @@
       width: 30px;
     }
   }
-  .show-filter-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px  0;
-    .filter-dropdown{
-
+  .filter-select {
+    display: grid;
+    .filter-heading {
+      background-color: yellow;
     }
+  }
+
+  .filter-options {
+    background-color: aqua;
+    display: flex;
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ShopFilter from "../../components/ShopFilter";
 import importContent from "../../resources/importContent";
 
@@ -7,6 +7,7 @@ import "./style.scss";
 import Button from "../../components/Button";
 
 export default function Shop() {
+  const [filter, setFilter] = useState({});
   const { facebook, instagram, twitter, youtube, pinterest, cartsvg } =
     importContent();
   const social = [facebook, instagram, twitter, youtube, pinterest];
@@ -23,13 +24,13 @@ export default function Shop() {
             </p>
 
             <div className="socials">
-              {social.map((item) => {
-                return <img src={item} />;
+              {social.map((item, key) => {
+                return <img src={item} key={key} alt={`${item}`} />;
               })}
             </div>
           </div>
         </div>
-        <ShopFilter />
+        <ShopFilter filter={filter} setFilter={setFilter} />
       </div>
     </div>
   );

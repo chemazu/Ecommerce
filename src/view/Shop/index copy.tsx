@@ -70,11 +70,8 @@
 //   );
 // };
 
-
-import React from 'react'
+import React from "react";
 
 export default function IndexCopy() {
-  return (
-    <div>IndexCopy</div>
-  )
+  return <div>IndexCopy</div>;
 }

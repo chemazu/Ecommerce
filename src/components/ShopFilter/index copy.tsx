@@ -80,7 +80,6 @@ export default function ShopFilter({
         </div>
         {showFilter && (
           <div className="filter-mobile">
-            <h4>filter</h4>
             {filterArray.map((item: any, index) => {
               return (
                 <FilterDropDown
@@ -142,5 +141,3 @@ const FilterDropDown = ({
     </div>
   );
 };
-
-
