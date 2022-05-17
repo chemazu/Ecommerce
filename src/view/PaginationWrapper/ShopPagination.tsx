@@ -2,8 +2,6 @@ import React, { useMemo, useState } from "react";
 import Pagination from "../../components/Pagination/Pagination";
 import "./style.scss";
 import ShopItem from "../../components/ShopItem";
-import { ShopContextType } from "../../@types/shop.d";
-import { ShopContext } from "../../context/ShopContext";
 export default function ShopPagination({
   data,
   filter,
