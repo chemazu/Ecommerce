@@ -60,9 +60,9 @@ export default function ShopItem({ item, filter }: { item: any; filter: any }) {
           setFront(!front);
         }}
       />
-      <Button title="Remove" className="pry" onClick={removeFromCart} />
+      {/* <Button title="Remove" className="pry" onClick={removeFromCart} />
 
-      <Button title="Clear Cart" className="pry" onClick={clearCart} />
+      <Button title="Clear Cart" className="pry" onClick={clearCart} /> */}
     </div>
   );
 }

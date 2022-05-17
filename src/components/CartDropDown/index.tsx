@@ -5,6 +5,10 @@ import { ShopContext } from "../../context/ShopContext";
 
 export default function CartDropDown() {
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
+  const clearCart = () => {
+    localStorage.setItem("cart", JSON.stringify([]));
+    setCart([]);
+  };
   return (
     <div className="cart-drop-down">
       {cart.map((item: any, index: any) => {
@@ -29,7 +33,14 @@ export default function CartDropDown() {
           </div>
         );
       })}
-      Clear Cart
+      <p
+        onClick={() => {
+          localStorage.setItem("cart", JSON.stringify([]));
+          setCart([]);
+        }}
+      >
+        Clear Cart
+      </p>
     </div>
   );
 }
