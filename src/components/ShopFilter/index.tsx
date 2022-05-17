@@ -131,9 +131,9 @@ export default function ShopFilter({
           </p>
         </div>
       )}
-      <div className="cart-dropdown-wrapper">
+      {/* <div className="cart-dropdown-wrapper">
         {showCart && <CartDropDown />}
-      </div>
+      </div> */}
     </div>
   );
 }
