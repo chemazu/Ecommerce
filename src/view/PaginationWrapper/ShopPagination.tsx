@@ -11,7 +11,6 @@ export default function ShopPagination({
   data: any;
   filter: any;
 }) {
-
   const [PageSize, setPageSize] = useState(12);
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setPageSize(Number(e.target.value));
@@ -24,12 +23,11 @@ export default function ShopPagination({
   }, [currentPage, data, PageSize]);
   return (
     <div className="shop-pagination">
-      <p>Cart</p>
       <div className="cardWrapper">
         {currentTableData.map((item: any, index: any) => {
           return (
             <div className="card-holder" key={index}>
-              <ShopItem filter={filter}  item={item} key={index} />
+              <ShopItem filter={filter} item={item} key={index} />
             </div>
           );
         })}

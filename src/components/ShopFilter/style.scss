@@ -32,7 +32,12 @@
     display: flex;
   }
 }
+.cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .cart-dropdown-wrapper {
   display: flex;
-  justify-content: flex-end;
+  background-color: beige;
 }

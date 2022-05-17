@@ -12,6 +12,7 @@ export default function ShopFilter({
   setSort,
   filterArray,
 }: any) {
+  const { cart } = React.useContext(ShopContext) as ShopContextType;
   const { cartsvg } = importContent();
   const [showFilter, setShowFilter] = useState(false);
   const [showSort, setShowSort] = useState(false);
@@ -62,6 +63,7 @@ export default function ShopFilter({
               setShowFilter(false);
             }}
           />
+          <span>{cart.length}</span>
         </div>
       </div>
       {showFilter && (

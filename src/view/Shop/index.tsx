@@ -12,7 +12,6 @@ import resultSort from "../../helpers/sort";
 export default function Shop() {
   const [filter, setFilter] = useState({});
   const [sort, setSort] = useState("");
-
   const { facebook, instagram, twitter, youtube, pinterest, cartsvg } =
     importContent();
   const social = [facebook, instagram, twitter, youtube, pinterest];
