@@ -4,7 +4,7 @@ import importContent from "../../resources/importContent";
 import product from "./result.json";
 import ShopHeader from "../../components/ShopHeader";
 import "./style.scss";
-import Button from "../../components/Button";
+// import Button from "../../components/Button";
 import ShopPagination from "../PaginationWrapper/ShopPagination";
 import resultFilter from "../../helpers/filter";
 import resultSort from "../../helpers/sort";
@@ -12,13 +12,12 @@ import resultSort from "../../helpers/sort";
 export default function Shop() {
   const [filter, setFilter] = useState({});
   const [sort, setSort] = useState("");
-  const { facebook, instagram, twitter, youtube, pinterest, cartsvg } =
-    importContent();
+  const { facebook, instagram, twitter, youtube, pinterest } = importContent();
   const social = [facebook, instagram, twitter, youtube, pinterest];
   const filterArray = [
     {
-      title: "Catergory",
-      content: ["accessories1", "apparel1", "bags1", "drinkware1"],
+      title: "category",
+      content: ["accessories", "apparel", "bags", "drinkware"],
     },
     {
       title: "Size",
@@ -34,10 +33,11 @@ export default function Shop() {
     },
   ];
   const productArray = product.products.data.items;
-  const finalProduct = productArray
-    .filter(resultFilter(filter))
-    .sort(resultSort(sort));
-
+  console.log(filter);
+  const finalProduct = productArray.filter(resultFilter({ ...filter }));
+  // .sort(resultSort(sort));
+  console.log(finalProduct);
+ 
   return (
     <div>
       <ShopHeader />
@@ -49,7 +49,6 @@ export default function Shop() {
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             </p>
-
             <div className="socials">
               {social.map((item, key) => {
                 return <img src={item} key={key} alt={`${item}`} />;
@@ -57,13 +56,15 @@ export default function Shop() {
             </div>
           </div>
         </div>
+        <h2 style={{ textAlign: "center",padding:"30px 10px"}}>Shop</h2>
+
         <ShopFilter
           filter={filter}
           setFilter={setFilter}
           filterArray={filterArray}
           setSort={setSort}
         />
-        <h2 style={{ textAlign: "center" }}>SHOP</h2>
+        <h1>&nbsp;</h1>
         <ShopPagination data={finalProduct} filter={filter} />
       </div>
     </div>

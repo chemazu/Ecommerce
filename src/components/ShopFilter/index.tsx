@@ -17,10 +17,13 @@ export default function ShopFilter({
   const [showFilter, setShowFilter] = useState(false);
   const [showSort, setShowSort] = useState(false);
   const [showCart, setShowCart] = useState(false);
-
   const [isOpen, setIsOpen] = useState({ status: false, id: 0 });
-  const createFilter = (control: any, item: any) => {
-    setFilter({ ...filter, [control]: item });
+  const createFilter = (filterOption: any, item: any) => {
+    setShowFilter(false);
+    setShowSort(false);
+    setShowCart(false);
+    setIsOpen({ ...isOpen, status: false });
+    setFilter({ ...filter, [filterOption]: item });
   };
   return (
     <div className="shop-filter-wrapper">
@@ -52,6 +55,19 @@ export default function ShopFilter({
           <input type="text" placeholder="Search" className="searchBox" />
           <Button title="Search" className="pry" />
         </div>
+        {!(Object.keys(filter).length === 0) && (
+          <p
+            onClick={() => {
+              setShowFilter(false);
+              setShowSort(false);
+              setShowCart(false);
+              setFilter({});
+              setIsOpen({ ...isOpen, status: false });
+            }}
+          >
+            Clear Filter
+          </p>
+        )}
 
         <div className="cart">
           <img
@@ -67,7 +83,7 @@ export default function ShopFilter({
         </div>
       </div>
       {showFilter && (
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex" }} className="filter-heading-wrapper">
           {filterArray.map((item: any, index: any) => {
             const { title, content } = item;
             return (
@@ -85,16 +101,20 @@ export default function ShopFilter({
         </div>
       )}
       {isOpen.status && (
-        <div style={{ display: "flex" }}>
+        <div className="filter-sub-options-wrapper">
           {filterArray[isOpen.id].content.map((item: any, index: number) => {
             return (
-              <div
+              <p
                 className="filter-sub-options"
                 key={index}
-                onClick={() => createFilter(filterArray[isOpen.id].title, item)}
+                onClick={() => {
+                  
+                  createFilter(filterArray[isOpen.id].title, item)
+           
+                }}
               >
                 {item}
-              </div>
+              </p>
             );
           })}
         </div>

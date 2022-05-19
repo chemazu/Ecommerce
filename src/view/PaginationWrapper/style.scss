@@ -1,5 +1,5 @@
 .shop-pagination {
-  width: 100%;
+  // width: 100%;
   .cardWrapper {
     display: grid;
     grid-gap: 30px;
@@ -16,7 +16,7 @@
   .shop-pagination {
     padding: 10px 2.5%;
 
-    width: 100%;
+    // width: 100%;
     .cardWrapper {
       padding: 10px 2.5%;
       display: grid;
@@ -24,8 +24,25 @@
       grid-gap: 30px;
       //   grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-    .pagination-holder {
-      padding: 10px 2.5%;
+
+  }
+  .pagination-holder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    .showing{
+      display: flex;
+      justify-content: space-between;
+      width: 30%;
+      padding: 20px;
+      select{
+        padding: 5px;
+        padding-right: 20px;
+        border: 0px;
+        font-size: 1rem;
+      }
     }
   }
 }
