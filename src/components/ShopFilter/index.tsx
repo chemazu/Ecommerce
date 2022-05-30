@@ -238,6 +238,13 @@ export default function ShopFilter({
           </p>
         </div>
       )}
+      <div className="mobile-filter-options-wrapper">
+        <div className="heading">
+          <h3>Filter </h3>
+          <h2>X</h2>
+        </div>
+        <div className="options"></div>
+      </div>
     </>
   );
 }

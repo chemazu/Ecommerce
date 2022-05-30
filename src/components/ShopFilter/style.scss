@@ -45,7 +45,7 @@
   padding: 20px;
   width: fit-content;
   position: absolute;
-  z-index: 40;
+  z-index: 5;
   p {
     padding: 10px;
     &:hover {
@@ -58,7 +58,7 @@
 }
 .filter-heading-wrapper {
   position: absolute;
-  z-index: 40;
+  z-index: 5;
   display: flex;
 
   padding: 10px 0;
@@ -101,6 +101,30 @@
     }
   }
 }
+
+.mobile-filter-options-wrapper {
+  display: flex;
+  background: rgba(0, 0, 0, 0.918);
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  height: 1000vh;
+  width: 100%;
+  flex-direction: column;
+  // z-index: 20;
+  * {
+    color: white;
+  }
+  .heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5%;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .mobile-filter {
     display: grid;
