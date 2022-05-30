@@ -17,8 +17,12 @@ import sample from "./sample.jpeg";
 import marvel from "./marvel.webp";
 import hammenu from "./hammenu.svg";
 import cartsvg from "./cart.svg";
-
-
+import shopslide1 from "./shopslide1.jpeg";
+import shopslide2 from "./shopslide2.jpg";
+import shopslide3 from "./shopslide3.jpg";
+import shopslide4 from "./shopslide4.jpg";
+import caretdown from "./caret-down.svg";
+import filterSvg from "./filter.svg";
 
 export default function importContent() {
   return {
@@ -39,6 +43,12 @@ export default function importContent() {
     sample,
     marvel,
     hammenu,
-    cartsvg
+    cartsvg,
+    shopslide1,
+    shopslide2,
+    shopslide3,
+    shopslide4,
+    caretdown,
+    filterSvg,
   };
 }

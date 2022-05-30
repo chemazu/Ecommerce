@@ -2,12 +2,11 @@
   .hero {
     padding: 10px 5%;
     // height: auto;
-    background: url("../../resources/shop-wallpaper.jpeg") no-repeat center
-      center;
+    background: url("../../resources/shopslide1.jpeg") no-repeat center center;
     background-size: cover;
     color: #fff;
     position: relative;
-    height: 60vh;
+    height: 70vh;
     &::before {
       content: "";
       position: absolute;
@@ -19,9 +18,8 @@
     }
     .text {
       position: absolute;
-        letter-spacing: 1px;
+      letter-spacing: 1px;
       color: #fff;
     }
   }
-
 }
