@@ -182,7 +182,15 @@ export default function ShopFilter({
             borderRight: "1px solid #e6e6e6",
           }}
         >
-          <p>Filter</p>
+          <p
+            onClick={() => {
+              setShowFilter(!showFilter);
+              setShowSort(false);
+              setShowCart(false);
+            }}
+          >
+            Filter
+          </p>
         </div>
         {cart.length ? (
           <div
@@ -238,13 +246,43 @@ export default function ShopFilter({
           </p>
         </div>
       )}
-      <div className="mobile-filter-options-wrapper">
-        <div className="heading">
-          <h3>Filter </h3>
-          <h2>X</h2>
+      {showFilter && (
+    
+          <div className="mobile-filter-options-wrapper">
+                <div className="mobile-filter-options">
+            <div className="heading">
+              <h3>Filter </h3>
+              <h2
+                onClick={() => {
+                  setShowFilter(!showFilter);
+                  setShowSort(false);
+                  setShowCart(false);
+                }}
+              >
+                X
+              </h2>
+            </div>
+
+            <div className="options">
+              {filterArray[isOpen.id].content.map(
+                (item: any, index: number) => {
+                  return (
+                    <p
+                      className="filter-sub-options"
+                      key={index}
+                      onClick={() => {
+                        createFilter(filterArray[isOpen.id].title, item);
+                      }}
+                    >
+                      {item}
+                    </p>
+                  );
+                }
+              )}
+            </div>
+          </div>
         </div>
-        <div className="options"></div>
-      </div>
+      )}
     </>
   );
 }

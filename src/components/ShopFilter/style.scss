@@ -104,13 +104,14 @@
 
 .mobile-filter-options-wrapper {
   display: flex;
-  background: rgba(0, 0, 0, 0.918);
+  // background: rgba(0, 0, 0, 0.918);
   position: absolute;
+  padding-left: 20%;
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
-  height: 1000vh;
+  height:100%;
   width: 100%;
   flex-direction: column;
   // z-index: 20;
@@ -121,9 +122,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 5%;
+    width: 70%;
+    // padding: 10px 5%;
+  }
+  .mobile-filter-options{
+background: red;
+height:100%;
   }
 }
+
+
 
 @media screen and (max-width: 480px) {
   .mobile-filter {
