@@ -3,6 +3,7 @@ import "./style.scss";
 import { ShopContext } from "../../context/ShopContext";
 import { ShopContextType } from "../../@types/shop.d";
 import importContent from "../../resources/importContent";
+import Button from "../../components/Button";
 
 export default function Cart() {
   let { sample } = importContent();
@@ -32,22 +33,50 @@ export default function Cart() {
               return <TableBody key={index} item={item} />;
             })}
           </div>
-          <p
+
+          <Button
+            title="Clear Cart"
+            className="pry"
             onClick={() => {
               clearCart();
             }}
-          >
-            Clear Cart
-          </p>
+          />
         </div>
-        <div className="cart-total"></div>
+        <div className="cart-total">
+          <h4>Cart Totals</h4>
+          <div className="price-breakdown">
+            <div className="sub-total">
+              <h4>Sub Total</h4>
+              <p>$350.00</p>
+            </div>
+            <div className="shipping">
+              <h4>Shipping</h4>
+              <div className="shipping-cost">
+                <p>$350.00</p>
+                <p>$350.00</p>
+                <p>$350.00</p>
+              </div>
+            </div>
+            <div className="total">
+              <h2>Total</h2>
+              <p>$350.00</p>
+            </div>
+          </div>
+
+          <Button
+            title="Proceed to Checkout"
+            className="pry"
+            onClick={() => {
+              clearCart();
+            }}
+          />
+        </div>
       </div>
     </div>
   );
 }
 const TableBody = ({ item }: any) => {
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
-
   let { sample } = importContent();
   // destructure image from item
   let { name, price, quantity, id } = item;
@@ -113,12 +142,10 @@ const TableBody = ({ item }: any) => {
   // };
   return (
     <div className="table-body">
-      <h2 onClick={removeFromCart}>X</h2>
+      <h3 onClick={removeFromCart}>X</h3>
       <img src={sample} className="cart-item-image" />
       <span>{name}</span>
       <span>{price} </span>
-      {/* <span><span onClick={increaseQuantity}>+<span/>{quantity}<span>-<span/> </span>
-       */}
       <span>
         <span style={{ paddingRight: "10px" }} onClick={increaseQuantity}>
           +
@@ -128,7 +155,7 @@ const TableBody = ({ item }: any) => {
           -
         </span>
       </span>
-      <span>{quantity * price} </span>
+      <span>{(quantity * price).toFixed(2)} </span>
       {/* <Button title="Remove" className="pry" onClick={removeFromCart} /> */}
     </div>
   );
