@@ -17,9 +17,7 @@ export default function Card({
           <div className="image"></div>
           <div className="text">
             <h4>{title}</h4>
-            <p>
-              Lorem ipsum dolor sit ametonsectetur adipiscing elit, 
-            </p>
+            <p>Lorem ipsum dolor sit ametonsectetur adipiscing elit,</p>
             <div className="div">
               <p> inc </p>
               <p> inc </p>

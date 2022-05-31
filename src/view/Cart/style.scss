@@ -1,0 +1,15 @@
+.cart-item-image {
+  width: 40%;
+}
+.table-heading,
+.table-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr 1fr;
+  align-items: center;
+  padding: 10px;
+}
+.table-body {
+  h2 {
+    text-align: center;
+  }
+}
