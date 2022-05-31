@@ -6,6 +6,7 @@ import importContent from "../../resources/importContent";
 import { ShopContext } from "../../context/ShopContext";
 import { ShopContextType } from "../../@types/shop.d";
 import "./style.scss";
+import { Navigate, useNavigate } from "react-router-dom";
 export default function ShopFilter({
   filter,
   setFilter,
@@ -25,6 +26,7 @@ export default function ShopFilter({
     setIsOpen({ ...isOpen, status: false });
     setFilter({ ...filter, [filterOption]: item });
   };
+  let navigate = useNavigate();
   return (
     <>
       <div className="shop-filter-wrapper">
@@ -75,9 +77,10 @@ export default function ShopFilter({
               src={cartsvg}
               alt="svg"
               onClick={() => {
-                setShowCart(!showCart);
-                setShowSort(false);
-                setShowFilter(false);
+                navigate("cart");
+                // setShowCart(!showCart);
+                // setShowSort(false);
+                // setShowFilter(false);
               }}
             />
             <span>{cart.length}</span>
@@ -203,9 +206,7 @@ export default function ShopFilter({
               src={cartsvg}
               alt="svg"
               onClick={() => {
-                setShowCart(!showCart);
-                setShowSort(false);
-                setShowFilter(false);
+                navigate("cart");
               }}
             />
             <span>{cart.length}</span>
@@ -247,9 +248,8 @@ export default function ShopFilter({
         </div>
       )}
       {showFilter && (
-    
-          <div className="mobile-filter-options-wrapper">
-                <div className="mobile-filter-options">
+        <div className="mobile-filter-options-wrapper">
+          <div className="mobile-filter-options">
             <div className="heading">
               <h3>Filter </h3>
               <h2

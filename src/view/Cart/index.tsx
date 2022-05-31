@@ -52,7 +52,18 @@ const TableBody = ({ item }: any) => {
   // destructure image from item
   let { name, price, quantity, id } = item;
   let checkifItemExists = cart.find((item: any) => item.id === id);
-  const reduceQuantity = () => {};
+
+  const increaseQuantity = () => {
+    cart.map((item: any) => {
+      if (item.id === id) {
+        item.quantity += 1;
+      }
+    });
+    setCart([...cart]);
+
+    // check if this is correct
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
   const removeFromCart = () => {
     if (checkifItemExists) {
       cart.map((item: any) => {
@@ -64,6 +75,23 @@ const TableBody = ({ item }: any) => {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
   };
+  const decreaseQuantity = () => {
+    cart.map((item: any) => {
+      if (item.id === id) {
+        if (item.quantity > 1) {
+          item.quantity -= 1;
+        } else {
+          removeFromCart();
+        }
+        item.quantity -= 1;
+      }
+    });
+    setCart([...cart]);
+
+    // check if this is correct
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
   // const removeFromCart = (id: any) => {
   //   if (checkifItemExists) {
   //     cart.map((item: any) => {
@@ -89,7 +117,17 @@ const TableBody = ({ item }: any) => {
       <img src={sample} className="cart-item-image" />
       <span>{name}</span>
       <span>{price} </span>
-      <span>{quantity} </span>
+      {/* <span><span onClick={increaseQuantity}>+<span/>{quantity}<span>-<span/> </span>
+       */}
+      <span>
+        <span style={{ paddingRight: "10px" }} onClick={increaseQuantity}>
+          +
+        </span>
+        <span>{quantity}</span>
+        <span onClick={decreaseQuantity} style={{ paddingLeft: "10px" }}>
+          -
+        </span>
+      </span>
       <span>{quantity * price} </span>
       {/* <Button title="Remove" className="pry" onClick={removeFromCart} /> */}
     </div>
