@@ -4,8 +4,10 @@ import { ShopContext } from "../../context/ShopContext";
 import { ShopContextType } from "../../@types/shop.d";
 import importContent from "../../resources/importContent";
 import Button from "../../components/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
+  let navigate = useNavigate()
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
   const clearCart = () => {
     localStorage.setItem("cart", JSON.stringify([]));
@@ -18,6 +20,7 @@ const getTotalPrice = () => {
   });
   return total.toFixed(2);
 }
+let finalTotal = 15+Number(getTotalPrice())
 
   return (
     <div>
@@ -62,15 +65,16 @@ const getTotalPrice = () => {
             </div>
             <div className="total">
               <h2>Total</h2>
-              <p>₦{(15+Number(getTotalPrice()))}</p>
+              <p>₦{finalTotal}</p>
             </div>
           </div>
 
           <Button
-            title={`Pay ₦${15+Number(getTotalPrice())}`}
+            // title={`Pay ₦${finalTotal}`}
+            title="Proceed to Checkout"
             className="checkout"
             onClick={() => {
-          console.log("payment")
+          navigate("/checkout")
             }}
           />
         </div>

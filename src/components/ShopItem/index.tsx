@@ -52,7 +52,7 @@ export default function ShopItem({ item, filter }: { item: any; filter: any }) {
   return (
     <div>
       <Card title={name} front={front} />
-      <Button title="Add to cart" className="checkout" onClick={addToCart} />
+      <Button title="Add to cart" className="addtocart" onClick={addToCart} />
       <Button
         title="Flip Card"
         className="pry"

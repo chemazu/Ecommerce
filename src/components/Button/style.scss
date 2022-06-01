@@ -79,21 +79,37 @@ button {
     background-color: #eeeeee;
   }
 }
-.checkout{
+.checkout {
   background-color: $sec;
   border: 1px solid $pry;
-  color:$pry;
+  color: $pry;
   &:hover {
     border-color: #999;
     background-color: green;
     border: 1px solid $sec;
-    color:#fff;
+    color: #fff;
   }
   &:active {
-  background-color: rgb(254, 187, 2);
-  background-color: $pry;
-  border: 1px solid $sec;
-  color:#fff;
-
+    background-color: rgb(254, 187, 2);
+    background-color: $pry;
+    border: 1px solid $sec;
+    color: #fff;
+  }
+}
+.addtocart {
+  background-color: $sec;
+  border: 1px solid $pry;
+  color: $pry;
+  &:hover {
+    border-color: #999;
+    background-color: blue;
+    border: 1px solid $sec;
+    color: #fff;
+  }
+  &:active {
+    background-color: rgb(254, 187, 2);
+    background-color: $pry;
+    border: 1px solid $sec;
+    color: #fff;
   }
 }
