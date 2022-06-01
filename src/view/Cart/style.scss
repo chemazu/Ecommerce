@@ -1,5 +1,22 @@
+
+.cart-page{
+  padding: 50px 5%;
+  .cart-items,.cart-total{
+    padding: 30px 0;
+  }
+  .cart-total{
+    padding-left: 50px;
+    h2{
+      padding-bottom: 50px;
+    }
+
+  }
+}
 .cart-item-image {
   width: 40%;
+}
+.table{
+  padding: 30px 0;
 }
 .table-heading,
 .table-body {
@@ -17,22 +34,25 @@
   display: grid;
   grid-template-columns: 3fr 2fr;
 }
+
 .cart-total {
   padding: 0px 25px;
 
   .price-breakdown {
     display: grid;
     grid-gap: 20px;
-    div {
+    .sub-total,
+    .total {
       display: flex;
       width: 100%;
       justify-content: space-between;
     }
   }
 }
-.shipping-cost {
+.shipping{
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  width: 20%;
+  div{
+    display: block;
+  }
 }

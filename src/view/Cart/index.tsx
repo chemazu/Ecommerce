@@ -6,14 +6,18 @@ import importContent from "../../resources/importContent";
 import Button from "../../components/Button";
 
 export default function Cart() {
-  let { sample } = importContent();
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
-
   const clearCart = () => {
     localStorage.setItem("cart", JSON.stringify([]));
     setCart([]);
   };
-  console.log(cart);
+const getTotalPrice = () => {
+  let total = 0;
+  cart.map((item: any) => {
+    total += Number(item.price * item.quantity)
+  });
+  return total.toFixed(2);
+}
 
   return (
     <div>
@@ -43,31 +47,30 @@ export default function Cart() {
           />
         </div>
         <div className="cart-total">
-          <h4>Cart Totals</h4>
+          <h2>Cart Total</h2>
           <div className="price-breakdown">
             <div className="sub-total">
               <h4>Sub Total</h4>
-              <p>$350.00</p>
+              <p>{getTotalPrice()}</p>
             </div>
             <div className="shipping">
-              <h4>Shipping</h4>
+              <h4>shipping cost</h4>
+
               <div className="shipping-cost">
-                <p>$350.00</p>
-                <p>$350.00</p>
-                <p>$350.00</p>
+                <p>₦15.00</p>
               </div>
             </div>
             <div className="total">
               <h2>Total</h2>
-              <p>$350.00</p>
+              <p>₦{(15+Number(getTotalPrice()))}</p>
             </div>
           </div>
 
           <Button
-            title="Proceed to Checkout"
-            className="pry"
+            title={`Pay ₦${15+Number(getTotalPrice())}`}
+            className="checkout"
             onClick={() => {
-              clearCart();
+          console.log("payment")
             }}
           />
         </div>

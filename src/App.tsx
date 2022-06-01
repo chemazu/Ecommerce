@@ -10,6 +10,8 @@ import ProtectedRoute from "./view/ProtectedRoute";
 import Shop from "./view/Shop";
 import Cart from "./view/Cart";
 import ShopProvider from "./context/ShopContext";
+import OrderConifrmation from "./view/OrderConifrmation";
+import Wishlist from "./view/Wishlist";
 
 function App() {
   const getLoggedIn = () => {
@@ -33,6 +35,8 @@ function App() {
             />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="order" element={<OrderConifrmation />} />
+            <Route path="wishlist" element={<Wishlist />} />
             <Route path="*" element={<p>There's nothing here: 404!</p>} />
           </Routes>
         </ShopProvider>
