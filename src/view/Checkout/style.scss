@@ -4,6 +4,7 @@
   grid-gap: 10px;
   button {
     width: 60%;
+    align-self: center;
   }
   .divider {
     display: grid;
@@ -19,6 +20,10 @@
   }
   .user-info {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    padding: 50px 15%;
+    text-align: left;
   }
 }

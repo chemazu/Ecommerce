@@ -43,20 +43,19 @@ export default function Checkout() {
   return (
     <div className="checkout-page">
       <div className="user-info">
-        <h2>Login to your account to complete purchase</h2>
-
+        <p>Login to your account to complete purchase</p>
         <Button
           title="Login"
           className="pry"
           type=""
           onClick={() => navigate("/login")}
         />
-        <div className="divider">
+        {/* <div className="divider">
           <hr />
           or
           <hr />
-        </div>
-        <h2>Register</h2>
+        </div> */}
+        <p>Register</p>
 
         <Button
           title="Register"
@@ -64,7 +63,11 @@ export default function Checkout() {
           type=""
           onClick={() => navigate("/register")}
         />
-
+        <div className="divider">
+          <hr />
+          or
+          <hr />
+        </div>
         <div className="guest-form">
           <h2>Guest Checkout</h2>
           <div className="checkout-field">
@@ -95,6 +98,35 @@ export default function Checkout() {
         </div>
       </div>
       <div className="order-summary">
+      <div className="cart-total">
+          <h2>Cart Total</h2>
+          <div className="price-breakdown">
+            <div className="sub-total">
+              <h4>Sub Total</h4>
+              <p>{getTotalPrice()}</p>
+            </div>
+            <div className="shipping">
+              <h4>shipping cost</h4>
+
+              <div className="shipping-cost">
+                <p>₦15.00</p>
+              </div>
+            </div>
+            <div className="total">
+              <h2>Total</h2>
+              <p>₦{getTotalPrice()}</p>
+            </div>
+          </div>
+
+          <Button
+            // title={`Pay ₦${finalTotal}`}
+            title="Proceed to Checkout"
+            className="checkout"
+            onClick={() => {
+          navigate("/checkout")
+            }}
+          />
+        </div>
           <h2>Order Summary</h2>
       </div>
     </div>
