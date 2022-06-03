@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { AuthContextType } from "../../@types/auth.d";
 
 export default function Login() {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const { mail, lock } = importContent();
 
 
@@ -26,7 +26,7 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent<HTMLInputElement>): Promise<any>  => {
     e.preventDefault();
     login(email, password);
-    history("/dashboard");
+    navigate("/dashboard");
     resetPassword();
     resetEmail();
   };
@@ -96,7 +96,7 @@ export default function Login() {
           />
 
           <p>
-            Already have an account{" "}
+            dont have an account?
             <h4 className="highlight">
               <Link to="/register">Register </Link>
             </h4>

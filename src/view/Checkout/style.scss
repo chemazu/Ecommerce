@@ -1,11 +1,11 @@
+@import "../../App.scss";
+
 .checkout-page {
   display: grid;
   grid-template-columns: 3fr 2fr;
   grid-gap: 10px;
-  button {
-    width: 60%;
-    align-self: center;
-  }
+  padding-top :10vh;
+
   .divider {
     display: grid;
     grid-template-columns: 4fr 1fr 4fr;
@@ -25,5 +25,80 @@
     // align-items: center;
     padding: 50px 15%;
     text-align: left;
+    .top {
+      border: 1px solid #e6e6e6;
+      padding: 20px;
+    }
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+  }
+  .order-summary {
+    display: grid;
+    grid-gap: 30px;
+    padding: 50px 0;
+    padding-right: 15%;
+    .cart-total{
+      padding: 0;
+    }
+  }
+}
+
+.right {
+  display: flexbox;
+  // padding: 7.5vh;
+  .form-wrapper {
+    display: grid;
+    // padding: 20px 30px;
+    grid-row-gap: 20px;
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      grid-gap: 7.5%;
+      justify-content: end;
+      .auth-form-item {
+        width: 100%;
+        span {
+          font-size: 85%;
+        }
+        p {
+          padding: 10px 0;
+        }
+        .input-item {
+          padding: 5px 10px;
+          // display: flex;
+          display: grid;
+          grid-template-columns: 1fr 9fr;
+          border-radius: 4px;
+          border: 1px solid #c5c3c3;
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            border: 2px solid $pry;
+            box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.04), 0 2px 2px #c6538c98;
+          }
+
+          img {
+            width: 15px;
+            padding: 5px;
+          }
+          input {
+            border: 0px;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.mini-login-button-wrapper {
+  padding: 15px 0;
+  button {
+    width: 60%;
   }
 }
