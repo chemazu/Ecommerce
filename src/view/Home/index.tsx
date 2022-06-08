@@ -21,17 +21,23 @@ export default function Home() {
   return (
     <div className="home">
       <Header />
-      <div className="hero">
+      {/* <div className="hero">
         <div className="text">
           <h2>Stay connected</h2>
-          <h2>Buy trading cards fast</h2>
-          <p>Buy the best trading cards, sport, comic,NFTs</p>
+          <h2 style={{paddingBottom:"20px"}}>Buy trading cards</h2>
+          <p style={{paddingBottom:"10px"}}>Buy the best trading cards, sport, comic,NFTs</p>
           <p>Manage collection ,stay up to date with the best deals</p>
         </div>
         <div className="image">
           <img src={heroImage} alt="" />
+          <div className="square-div"></div>
+          <div className="square-div2"></div>
+          <div className="square-div3"></div>
+          <div className="square-div4"></div>
+
         </div>
-      </div>
+      </div> */}
+      <div className="mobile-hero"></div>
     </div>
   );
 }

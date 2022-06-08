@@ -3,14 +3,76 @@ $sec: #fff;
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 70px 5%;
-
+  padding: 70px 10%;
+align-items: center;
   .text {
+    h1,h2{
+      font-size: 60px;
+      font-weight: 900;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.4em;
+      letter-spacing: 2px;
+    }
+    p{
+      font-size: 18px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.4;
+      letter-spacing: 1px;
+    }
   }
   .image {
     width: 100%;
+    text-align: center;
+    position: relative;
     img {
       width: 50%;
+      z-index: 40;
+      position: relative;
+      top: 0;
+      right: 0;
+    }
+    .square-div{
+      background-color :$pry;
+      height: 5%;
+      width: 60%;
+      position: absolute;
+      // z-index: -1;
+
+      top: 10%;
+      right: 0;
+    }
+    .square-div2{
+      background-color :$pry;
+      height: 5%;
+      width: 40%;
+      position: absolute;
+      // z-index: -1;
+
+      bottom: 20%;
+      left: 20%;
+    }
+    .square-div3{
+      background-color :$pry;
+      height: 5%;
+      width: 60%;
+      position: absolute;
+      // z-index: -1;
+
+      top: 30%;
+      left: 20%;
+
+    }
+    .square-div4{
+      background-color :$pry;
+      height: 5%;
+      width: 40%;
+      position: absolute;
+      // z-index: -1;
+
+      bottom: 40%;
+      right: 0;
+
     }
   }
 }
