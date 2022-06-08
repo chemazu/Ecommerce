@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ShopFilter from "../../components/ShopFilter";
 import importContent from "../../resources/importContent";
 import product from "./result.json";
-import ShopHeader from "../../components/ShopHeader";
+import Header from "../../components/Header";
 import "./style.scss";
 import ShopPagination from "../PaginationWrapper/ShopPagination";
 import resultFilter from "../../helpers/filter";
@@ -46,7 +46,7 @@ export default function Shop() {
 
   return (
     <div>
-      <ShopHeader />
+      <Header />
       <div className="shop">
         <div className="hero">
           <div className="text">

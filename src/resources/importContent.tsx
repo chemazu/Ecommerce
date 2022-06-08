@@ -23,9 +23,11 @@ import shopslide3 from "./shopslide3.jpg";
 import shopslide4 from "./shopslide4.jpg";
 import caretdown from "./caret-down.svg";
 import filterSvg from "./filter.svg";
+import heroImage from "./hero-image.png";
 
 export default function importContent() {
   return {
+    heroImage,
     mail,
     contact,
     lock,
