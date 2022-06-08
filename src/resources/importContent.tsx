@@ -24,6 +24,12 @@ import shopslide4 from "./shopslide4.jpg";
 import caretdown from "./caret-down.svg";
 import filterSvg from "./filter.svg";
 import heroImage from "./hero-image.png";
+import sponsor1 from "./sponsor_01.png";
+import sponsor2 from "./sponsor_02.png";
+import sponsor3 from "./sponsor_03.png";
+import sponsor4 from "./sponsor_04.png";
+
+
 
 export default function importContent() {
   return {
@@ -52,5 +58,9 @@ export default function importContent() {
     shopslide4,
     caretdown,
     filterSvg,
+    sponsor1,
+    sponsor2,
+    sponsor3,
+    sponsor4
   };
 }
