@@ -19,6 +19,7 @@ export default function Home() {
     sponsor3,
     sponsor4,
     brand,
+    homebg
   } = importContent();
   const social = [facebook, instagram, twitter, youtube, pinterest];
   const sponsor = [sponsor1, sponsor2, sponsor3, sponsor4];
@@ -49,10 +50,11 @@ export default function Home() {
           </div>
           <div className="image">
             <img src={heroImage} alt="" />
-            <div className="square-div"></div>
-            <div className="square-div2"></div>
+     {/* <img src={homebg}/> */}
+            {/* <div className="square-div"></div> */}
+            {/* <div className="square-div2"></div>
             <div className="square-div3"></div>
-            <div className="square-div4"></div>
+            <div className="square-div4"></div> */}
           </div>
         </div>
         <div className="sponsors">
