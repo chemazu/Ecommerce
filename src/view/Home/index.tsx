@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
@@ -18,11 +18,12 @@ export default function Home() {
     sponsor2,
     sponsor3,
     sponsor4,
-    brand,
-    homebg
+ 
+    
   } = importContent();
   const social = [facebook, instagram, twitter, youtube, pinterest];
   const sponsor = [sponsor1, sponsor2, sponsor3, sponsor4];
+  let[showBrand,setShowBrand]=useState(true)
   return (
     <div className="home">
       <Header />
@@ -50,11 +51,6 @@ export default function Home() {
           </div>
           <div className="image">
             <img src={heroImage} alt="" />
-     {/* <img src={homebg}/> */}
-            {/* <div className="square-div"></div> */}
-            {/* <div className="square-div2"></div>
-            <div className="square-div3"></div>
-            <div className="square-div4"></div> */}
           </div>
         </div>
         <div className="sponsors">
@@ -63,7 +59,7 @@ export default function Home() {
           ))}
         </div>
         <div className="our-brand">
-          <img src={brand} alt="brand" />
+ <div className={showBrand?"brand-image":"brand-image1"} ></div>
           <div className="text">
             <h3 className="highlight">Our Brand</h3>
             <p>
@@ -83,8 +79,6 @@ export default function Home() {
               Buy the best trading cards, sport, comic,NFTs
             </p>
             <p>Manage collection ,stay up to date with the best deals</p>
-            <div className="square-div"></div>
-            <div className="square-div3"></div>
           </div>
         </div>
       </div>

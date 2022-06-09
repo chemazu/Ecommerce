@@ -28,13 +28,13 @@ import sponsor1 from "./sponsor_01.png";
 import sponsor2 from "./sponsor_02.png";
 import sponsor3 from "./sponsor_03.png";
 import sponsor4 from "./sponsor_04.png";
-import brand from "./brand.jpg";
-import homebg from "./home-bg.svg";
+
+ 
 
 export default function importContent() {
   return {
-    homebg,
-    brand,
+ 
+
     heroImage,
     mail,
     contact,

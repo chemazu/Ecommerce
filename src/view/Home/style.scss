@@ -6,6 +6,10 @@ $sec: #fff;
   .mobile-hero {
     padding: 70px 10%;
     .text {
+      background: url("../../resources/home-bg.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
       h2 {
         font-size: 32px;
         font-weight: 900;
@@ -27,29 +31,12 @@ $sec: #fff;
         top: 0;
         right: 0;
       }
-      .square-div,
-      .square-div3 {
-        background-color: #c6538c9a;
-        height: 10px;
-        width: 60%;
-        position: absolute;
-      }
-      .square-div {
-        top: 10%;
-        right: 5%;
-      }
-
-      .square-div3 {
-        top: 40%;
-        left: 20%;
-      }
     }
     .image {
       width: 100%;
       text-align: center;
       img {
         width: 50%;
-
       }
     }
   }
@@ -68,14 +55,13 @@ $sec: #fff;
           font-size: 60px;
           font-weight: 900;
           font-family: "Montserrat", sans-serif;
-          line-height: 1.4em;
+          line-height: 1.2em;
           letter-spacing: 2px;
         }
         p {
           font-size: 18px;
           font-weight: 700;
           font-family: "Montserrat", sans-serif;
-          line-height: 1.4;
           letter-spacing: 1px;
         }
       }
@@ -83,44 +69,16 @@ $sec: #fff;
         width: 100%;
         text-align: center;
         position: relative;
-      background:url('../../resources/home-bg.svg') ;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
+        background: url("../../resources/home-bg.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
 
         img {
-          width: 50%;
+          width: 55%;
           z-index: 40;
           position: relative;
           top: 0;
-          right: 0;
-        }
-        .square-div,
-        .square-div2,
-        .square-div3,
-        .square-div4 {
-          background-color: #c6538c9a;
-          width: 60%;
-          position: absolute;
-          height: 5%;
-        }
-        .square-div {
-          top: 10%;
-          right: 0;
-        }
-        .square-div2 {
-          width: 40%;
-          bottom: 20%;
-          left: 20%;
-        }
-        .square-div3 {
-          width: 60%;
-          top: 30%;
-          left: 20%;
-        }
-        .square-div4 {
-          width: 40%;
-          bottom: 40%;
           right: 0;
         }
       }
@@ -138,8 +96,18 @@ $sec: #fff;
       align-items: center;
       padding: 10px 10%;
       height: 80%;
-      img {
-        width: 70%;
+      .brand-image {
+        background-image: url("../../resources/brand1.png");
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        height: 70vh;
+        width: 100%;
+        &:hover {
+          background-image: url("../../resources/brand.png");
+          cursor: pointer;
+        }
       }
     }
   }
