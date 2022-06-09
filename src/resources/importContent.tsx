@@ -28,11 +28,11 @@ import sponsor1 from "./sponsor_01.png";
 import sponsor2 from "./sponsor_02.png";
 import sponsor3 from "./sponsor_03.png";
 import sponsor4 from "./sponsor_04.png";
-
-
+import brand from "./brand.jpg";
 
 export default function importContent() {
   return {
+    brand,
     heroImage,
     mail,
     contact,
@@ -61,6 +61,6 @@ export default function importContent() {
     sponsor1,
     sponsor2,
     sponsor3,
-    sponsor4
+    sponsor4,
   };
 }
