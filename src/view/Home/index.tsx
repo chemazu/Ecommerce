@@ -90,11 +90,20 @@ export default function Home() {
               want de afgelopen jaren hebben een groot aantal mensen aangegeven
               dat essentiële oliën hun fysieke en mentale welzijn verbetert
             </p>
-            <p>
+            <p style={{ padding: "20px 0" }}>
               want de afgelopen jaren hebben een groot aantal mensen aangegeven
               dat essentiële oliën hun fysieke en mentale welzijn verbetert
             </p>
+            <Button
+                title="Shop Now"
+                onClick={() => {
+                  history("/shop");
+                }}
+                type=""
+                className="sec"
+              />
           </div>
+          
         </div>
 
         <div className="call-to-action">
@@ -138,6 +147,14 @@ export default function Home() {
               </p>
             </div>
           </div>
+          <Button
+                title="Shop Now"
+                onClick={() => {
+                  history("/shop");
+                }}
+                type=""
+                className="sec"
+              />
         </div>
       </div>
       <div className="mobile">

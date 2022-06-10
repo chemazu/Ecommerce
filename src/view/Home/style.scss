@@ -53,6 +53,7 @@ $sec: #fff;
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
+      display: none;
 
       .text {
 
@@ -154,9 +155,7 @@ $sec: #fff;
 }
 
 @media screen and (max-width: 480px) {
-  .mobile {
-    display: block;
-  }
+
   .home {
     .home-desktop {
       .hero{
