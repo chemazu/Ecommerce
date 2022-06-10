@@ -7,23 +7,23 @@ import "./style.scss";
 export default function Home() {
   const history = useNavigate();
   const {
+    up,
+    person,
     facebook,
     instagram,
     twitter,
     youtube,
     pinterest,
-    marvel,
+    flag,
     heroImage,
     sponsor1,
     sponsor2,
     sponsor3,
     sponsor4,
- 
-    
   } = importContent();
   const social = [facebook, instagram, twitter, youtube, pinterest];
   const sponsor = [sponsor1, sponsor2, sponsor3, sponsor4];
-  let[showBrand,setShowBrand]=useState(true)
+  let [showBrand, setShowBrand] = useState(true);
   return (
     <div className="home">
       <Header />
@@ -59,16 +59,64 @@ export default function Home() {
           ))}
         </div>
         <div className="our-brand">
- <div className={showBrand?"brand-image":"brand-image1"} ></div>
+          <div className={showBrand ? "brand-image" : "brand-image1"}></div>
           <div className="text">
-            <h3 className="highlight">Our Brand</h3>
+            <h1 className="highlight" >
+              Our Brand
+            </h1>
+            <p style={{ paddingTop: "20px" }}>
+              want de afgelopen jaren hebben een groot aantal mensen aangegeven
+              dat essentiële oliën hun fysieke en mentale welzijn verbetert
+            </p>
             <p>
               want de afgelopen jaren hebben een groot aantal mensen aangegeven
               dat essentiële oliën hun fysieke en mentale welzijn verbetert
             </p>
           </div>
         </div>
-        <div className="call-to-action"></div>
+
+        <div className="call-to-action">
+          <h1 className="highlight">Dont hesistate to take the</h1>
+          <h1 className="highlight">best path foward</h1>
+          <div className="stats">
+            <div className="stat">
+              <div className="stat-top">
+                <img src={flag} alt="flag" />
+                <h1>6x</h1>
+                <h4>Increase Consumer</h4>
+              </div>
+
+              <p className="stat-text">
+                Use one platform to sell products to anyone anywhere-in person
+                with point of sale
+              </p>
+            </div>
+            <div className="stat">
+              <div className="stat-top">
+                <img src={up} alt="up" />
+                <h1>15%</h1>
+                <h4>Easier than conventional</h4>
+              </div>
+
+              <p className="stat-text">
+                Use one platform to sell products to anyone anywhere-in person
+                with point of sale
+              </p>
+            </div>
+            <div className="stat">
+              <div className="stat-top">
+                <img src={person} alt="flag" />
+                <h1>23k</h1>
+                <h4>Active Merchants</h4>
+              </div>
+
+              <p className="stat-text">
+                Use one platform to sell products to anyone anywhere-in person
+                with point of sale
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="mobile">
         <div className="mobile-hero">
