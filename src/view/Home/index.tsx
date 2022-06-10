@@ -53,6 +53,30 @@ export default function Home() {
             <img src={heroImage} alt="" />
           </div>
         </div>
+        <div className="mobile-hero">
+          <div className="text">
+            <h3 className="highlight">Stacked</h3>
+            <h2>Stay connected</h2>
+            <h2 style={{ paddingBottom: "20px" }}>Buy trading cards</h2>
+            <p style={{ paddingBottom: "10px" }}>
+              Buy the best trading cards, sport, comic,NFTs
+            </p>
+            <p>Manage collection ,stay up to date with the best deals</p>
+            <div className="home-button-wrapper" style={{ padding: "20px 0" }}>
+              <Button
+                title="Shop Now"
+                onClick={() => {
+                  history("/shop");
+                }}
+                type=""
+                className="sec"
+              />
+            </div>
+          </div>
+          {/* <div className="image">
+            <img src={heroImage} alt="" />
+          </div> */}
+        </div>
         <div className="sponsors">
           {sponsor.map((item, index) => (
             <img src={item} alt={`${item}`} />
@@ -61,9 +85,7 @@ export default function Home() {
         <div className="our-brand">
           <div className={showBrand ? "brand-image" : "brand-image1"}></div>
           <div className="text">
-            <h1 className="highlight" >
-              Our Brand
-            </h1>
+            <h1 className="highlight">Our Brand</h1>
             <p style={{ paddingTop: "20px" }}>
               want de afgelopen jaren hebben een groot aantal mensen aangegeven
               dat essentiële oliën hun fysieke en mentale welzijn verbetert
@@ -76,8 +98,8 @@ export default function Home() {
         </div>
 
         <div className="call-to-action">
-          <h1 className="highlight">Dont hesistate to take the</h1>
-          <h1 className="highlight">best path foward</h1>
+          <h1 className="highlight">Dont hesistate to take</h1>
+          <h1 className="highlight">the best path foward</h1>
           <div className="stats">
             <div className="stat">
               <div className="stat-top">
@@ -119,7 +141,7 @@ export default function Home() {
         </div>
       </div>
       <div className="mobile">
-        <div className="mobile-hero">
+        {/* <div className="mobile-hero">
           <div className="text">
             <h2>Stay connected</h2>
             <h2 style={{ paddingBottom: "20px" }}>Buy trading cards</h2>
@@ -128,7 +150,9 @@ export default function Home() {
             </p>
             <p>Manage collection ,stay up to date with the best deals</p>
           </div>
-        </div>
+        </div> */}
+
+       
       </div>
     </div>
   );
