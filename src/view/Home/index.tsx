@@ -33,7 +33,7 @@ export default function Home() {
           <div className="text">
             <h3 className="highlight">Stacked</h3>
             <h2>Stay connected</h2>
-            <h2 style={{ paddingBottom: "20px" }}>Buy trading cards</h2>
+            <h2 style={{ paddingBottom: "20px" }}>buy trading cards</h2>
             <p style={{ paddingBottom: "10px" }}>
               Buy the best trading cards, sport, comic,NFTs
             </p>
