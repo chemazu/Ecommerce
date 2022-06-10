@@ -32,8 +32,8 @@ export default function Home() {
         <div className="hero">
           <div className="text">
             <h3 className="highlight">Stacked</h3>
-            <h2>Stay connected</h2>
-            <h2 style={{ paddingBottom: "20px" }}>buy trading cards</h2>
+            <h1>Stay connected</h1>
+            <h1 style={{ paddingBottom: "20px" }}>buy trading cards</h1>
             <p style={{ paddingBottom: "10px" }}>
               Buy the best trading cards, sport, comic,NFTs
             </p>
@@ -45,7 +45,7 @@ export default function Home() {
                   history("/shop");
                 }}
                 type=""
-                className="sec"
+                className="pry"
               />
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function Home() {
                   history("/shop");
                 }}
                 type=""
-                className="sec"
+                className="pry"
               />
             </div>
           </div>
@@ -83,9 +83,12 @@ export default function Home() {
           ))}
         </div>
         <div className="our-brand">
+          <div className="text mobile" style={{ paddingTop: "20px" }}>
+            <h1 className="mobile">Our Brand</h1>
+          </div>
           <div className={showBrand ? "brand-image" : "brand-image1"}></div>
           <div className="text">
-            <h1 className="highlight">Our Brand</h1>
+          <h1 className="not-mobile">Our Brand</h1>
             <p style={{ paddingTop: "20px" }}>
               want de afgelopen jaren hebben een groot aantal mensen aangegeven
               dat essentiële oliën hun fysieke en mentale welzijn verbetert
@@ -95,20 +98,19 @@ export default function Home() {
               dat essentiële oliën hun fysieke en mentale welzijn verbetert
             </p>
             <Button
-                title="Shop Now"
-                onClick={() => {
-                  history("/shop");
-                }}
-                type=""
-                className="sec"
-              />
+              title="Shop Now"
+              onClick={() => {
+                history("/shop");
+              }}
+              type=""
+              className="pry"
+            />
           </div>
-          
         </div>
 
         <div className="call-to-action">
-          <h1 className="highlight">Dont hesistate to take</h1>
-          <h1 className="highlight">the best path foward</h1>
+          <h1>Dont hesistate to take the best path foward </h1>
+          {/* <h1 className="highlight">the best path foward</h1> */}
           <div className="stats">
             <div className="stat">
               <div className="stat-top">
@@ -148,13 +150,14 @@ export default function Home() {
             </div>
           </div>
           <Button
-                title="Shop Now"
-                onClick={() => {
-                  history("/shop");
-                }}
-                type=""
-                className="sec"
-              />
+            title="Shop Now"
+            onClick={() => {
+              history("/shop");
+            }}
+            type=""
+            className="pry"
+          
+          />
         </div>
       </div>
       <div className="mobile">
@@ -168,8 +171,6 @@ export default function Home() {
             <p>Manage collection ,stay up to date with the best deals</p>
           </div>
         </div> */}
-
-       
       </div>
     </div>
   );
