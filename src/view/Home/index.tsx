@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import importContent from "../../resources/importContent";
@@ -23,11 +23,9 @@ export default function Home() {
   } = importContent();
   const social = [facebook, instagram, twitter, youtube, pinterest];
   const sponsor = [sponsor1, sponsor2, sponsor3, sponsor4];
-  let [showBrand, setShowBrand] = useState(true);
   return (
     <div className="home">
-      <Header />
-
+      {/* <Header /> */}
       <div className="home-desktop">
         <div className="hero">
           <div className="text">
@@ -47,6 +45,11 @@ export default function Home() {
                 type=""
                 className="pry"
               />
+            </div>
+            <div className="socials">
+              {social.map((item, index) => {
+                return <img src={item} alt={`${item}`} key={index} />;
+              })}
             </div>
           </div>
           <div className="image">
@@ -86,9 +89,9 @@ export default function Home() {
           <div className="text mobile" style={{ paddingTop: "20px" }}>
             <h1 className="mobile">Our Brand</h1>
           </div>
-          <div className={showBrand ? "brand-image" : "brand-image1"}></div>
+          <div className="brand-image"></div>
           <div className="text">
-          <h1 className="not-mobile">Our Brand</h1>
+            <h1 className="not-mobile">Our Brand</h1>
             <p style={{ paddingTop: "20px" }}>
               want de afgelopen jaren hebben een groot aantal mensen aangegeven
               dat essentiële oliën hun fysieke en mentale welzijn verbetert
@@ -156,7 +159,6 @@ export default function Home() {
             }}
             type=""
             className="pry"
-          
           />
         </div>
       </div>
@@ -172,6 +174,7 @@ export default function Home() {
           </div>
         </div> */}
       </div>
+      <div className="dummy-footer" style={{padding:"20px 0"}}></div>
     </div>
   );
 }

@@ -1,25 +1,24 @@
 .shop {
-  .hero {
-    padding: 10px 5%;
-    // height: auto;
-    background: url("../../resources/shopslide1.jpeg") no-repeat center center;
-    background-size: cover;
-    color: #fff;
-    position: relative;
-    height: 70vh;
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+  .shop-top {
+    padding: 20px 7.5%;
+  }
+  .shop-body {
+    display: flex;
+
+    .shop-left {
+      width: 25%;
+      padding: 0 5%;
+      .sub-item{
+        p{
+        &:hover{
+          cursor: pointer;
+        }
+        }
+      }
     }
-    .text {
-      position: absolute;
-      letter-spacing: 1px;
-      color: #fff;
+    .shop-right {
+      width: 75%;
+      padding: 0 5%;
     }
   }
 }

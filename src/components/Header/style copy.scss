@@ -1,12 +1,12 @@
-.header {
-  width: 100%;
-  position: absolute;
+$pry: #c6538c;
 
-  .mobile-header {
+.shop-header {
+  height: 100%;
+
+  .shop-mobile {
     display: none;
-
   }
-  .desktop-header {
+  .desktop {
     border: 1px solid #fff;
     background: #ffffff;
     box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
@@ -21,22 +21,17 @@
     }
   }
 }
-
 @media screen and (max-width: 480px) {
-  .header {
-    .desktop-header{
+  .shop-header {
+    // position: absolute;
+    .desktop {
       display: none;
     }
-    .mobile-header{
+    .shop-mobile {
       display: flex;
+      width: 100%;
+      height: 100%;
       color: #fff;
-      position: relative;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      // background-color: red;
-
      
       .close,
       .open {
@@ -47,8 +42,6 @@
         z-index: 20;
         width: 100%;
         padding: 10px 5%;
-        // bottom: 0;
-        height: 100vh;
 
         img {
           width: 25px;

@@ -14,6 +14,7 @@ import OrderConfirmation from "./view/OrderConfirmation";
 import Checkout from "./view/Checkout";
 
 import Wishlist from "./view/Wishlist";
+import Header from "./components/Header";
 
 function App() {
 
@@ -26,6 +27,8 @@ function App() {
   };
   return (
     <div className="App">
+      <Header/>
+      <div className="main">
       <AuthProvider>
         <ShopProvider>
           <Routes>
@@ -45,6 +48,7 @@ function App() {
           </Routes>
         </ShopProvider>
       </AuthProvider>
+      </div>
     </div>
   );
 }
