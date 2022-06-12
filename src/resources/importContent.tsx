@@ -31,9 +31,14 @@ import sponsor4 from "./sponsor_04.png";
 import flag from "./flag.svg";
 import up from "./up.svg";
 import person from "./person.svg";
+import brand from "./brand1.png";
+import brand1 from "./brand.png";
+
+
 
 export default function importContent() {
   return {
+    brand,brand1,
     flag,
     up,
     person,

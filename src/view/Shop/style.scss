@@ -1,24 +1,127 @@
 .shop {
   .shop-top {
-    padding: 20px 7.5%;
+    padding: 20px 5%;
   }
   .shop-body {
     display: flex;
 
     .shop-left {
-      width: 25%;
-      padding: 0 5%;
-      .sub-item{
-        p{
-        &:hover{
-          cursor: pointer;
+      width: 20%;
+      padding: 20px 2.5%;
+      .sub-item,
+      .filters {
+        padding: 15px 0;
+        h2 {
+          padding: 15px 0;
+          font-family: "Joan", serif;
         }
+        h3 {
+          padding: 15px 0;
+          font-family: "Joan", serif;
+        }
+        p {
+          padding: 10px 0;
+          font-family: "Montserrat", sans-serif;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
     .shop-right {
-      width: 75%;
-      padding: 0 5%;
+      width: 80%;
+      .shop-right-heading {
+        padding: 35px 5%;
+        display: flex;
+        .search {
+        }
+        .search-div {
+          width: 50%;
+          input {
+            width: 70%;
+            padding: 8.5px;
+            padding-left: 10px;
+            height: 40%;
+
+            button {
+              width: 30%;
+              height: 40%;
+
+
+            }
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+        .sort {
+          display: flex;
+          width: 50%;
+          align-items: center;
+          justify-content: flex-end;
+          p {
+            padding-right: 20px;
+          }
+          select {
+            background-color: #fff;
+            border: 1px solid #000;
+            padding: 10px 20px 10px 10px;
+            // height: 40%;
+
+          }
+        }
+      }
+      .shop-items-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 35px 2%;
+        grid-gap:50px ;
+
+        .shop-item {
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          .item{
+            display: flex;
+            justify-content: center;
+
+            img{
+              width: 80%;
+
+            }
+
+          }
+          button {
+            // display: none;
+            visibility: hidden;
+          }
+          .item-text{
+            display: grid;
+            grid-gap:10px;
+          }
+          &:hover {
+            button {
+              // display: block;
+              visibility: visible;
+              width:100%;
+            }
+            border:1px solid #e5e5e5
+          }
+  
+        }
+      }
+    }
+  }
+  .filter-options {
+    div {
+      display: flex;
+      justify-content: space-between;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
