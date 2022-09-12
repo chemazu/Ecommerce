@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Pedro Martinez - 2022 MLB TOPPS NOW® Turn Back The Clock",
+    "img2": "card-1-back.png",
+    "img1": "card-1-front.png",
+    "cardtype": "Sports",
+    "property": "Baseball",
+    "price": 19.99,
+    "year": 2022,
+    "category": "Trading Card"
+  },
+  {
+    "name": "Reva - Star Wars Living 2022",
+    "img2": "card-2-back.png",
+    "img1": "card-2-front.png",
+    "cardtype": "Movies",
+    "property": "Star-Wars",
+    "price": 29.99,
+    "year": 2022,
+    "category": "Set Card"
+  },
+  {
+    "name": "Antony signs for Manchester United",
+    "img2": "card-3-back.png",
+    "img1": "card-3-front.png",
+    "cardtype": "Sports",
+    "property": "Baseball",
+    "price": 19.99,
+    "year": 2022,
+    "category": "Trading Card"
+  },
+  {
+    "name": "Christian Benteke - 2022 MLS TOPPS NOW® Card 188",
+    "img2": "card-4-back.png",
+    "img1": "card-4-front.png",
+    "cardtype": "Sports",
+    "property": "Football",
+    "price": 49.99,
+    "year": 2022,
+    "category": "Trading Card"
+  },
+  {
+    "name": "Tony Santillan 2022 Topps Series 1 Baseball Rookies Poster Gold Ed. # to 1",
+    "img2": "card-5-front.png",
+    "img1": "card-5-front.png",
+    "cardtype": "Sports",
+    "property": "Football",
+    "price": 29.99,
+    "year": 2022,
+    "category": "Rookie Card"
+  },
+  {
+    "name": "Andre Blake - 2022 MLS TOPPS NOW® Card 190",
+    "img2": "card-6-back.png",
+    "img1": "card-6-front.png",
+    "cardtype": "Sports",
+    "property": "Football",
+    "price": 39.99,
+    "year": 2022,
+    "category": "Trading Card"
+  },
+  {
+    "name": "Gunnar Henderson - 2022 MLB TOPPS NOW® Card 868",
+    "img2": "card-7-back.png",
+    "img1": "card-7-front.png",
+    "cardtype": "Sports",
+    "property": "Baseball",
+    "price": 69.99,
+    "year": 2022,
+    "category": "Rookie Card"
+  },
+  {
+    "name": "Oscar Gonzalez - 2022 MLB TOPPS NOW® Card 872",
+    "img2": "card-8-back.png",
+    "img1": "card-8-front.png",
+    "cardtype": "Sports",
+    "property": "Baseball",
+    "price": 99.99,
+    "year": 2022,
+    "category": "Rookie Card"
+  },
+  {
+    "name": "Topps MLB® Living Set® Card #551 - Spencer Strider",
+    "img2": "card-9-back.png",
+    "img1": "card-9-front.png",
+    "cardtype": "Sports",
+    "property": "Baseball",
+    "price": 199.99,
+    "year": 2022,
+    "category": "Rookie Card"
+  },
+  {
+    "name": "2022 Topps Elvis Presley: The King of Rock and Roll Card #103",
+    "img2": "card-10-back.png",
+    "img1": "card-10-front.png",
+    "cardtype": "TV",
+    "property": "Music",
+    "price": 89.99,
+    "year": 2022,
+    "category": "Set Card"
+  },
+  {
+    "name": "Topps Star Wars Living Set Prints #244 - Korkie Kryze - #'d to 100",
+    "img2": "card-11-front.png",
+    "img1": "card-11-front.png",
+    "cardtype": "Movies",
+    "property": "Star-Wars",
+    "price": 59.99,
+    "year": 2022,
+    "category": "Set Card"
+  },
+  {
+    "name": "Nolan Ryan - 2022 MLB TOPPS NOW® Turn Back The Clock - Card 73",
+    "img1": "card-12-front.png",
+    "img2": "card-12-back.png",
+    "cardtype": "Sports",
+    "property": "Baseball",
+    "price": 9.99,
+    "year": 2022,
+    "category": "Rookie Card"
+  }
+]

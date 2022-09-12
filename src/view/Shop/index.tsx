@@ -1,17 +1,46 @@
 import React, { useState } from "react";
 import Button from "../../components/Button";
 import importContent from "../../resources/importContent";
+import data from "../../resources/data/products.json";
 import "./style.scss";
+import resultSort from "../../helpers/sort";
+import resultFilter from "../../helpers/filter";
 
 export default function Shop() {
   // let categories = ["category1", "category2","category3"]
-  let filterOptions = [
-    { title: "Product Type", content: ["Base Card", "Authograph", "Set"] },
-    { title: "Product Type", content: ["Base Card", "Authograph", "Set"] },
+  let [searchField, setSearchField] = useState("");
+  let [sortBy, setSortBy] = useState("alphabetically");
+  let [filterQuery, setFilterQuery] = useState({});
+  let categoryFilter: string[] = [];
+  let propetyFilter: string[] = [];
+  let cardTypeFilter: string[] = [];
+  //1. monster.name returns the name of the function since the name could be anything,
+  // 2. .includes checks if what is typed in searchField exists in monster
+console.log()
+  data.sort(resultSort(sortBy));
+  let searchAbleData = data.filter((item)=>{
+    return(item.name.toLowerCase().includes(searchField.toLowerCase()))
+  })
+  data
+  .filter(resultFilter(filterQuery))
+    .map((item) => {
+      if (!categoryFilter.includes(item.category)) {
+        categoryFilter.push(item.category);
+      }
+      if (!propetyFilter.includes(item.property)) {
+        propetyFilter.push(item.property);
+      }
+      if (!cardTypeFilter.includes(item.cardtype)) {
+        cardTypeFilter.push(item.cardtype);
+      }
+    });
 
-    { title: "Product Type", content: ["Base Card", "Authograph", "Set"] },
+  let filterOptions = [
+    { title: "Card Type", content: cardTypeFilter },
+    { title: "Property", content: propetyFilter },
+    { title: "Category", content: categoryFilter },
   ];
-  let { brand, brand1 } = importContent();
+
   return (
     <div className="shop">
       <div className="shop-top">
@@ -22,21 +51,44 @@ export default function Shop() {
         <div className="shop-left">
           <div className="sub-item">
             <h2>Categories</h2>
-            <p>Marvel</p>
-            <p>Rick and Morty</p>
-            <p>DC</p>
+            {categoryFilter.map((item,index)=>{return <p key={index}>{item}</p>})}
+
           </div>
           <div className="filters">
-            <h2>Filter</h2>
+            <h2>Filters</h2>
             {filterOptions.map((item: any, index: number) => {
-              return <DisplayFilter item={item} />;
+              return (
+                <DisplayFilter
+                  item={item}
+                  setFilterQuery={setFilterQuery}
+                  filterQuery={filterQuery}
+                />
+              );
             })}
+            <>
+              {Object.keys(filterQuery).length > 0 && (
+                <p
+                  onClick={() => {
+                    setFilterQuery({});
+                  }}
+                >
+                  Clear Filter X
+                </p>
+              )}
+            </>
           </div>
         </div>
         <div className="shop-right">
           <div className="shop-right-heading">
             <div className="search-div">
-              <input type="text" placeholder="Search" className="searchBox" />
+              <input
+                type="text"
+                placeholder="Search"
+                className="searchBox"
+                onChange={(e) => {
+                  setSearchField(e.target.value);
+                }}
+              />
               <Button title="Search" className="pry" />
             </div>
             <div className="sort">
@@ -45,106 +97,67 @@ export default function Shop() {
                 name="cars"
                 id="cars"
                 onChange={(e) => {
-                  console.log(e.target.value);
+                  setSortBy(e.target.value);
                 }}
               >
                 <option value="" selected={true} disabled={true}></option>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+                <option value="alphabetically">Alphabetically</option>
+                <option value="priceLow">Price : Low to High</option>
+                <option value="priceHigh">Price : High to Low</option>
               </select>
             </div>
           </div>
           <div className="shop-items-wrapper">
-            <div className="shop-item">
-              {/* <div className="discounts">20% off</div> */}
-              <div className="item">
-                <img src={brand} alt="item for sale" />
-              </div>
-              <div className="item-text">
-                <h5>
-                  Nolan Ryan - 2022 MLB TOPPS NOW® Turn Back The Clock - Card 73
-                </h5>
-                <p>$99.99</p>
-                <Button title="Add to Cart" className="addtocart" />
-              </div>
-            </div>
-            <div className="shop-item">
-              {/* <div className="discounts">20% off</div> */}
-              <div className="item">
-                <img src={brand} alt="item for sale" />
-              </div>
-              <div className="item-text">
-                <h5>
-                  Nolan Ryan - 2022 MLB TOPPS NOW® Turn Back The Clock - Card 73
-                </h5>
-                <p>$99.99</p>
-                <Button title="Add to Cart" className="addtocart" />
-              </div>
-            </div>
-            <div className="shop-item">
-              {/* <div className="discounts">20% off</div> */}
-              <div className="item">
-                <img src={brand} alt="item for sale" />
-              </div>
-              <div className="item-text">
-                <h5>
-                  Nolan Ryan - 2022 MLB TOPPS NOW® Turn Back The Clock - Card 73
-                </h5>
-                <p>$99.99</p>
-                <Button title="Add to Cart" className="addtocart" />
-              </div>
-            </div>
-            <div className="shop-item">
-              {/* <div className="discounts">20% off</div> */}
-              <div className="item">
-                <img src={brand} alt="item for sale" />
-              </div>
-              <div className="item-text">
-                <h5>
-                  Nolan Ryan - 2022 MLB TOPPS NOW® Turn Back The Clock - Card 73
-                </h5>
-                <p>$99.99</p>
-                <Button title="Add to Cart" className="addtocart" />
-              </div>
-            </div>
-            <div className="shop-item">
-              {/* <div className="discounts">20% off</div> */}
-              <div className="item">
-                <img src={brand} alt="item for sale" />
-              </div>
-              <div className="item-text">
-                <h5>
-                  Nolan Ryan - 2022 MLB TOPPS NOW® Turn Back The Clock - Card 73
-                </h5>
-                <p>$99.99</p>
-                <Button title="Add to Cart" className="addtocart" />
-              </div>
-            </div>
-            <div className="shop-item">
-              {/* <div className="discounts">20% off</div> */}
-              <div className="item">
-                <img src={brand} alt="item for sale" />
-              </div>
-              <div className="item-text">
-                <h5>
-                  Nolan Ryan - 2022 MLB TOPPS NOW® Turn Back The Clock - Card 73
-                </h5>
-                <p>$99.99</p>
-                <Button title="Add to Cart" className="addtocart" />
-              </div>
-            </div>
+            {searchAbleData.filter(resultFilter(filterQuery)).map((item, index) => {
+              return <ShopItem item={item} key={index} />;
+            })}
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-let DisplayFilter = ({ item }: { item: any }) => {
+let ShopItem = ({ item }: { item: any }) => {
+  return (
+    <div className="shop-item">
+      {/* <div className="discounts">20% off</div> */}
+      <div className="item">
+        <img
+          src={require(`../../resources/ecommerce-products/${item.img1}`)}
+          alt="item for sale"
+          className="front-card"
+        />
+      </div>
+      <div className="item-text">
+        <h5>{item.name}</h5>
+        <p>${item.price}</p>
+        <Button title="Add to Cart" className="addtocart" />
+      </div>
+    </div>
+  );
+};
+let DisplayFilter = ({
+  item,
+  filterQuery,
+  setFilterQuery,
+}: {
+  item: any;
+  filterQuery: any;
+  setFilterQuery: any;
+}) => {
   let [showOptions, setShowOptions] = useState(false);
   let { caretdown } = importContent();
+  let handleQuery = (value: string) => {
+    if (item.title === "Category") {
+      setFilterQuery({ ...filterQuery, category: value });
+    }
+    if (item.title === "Card Type") {
+      setFilterQuery({ ...filterQuery, cardtype: value });
+    }
+    if (item.title === "Property") {
+      setFilterQuery({ ...filterQuery, property: value });
+    }
+  };
 
   return (
     <div className="filter-options">
@@ -163,7 +176,16 @@ let DisplayFilter = ({ item }: { item: any }) => {
       </div>
       {showOptions &&
         item.content.map((item: any, index: number) => {
-          return <p key={index}>{item}</p>;
+          return (
+            <p
+              key={index}
+              onClick={() => {
+                handleQuery(item);
+              }}
+            >
+              {item}
+            </p>
+          );
         })}
     </div>
   );
