@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import Button from "../../components/Button";
 import importContent from "../../resources/importContent";
 import data from "../../resources/data/products.json";
+import ShopItem from "../../components/ShopItem";
 import "./style.scss";
 import resultSort from "../../helpers/sort";
 import resultFilter from "../../helpers/filter";
+import { ShopContextType } from "../../@types/shop.d";
+import { ShopContext } from "../../context/ShopContext";
+import CartDropDown from "../../components/CartDropDown";
 
 export default function Shop() {
+  const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
+  let { cartsvg } = importContent();
   // let categories = ["category1", "category2","category3"]
   let [searchField, setSearchField] = useState("");
   let [sortBy, setSortBy] = useState("alphabetically");
@@ -16,24 +22,22 @@ export default function Shop() {
   let cardTypeFilter: string[] = [];
   //1. monster.name returns the name of the function since the name could be anything,
   // 2. .includes checks if what is typed in searchField exists in monster
-console.log()
+  console.log(cart);
   data.sort(resultSort(sortBy));
-  let searchAbleData = data.filter((item)=>{
-    return(item.name.toLowerCase().includes(searchField.toLowerCase()))
-  })
-  data
-  .filter(resultFilter(filterQuery))
-    .map((item) => {
-      if (!categoryFilter.includes(item.category)) {
-        categoryFilter.push(item.category);
-      }
-      if (!propetyFilter.includes(item.property)) {
-        propetyFilter.push(item.property);
-      }
-      if (!cardTypeFilter.includes(item.cardtype)) {
-        cardTypeFilter.push(item.cardtype);
-      }
-    });
+  let searchAbleData = data.filter((item) => {
+    return item.name.toLowerCase().includes(searchField.toLowerCase());
+  });
+  searchAbleData.filter(resultFilter(filterQuery)).map((item) => {
+    if (!categoryFilter.includes(item.category)) {
+      categoryFilter.push(item.category);
+    }
+    if (!propetyFilter.includes(item.property)) {
+      propetyFilter.push(item.property);
+    }
+    if (!cardTypeFilter.includes(item.cardtype)) {
+      cardTypeFilter.push(item.cardtype);
+    }
+  });
 
   let filterOptions = [
     { title: "Card Type", content: cardTypeFilter },
@@ -51,8 +55,9 @@ console.log()
         <div className="shop-left">
           <div className="sub-item">
             <h2>Categories</h2>
-            {categoryFilter.map((item,index)=>{return <p key={index}>{item}</p>})}
-
+            {categoryFilter.map((item, index) => {
+              return <p key={index}>{item}</p>;
+            })}
           </div>
           <div className="filters">
             <h2>Filters</h2>
@@ -91,6 +96,21 @@ console.log()
               />
               <Button title="Search" className="pry" />
             </div>
+            <div className="cart-wrapper">
+              <div className="cart">
+                <img
+                  src={cartsvg}
+                  alt="svg"
+                  onClick={() => {
+                    // navigate("cart");
+                    // setShowCart(!showCart);
+                    // setShowSort(false);
+                    // setShowFilter(false);
+                  }}
+                />
+              </div>
+            </div>
+
             <div className="sort">
               <p>Sort by</p>
               <select
@@ -108,34 +128,35 @@ console.log()
             </div>
           </div>
           <div className="shop-items-wrapper">
-            {searchAbleData.filter(resultFilter(filterQuery)).map((item, index) => {
-              return <ShopItem item={item} key={index} />;
-            })}
+            {searchAbleData
+              .filter(resultFilter(filterQuery))
+              .map((item, index) => {
+                return <ShopItem item={item} key={index} />;
+              })}
           </div>
         </div>
       </div>
     </div>
   );
 }
-let ShopItem = ({ item }: { item: any }) => {
-  return (
-    <div className="shop-item">
-      {/* <div className="discounts">20% off</div> */}
-      <div className="item">
-        <img
-          src={require(`../../resources/ecommerce-products/${item.img1}`)}
-          alt="item for sale"
-          className="front-card"
-        />
-      </div>
-      <div className="item-text">
-        <h5>{item.name}</h5>
-        <p>${item.price}</p>
-        <Button title="Add to Cart" className="addtocart" />
-      </div>
-    </div>
-  );
-};
+// let ShopItem = ({ item }: { item: any }) => {
+//   return (
+//     <div className="shop-item">
+//       <div className="item">
+//         <img
+//           src={require(`../../resources/ecommerce-products/${item.img1}`)}
+//           alt="item for sale"
+//           className="front-card"
+//         />
+//       </div>
+//       <div className="item-text">
+//         <h5>{item.name}</h5>
+//         <p>${item.price}</p>
+//         <Button title="Add to Cart" className="addtocart" />
+//       </div>
+//     </div>
+//   );
+// };
 let DisplayFilter = ({
   item,
   filterQuery,

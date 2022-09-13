@@ -5,11 +5,13 @@ import Button from "../Button";
 import { ShopContextType } from "../../@types/shop.d";
 import { ShopContext } from "../../context/ShopContext";
 
-export default function ShopItem({ item, filter }: { item: any; filter: any }) {
+export default function ShopItem({ item }: { item: any; }) {
   const [front, setFront] = useState(true);
   const { price, name, id } = item;
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
-  let checkifItemExists = cart.find((item: any) => item.id === id);
+  let checkifItemExists = cart.find((item: any) => item.name === name);
+  // let checkifItemExists = cart.find((item: any) => item.id === id);
+
   
   const addToCart = () => {
     if (checkifItemExists) {
@@ -50,19 +52,19 @@ export default function ShopItem({ item, filter }: { item: any; filter: any }) {
     setCart([]);
   };
   return (
-    <div>
-      <Card title={name} front={front} />
-      <Button title="Add to cart" className="addtocart" onClick={addToCart} />
-      <Button
-        title="Flip Card"
-        className="pry"
-        onClick={() => {
-          setFront(!front);
-        }}
-      />
-      {/* <Button title="Remove" className="pry" onClick={removeFromCart} />
-
-      <Button title="Clear Cart" className="pry" onClick={clearCart} /> */}
+<div className="shop-item">
+      <div className="item">
+        <img
+          src={require(`../../resources/ecommerce-products/${item.img1}`)}
+          alt="item for sale"
+          className="front-card"
+        />
+      </div>
+      <div className="item-text">
+        <h5>{item.name}</h5>
+        <p>${item.price}</p>
+        <Button title="Add to Cart" className="addtocart" onClick={addToCart}/>
+      </div>
     </div>
   );
 }
