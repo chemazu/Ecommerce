@@ -1,16 +1,16 @@
 @import "../../App.scss";
-.register{
+.register {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 100%;
   .left {
-    background: url('../../resources/register.jpg');
-   background-position: center;
-   background-size: cover;
+    background: url("../../resources/register.jpg");
+    background-position: center;
+    background-size: cover;
   }
   .right {
     display: flexbox;
-    padding: 7.5vh ;
+    padding: 7.5vh;
     .form-wrapper {
       display: grid;
       padding: 20px 30px;
@@ -30,7 +30,7 @@
 
         .auth-form-item {
           width: 100%;
-          span{
+          span {
             font-size: 85%;
           }
           p {
@@ -80,37 +80,31 @@
 }
 
 @media screen and (max-width: 480px) {
-.name{
-  display: flex;
-  div{
-
-    input{
-      width: 90%;
+  .name {
+    display: flex;
+    div {
+      input {
+        width: 90%;
+      }
     }
   }
- 
-
-}
   input {
     font-size: 16px;
-
   }
-  .input-item{
-    input{
+  .input-item {
+    input {
       background: transparent;
-
     }
   }
   .register {
-    .left{
+    .left {
       display: none;
     }
     .right {
-    padding: 10vh 0px;
-    padding-left: 0;
+      padding: 10vh 0px;
+      padding-left: 0;
 
-    width: 100vw;
- 
+      width: 100vw;
     }
   }
 }

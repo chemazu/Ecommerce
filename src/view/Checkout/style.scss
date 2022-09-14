@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 3fr 2fr;
   grid-gap: 10px;
-  padding-top :10vh;
+  padding-top: 10vh;
 
   .divider {
     display: grid;
@@ -23,7 +23,7 @@
     flex-direction: column;
     // justify-content: center;
     // align-items: center;
-    padding: 50px 15%;
+    padding: 25px 15%;
     text-align: left;
     .top {
       border: 1px solid #e6e6e6;
@@ -40,7 +40,7 @@
     grid-gap: 30px;
     padding: 50px 0;
     padding-right: 15%;
-    .cart-total{
+    .cart-total {
       padding: 0;
     }
   }
@@ -55,17 +55,19 @@
     grid-row-gap: 20px;
     form {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      // grid-template-columns: 1fr 1fr;
 
       grid-gap: 7.5%;
-      justify-content: end;
+      // justify-content: end;
       .auth-form-item {
         width: 100%;
+        height: fit-content;
         span {
           font-size: 85%;
         }
         p {
-          padding: 10px 0;
+          padding: 5px 0;
+          font-size: 14px;
         }
         .input-item {
           padding: 5px 10px;
