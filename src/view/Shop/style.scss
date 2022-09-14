@@ -32,10 +32,12 @@
     .shop-right {
       width: 80%;
       .shop-right-heading {
-        padding: 35px 5%;
+        // width: 100%;
+        padding: 35px 2.5%;
         display: flex;
-        .search {
-        }
+        align-items: center;
+        // justify-content: space-between;
+
         .search-div {
           width: 50%;
           input {
@@ -63,7 +65,7 @@
             justify-content: center;
             // padding: 0 10%;
             img {
-              width: 35px;
+              width: 1.5rem;
             }
             p {
               padding: 0 10%;
@@ -75,11 +77,12 @@
         }
         .sort {
           display: flex;
-          width: 50%;
+          width: 30%;
           align-items: center;
           justify-content: flex-end;
           p {
             padding-right: 20px;
+            font-size: 14px;
           }
           select {
             background-color: #fff;

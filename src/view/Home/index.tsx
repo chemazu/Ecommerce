@@ -174,7 +174,7 @@ export default function Home() {
           </div>
         </div> */}
       </div>
-      <div className="dummy-footer" style={{padding:"20px 0"}}></div>
+      <div className="dummy-footer" style={{ padding: "20px 0" }}></div>
     </div>
   );
 }

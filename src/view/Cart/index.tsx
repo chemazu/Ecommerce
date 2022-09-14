@@ -7,20 +7,20 @@ import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
   const clearCart = () => {
     localStorage.setItem("cart", JSON.stringify([]));
     setCart([]);
   };
-const getTotalPrice = () => {
-  let total = 0;
-  cart.map((item: any) => {
-    total += Number(item.price * item.quantity)
-  });
-  return total.toFixed(2);
-}
-let finalTotal = 15+Number(getTotalPrice())
+  const getTotalPrice = () => {
+    let total = 0;
+    cart.map((item: any) => {
+      total += Number(item.price * item.quantity);
+    });
+    return total.toFixed(2);
+  };
+  let finalTotal = 15 + Number(getTotalPrice());
 
   return (
     <div>
@@ -74,7 +74,7 @@ let finalTotal = 15+Number(getTotalPrice())
             title="Proceed to Checkout"
             className="checkout"
             onClick={() => {
-          navigate("/checkout")
+              navigate("/checkout");
             }}
           />
         </div>
@@ -87,6 +87,7 @@ const TableBody = ({ item }: any) => {
   let { sample } = importContent();
   // destructure image from item
   let { name, price, quantity, id } = item;
+  console.log(item);
   let checkifItemExists = cart.find((item: any) => item.id === id);
 
   const increaseQuantity = () => {
@@ -150,18 +151,21 @@ const TableBody = ({ item }: any) => {
   return (
     <div className="table-body">
       <h3 onClick={removeFromCart}>X</h3>
-      <img src={sample} className="cart-item-image" />
+      <img
+        src={require(`../../resources/ecommerce-products/${item.img1}`)}
+        className="cart-item-image"
+      />
       <span>{name}</span>
       <span>{price} </span>
-      <span>
-        <span style={{ paddingRight: "10px" }} onClick={increaseQuantity}>
+      <div>
+        <span className="qtn-btn" onClick={increaseQuantity}>
           +
         </span>
         <span>{quantity}</span>
-        <span onClick={decreaseQuantity} style={{ paddingLeft: "10px" }}>
+        <span onClick={decreaseQuantity} className="qtn-btn">
           -
         </span>
-      </span>
+      </div>
       <span>{(quantity * price).toFixed(2)} </span>
       {/* <Button title="Remove" className="pry" onClick={removeFromCart} /> */}
     </div>
