@@ -9,6 +9,7 @@ import resultFilter from "../../helpers/filter";
 import { ShopContextType } from "../../@types/shop.d";
 import { ShopContext } from "../../context/ShopContext";
 import CartDropDown from "../../components/CartDropDown";
+import { Link } from "react-router-dom";
 
 export default function Shop() {
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
@@ -96,8 +97,9 @@ export default function Shop() {
               />
               <Button title="Search" className="pry" />
             </div>
-            <div className="cart-wrapper">
+            <div className="cart-wrapper" >
               <div className="cart">
+                <Link to="/shop/cart">
                 <img
                   src={cartsvg}
                   alt="svg"
@@ -108,9 +110,9 @@ export default function Shop() {
                     // setShowFilter(false);
                   }}
                 />
+                </Link>
               </div>
             </div>
-
             <div className="sort">
               <p>Sort by</p>
               <select

@@ -13,6 +13,7 @@ export default function ShopItem({ item }: { item: any }) {
   // let checkifItemExists = cart.find((item: any) => item.id === id);
 
   const addToCart = () => {
+    console.log(item)
     if (checkifItemExists) {
       cart.map((item: any) => {
         if (item.id === id) {
@@ -21,7 +22,8 @@ export default function ShopItem({ item }: { item: any }) {
       });
       setCart([...cart]);
     } else {
-      setCart([...cart, { ...item, quantity: 1 }]);
+      console.log(id, name);
+      setCart([...cart, { ...item, quantity: 1  }]);
     }
     // check if this is correct
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -51,7 +53,7 @@ export default function ShopItem({ item }: { item: any }) {
     setCart([]);
   };
   return (
-    <div className="shop-item">
+        <div className="shop-item">
       <div className="item">
         <img
           src={require(`../../resources/ecommerce-products/${item.img1}`)}
@@ -62,7 +64,7 @@ export default function ShopItem({ item }: { item: any }) {
       <div className="item-text">
         <h5>{item.name}</h5>
         <p>${item.price}</p>
-        <Button title="Add to Cart" className="addtocart" onClick={addToCart} />
+        <Button title="Add to Cart" className="addtocart" onClick={addToCart}  />
       </div>
     </div>
   );

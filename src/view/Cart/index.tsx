@@ -7,7 +7,7 @@ import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
-  let navigate = useNavigate();
+  let navigate = useNavigate();;
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
   const clearCart = () => {
     localStorage.setItem("cart", JSON.stringify([]));
@@ -32,7 +32,7 @@ export default function Cart() {
               <span> </span>
               <span> </span>
               <span>Product</span>
-              <span>Price</span>
+              <span style={{ padding: " 0 20px" }}>Price</span>
               <span>Quantity</span>
               <span>Sub Total</span>
             </div>
@@ -74,7 +74,7 @@ export default function Cart() {
             title="Proceed to Checkout"
             className="checkout"
             onClick={() => {
-              navigate("/checkout");
+                  navigate("/checkout");;
             }}
           />
         </div>
@@ -83,16 +83,21 @@ export default function Cart() {
   );
 }
 const TableBody = ({ item }: any) => {
+  console.log(item);
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
-  let { sample } = importContent();
+  // let { sample } = importContent();
+
   // destructure image from item
   let { name, price, quantity, id } = item;
-  console.log(item);
+  let sample = require(`../../resources/ecommerce-products/${item.img1}`);
+
   let checkifItemExists = cart.find((item: any) => item.id === id);
 
   const increaseQuantity = () => {
     cart.map((item: any) => {
-      if (item.id === id) {
+      // if (item.id === id) {
+      // use name to check
+      if (item.name === name) {
         item.quantity += 1;
       }
     });
@@ -104,7 +109,7 @@ const TableBody = ({ item }: any) => {
   const removeFromCart = () => {
     if (checkifItemExists) {
       cart.map((item: any) => {
-        if (item.id === id) {
+        if (item.name === name) {
           cart.splice(cart.indexOf(item), 1);
         }
       });
@@ -114,7 +119,7 @@ const TableBody = ({ item }: any) => {
   };
   const decreaseQuantity = () => {
     cart.map((item: any) => {
-      if (item.id === id) {
+      if (item.name === name) {
         if (item.quantity > 1) {
           item.quantity -= 1;
         } else {
@@ -151,14 +156,12 @@ const TableBody = ({ item }: any) => {
   return (
     <div className="table-body">
       <h3 onClick={removeFromCart}>X</h3>
-      <img
-        src={require(`../../resources/ecommerce-products/${item.img1}`)}
-        className="cart-item-image"
-      />
+      <img src={sample} className="cart-item-image" />
+   
       <span>{name}</span>
-      <span>{price} </span>
-      <div>
-        <span className="qtn-btn" onClick={increaseQuantity}>
+      <span style={{ padding: " 0 20px" }}>{price} </span>
+      <span >
+        <span style={{ paddingRight: "10px" }} onClick={increaseQuantity}>
           +
         </span>
         <span>{quantity}</span>
@@ -167,7 +170,7 @@ const TableBody = ({ item }: any) => {
         </span>
       </div>
       <span>{(quantity * price).toFixed(2)} </span>
-      {/* <Button title="Remove" className="pry" onClick={removeFromCart} /> */}
+      <Button title="Remove" className="pry" onClick={removeFromCart} /> 
     </div>
   );
 };
