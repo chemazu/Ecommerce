@@ -76,7 +76,7 @@ const handlePaystackSuccess= ()=>{
             <Link to="/register">register</Link> section.
           </p>
           <div className="right">
-            <div className="form-wrapper">
+            <div className="checkout-form-wrapper">
               <form>
                 <div className="auth-form-item">
                   <p>Email: </p>

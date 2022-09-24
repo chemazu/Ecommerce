@@ -1,27 +1,31 @@
 @import "../../App.scss";
-.login{
+.login {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 100%;
   .left {
-    background: url('../../resources/login.jpg');
-   background-position: center;
-   background-size: cover;
+    background: url("../../resources/login.jpg");
+    background-position: center;
+    background-size: cover;
   }
   .right {
-    display: flexbox;
-    padding: 7.5vh ;
+    display: flex;
+    // padding: 7.5vh;
+    padding: 5%;
     .form-wrapper {
       display: grid;
       padding: 20px 30px;
       grid-row-gap: 20px;
+      height: 80%;
+      width: 100%;
+      box-sizing: border-box;
       form {
         display: grid;
         grid-row-gap: 20px;
 
         .auth-form-item {
           width: 100%;
-          span{
+          span {
             font-size: 85%;
           }
           p {
@@ -53,6 +57,13 @@
             }
           }
         }
+    
+      }
+      .button-wrapper {
+        width: 100%;
+        button{
+          width: 100%;
+        }
       }
       .divider {
         display: grid;
@@ -66,6 +77,14 @@
           border: 0.5px solid black;
         }
       }
+      .bottom-text{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        h4{
+          padding-left: 1rem;
+        }
+      }
     }
   }
 }
@@ -73,24 +92,21 @@
 @media screen and (max-width: 480px) {
   input {
     font-size: 16px;
-
   }
-  .input-item{
-    input{
+  .input-item {
+    input {
       background: transparent;
-
     }
   }
   .login {
-    .left{
+    .left {
       display: none;
     }
     .right {
-    padding: 10vh 0px;
-    padding-left: 0;
+      padding: 10vh 0px;
+      padding-left: 0;
 
-    width: 100vw;
- 
+      width: 100vw;
     }
   }
 }

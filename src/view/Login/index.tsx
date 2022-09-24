@@ -11,7 +11,6 @@ export default function Login() {
   const navigate = useNavigate();
   const { mail, lock } = importContent();
 
-
   const { login, signInWithGoogle } = React.useContext(
     AuthContext
   ) as AuthContextType;
@@ -22,8 +21,10 @@ export default function Login() {
     change: changePassword,
     reset: resetPassword,
   } = useInput("");
-  
-  const handleSubmit = async (e: React.FormEvent<HTMLInputElement>): Promise<any>  => {
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLInputElement>
+  ): Promise<any> => {
     e.preventDefault();
     login(email, password);
     navigate("/dashboard");
@@ -36,9 +37,9 @@ export default function Login() {
   // ): Promise<any> => {
   //   e.preventDefault();
   //   const data = await signup(`${firstName} ${lastName}`, email, password);
- 
+
   //     history("/dashboard");
-    
+
   //   resetFirstName()
   //   resetLastName()
   //   resetPassword()
@@ -73,15 +74,15 @@ export default function Login() {
                 />
               </div>
             </div>
-
+          </form>
+          <div className="button-wrapper">
             <Button
               title="Login"
               className="pry"
               type="submit"
               onClick={handleSubmit}
             />
-          </form>
-
+          </div>
           <div className="divider">
             <hr />
             or
@@ -94,13 +95,12 @@ export default function Login() {
             type=""
             onClick={signInWithGoogle}
           />
-
-          <p>
-            dont have an account?
+          <div className="bottom-text">
+            <p>Don't have an account ?</p>
             <h4 className="highlight">
               <Link to="/register">Register </Link>
             </h4>
-          </p>
+          </div>
         </div>
       </div>
     </div>
