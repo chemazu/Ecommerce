@@ -7,7 +7,7 @@ import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
-  let navigate = useNavigate();;
+  let navigate = useNavigate();
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
   const clearCart = () => {
     localStorage.setItem("cart", JSON.stringify([]));
@@ -74,7 +74,7 @@ export default function Cart() {
             title="Proceed to Checkout"
             className="checkout"
             onClick={() => {
-                  navigate("/checkout");;
+              navigate("/checkout");
             }}
           />
         </div>
@@ -157,10 +157,9 @@ const TableBody = ({ item }: any) => {
     <div className="table-body">
       <h3 onClick={removeFromCart}>X</h3>
       <img src={sample} className="cart-item-image" />
-   
       <span>{name}</span>
       <span style={{ padding: " 0 20px" }}>{price} </span>
-      <span >
+      <span>
         <span style={{ paddingRight: "10px" }} onClick={increaseQuantity}>
           +
         </span>
@@ -168,9 +167,26 @@ const TableBody = ({ item }: any) => {
         <span onClick={decreaseQuantity} className="qtn-btn">
           -
         </span>
-      </div>
+      </span>
       <span>{(quantity * price).toFixed(2)} </span>
-      <Button title="Remove" className="pry" onClick={removeFromCart} /> 
+      {/* <Button title="Remove" className="pry" onClick={removeFromCart} /> */}
     </div>
   );
 };
+{
+  /*
+
+
+<span >
+  <span style={{ paddingRight: "10px" }} onClick={increaseQuantity}>
+    +
+  </span>
+  <span>{quantity}</span>
+  <span onClick={decreaseQuantity} className="qtn-btn">
+    -
+  </span>
+</div>
+<span>{(quantity * price).toFixed(2)} </span>
+<Button title="Remove" className="pry" onClick={removeFromCart} /> 
+*/
+}
