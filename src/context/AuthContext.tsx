@@ -80,7 +80,7 @@ const AuthProvider: React.FC<React.ReactNode> = ({ children }) => {
       });
   };
   function logout() {
-    localStorage.removeItem("LoggedIn");
+    localStorage.removeItem("token");
     return signOut(auth);
   }
 

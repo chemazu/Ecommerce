@@ -1,5 +1,7 @@
 import React from "react";
 import "./style.scss";
+import { useMutation } from "@apollo/client";
+import LOGIN from "../../graphql/schema/login.schema";
 import { useInput } from "../../hooks/input-hook";
 import Button from "../../components/Button";
 import importContent from "../../resources/importContent";
@@ -11,9 +13,8 @@ export default function Login() {
   const navigate = useNavigate();
   const { mail, lock } = importContent();
 
-  const { login, signInWithGoogle } = React.useContext(
-    AuthContext
-  ) as AuthContextType;
+  const { signInWithGoogle } = React.useContext(AuthContext) as AuthContextType;
+  const [login] = useMutation(LOGIN);
 
   const { value: email, change: changeEmail, reset: resetEmail } = useInput("");
   const {
@@ -22,28 +23,26 @@ export default function Login() {
     reset: resetPassword,
   } = useInput("");
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLInputElement>
-  ): Promise<any> => {
+  let handleSubmit = (e: any) => {
     e.preventDefault();
-    login(email, password);
-    navigate("/dashboard");
-    resetPassword();
-    resetEmail();
+    login({
+      variables: {
+        email,
+        password,
+      },
+      onCompleted: ({ login }) => {
+        localStorage.removeItem("token");
+        localStorage.setItem("token", login.token);
+        if (localStorage.getItem("token")) {
+          navigate("/dashboard");
+        }
+        // localStorage.setItem("token", JSON.stringify(login.user));
+      },
+    }).then(() => {
+      resetEmail();
+      resetPassword();
+    });
   };
-
-  // const handleSubmit = async (
-  //   e: React.FormEvent<HTMLInputElement>
-  // ): Promise<any> => {
-  //   e.preventDefault();
-  //   const data = await signup(`${firstName} ${lastName}`, email, password);
-
-  //     history("/dashboard");
-
-  //   resetFirstName()
-  //   resetLastName()
-  //   resetPassword()
-  // };
 
   return (
     <div className="login">
