@@ -17,7 +17,8 @@ const CREATEUSER = gql`
     ) {
       user {
         id
-        name
+        firstname
+        lastname
         email
         password
         type

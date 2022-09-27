@@ -1,62 +1,32 @@
-import React, { useState, useContext } from "react";
-// import { CREATEUSER } from "../../graphql/schema/account.schema";
+import React from "react";
 import CREATEUSER from "../../graphql/schema/register.schema";
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import Button from "../../components/Button";
 import "./style.scss";
 import { useInput } from "../../hooks/input-hook";
-// import { signInWithGoogle } from "../../utils/firebase";
 import importContent from "../../resources/importContent";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { AuthContextType } from "../../@types/auth.d";
 
 export default function Register() {
-  const stuff = gql`
-    mutation Mutation(
-      $firstname: String!
-      $lastname: String!
-      $email: String!
-      $password: String!
-      $type: String!
-    ) {
-      createUser(
-        firstname: $firstname
-        lastname: $lastname
-        email: $email
-        password: $password
-        type: $type
-      ) {
-        user {
-          id
-          name
-          email
-          password
-          type
-          createdAt
-        }
-        token
-      }
-    }
-  `;
   const [createUser, { data, loading, error }] = useMutation(CREATEUSER);
 
   console.log(CREATEUSER);
-  const history = useNavigate();
-  const { signup, signInWithGoogle } = React.useContext(
-    AuthContext
-  ) as AuthContextType;
+
+  const navigate = useNavigate();
+  const { signInWithGoogle } = React.useContext(AuthContext) as AuthContextType;
 
   const {
-    value: firstName,
-    change: changeFirstName,
-    reset: resetFirstName,
+    value: firstname,
+    change: changeFirstname,
+    reset: resetFirstname,
   } = useInput("");
 
   const {
-    value: lastName,
-    change: changeLastName,
-    reset: resetLastName,
+    value: lastname,
+    change: changeLastname,
+    reset: resetLastname,
   } = useInput("");
 
   const { value: email, change: changeEmail, reset: resetEmail } = useInput("");
@@ -72,31 +42,49 @@ export default function Register() {
     e.preventDefault();
     createUser({
       variables: {
-        firstname: "SDSDSD",
-        lastname: "SDSDSD",
-        password: "SDSDSD",
-        email: "SDSDSD",
+        firstname,
+        lastname,
+        password,
+        email,
         type: "customer",
       },
+      onCompleted: ({ createUser }) => {
+        console.log(createUser);
+        localStorage.setItem("token", JSON.stringify(createUser.user));
+        if (localStorage.getItem("user")) {
+          navigate("/dashboard");
+        }
+      },
     })
-      .then((res) => {
-        console.log(res);
+      .then((res: any) => {
+        // console.log(res, "res", res.data.createUser.token);
+        // console.log(res, "res", res.data.createUser.user);
+
+        localStorage.setItem("token", res.data.createUser.token);
+        localStorage.setItem("user", JSON.stringify(res.data.createUser.user));
+        if (localStorage.getItem("token")) {
+          navigate("/dashboard");
+        }
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        resetEmail();
+        resetFirstname();
+        resetLastname();
+        resetPassword();
       });
-    console.log(data, loading, error);
-    console.log(error instanceof Error);
   };
   const handleSubmit = async (
     e: React.FormEvent<HTMLInputElement>
   ): Promise<any> => {
     e.preventDefault();
     // graphqlRegister();
-    // const data = await signup(`${firstName} ${lastName}`, email, password);
+    // const data = await signup(`${firstname} ${lastname}`, email, password);
     // history("/dashboard");
-    // resetFirstName();
-    // resetLastName();
+    // resetFirstname();
+    // resetLastname();
     // resetPassword();
   };
   return (
@@ -116,7 +104,7 @@ export default function Register() {
                 <p>First name: </p>
                 <div className="input-item">
                   <img src={contact} alt="" />
-                  <input placeholder="First name" {...changeFirstName} />
+                  <input placeholder="First name" {...changeFirstname} />
                 </div>
               </div>
               <p className="spacer" style={{ width: "20px" }}>
@@ -127,7 +115,7 @@ export default function Register() {
                 <p>Last name: </p>
                 <div className="input-item">
                   <img src={contact} alt="" />
-                  <input placeholder="Last name" {...changeLastName} />
+                  <input placeholder="Last name" {...changeLastname} />
                 </div>
               </div>
             </div>
