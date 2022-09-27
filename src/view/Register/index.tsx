@@ -1,4 +1,7 @@
 import React, { useState, useContext } from "react";
+// import { CREATEUSER } from "../../graphql/schema/account.schema";
+import CREATEUSER from "../../graphql/schema/register.schema";
+import { gql, useMutation } from "@apollo/client";
 import Button from "../../components/Button";
 import "./style.scss";
 import { useInput } from "../../hooks/input-hook";
@@ -9,9 +12,38 @@ import { AuthContext } from "../../context/AuthContext";
 import { AuthContextType } from "../../@types/auth.d";
 
 export default function Register() {
-  const history = useNavigate();
+  const stuff = gql`
+    mutation Mutation(
+      $firstname: String!
+      $lastname: String!
+      $email: String!
+      $password: String!
+      $type: String!
+    ) {
+      createUser(
+        firstname: $firstname
+        lastname: $lastname
+        email: $email
+        password: $password
+        type: $type
+      ) {
+        user {
+          id
+          name
+          email
+          password
+          type
+          createdAt
+        }
+        token
+      }
+    }
+  `;
+  const [createUser, { data, loading, error }] = useMutation(CREATEUSER);
 
-  const { signup,signInWithGoogle} = React.useContext(
+  console.log(CREATEUSER);
+  const history = useNavigate();
+  const { signup, signInWithGoogle } = React.useContext(
     AuthContext
   ) as AuthContextType;
 
@@ -36,16 +68,36 @@ export default function Register() {
   } = useInput("");
 
   const { mail, contact, lock } = importContent();
-
+  const graphqlRegister = (e: any) => {
+    e.preventDefault();
+    createUser({
+      variables: {
+        firstname: "SDSDSD",
+        lastname: "SDSDSD",
+        password: "SDSDSD",
+        email: "SDSDSD",
+        type: "customer",
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(data, loading, error);
+    console.log(error instanceof Error);
+  };
   const handleSubmit = async (
     e: React.FormEvent<HTMLInputElement>
   ): Promise<any> => {
     e.preventDefault();
-    const data = await signup(`${firstName} ${lastName}`, email, password);
-      history("/dashboard");
-    resetFirstName()
-    resetLastName()
-    resetPassword()
+    // graphqlRegister();
+    // const data = await signup(`${firstName} ${lastName}`, email, password);
+    // history("/dashboard");
+    // resetFirstName();
+    // resetLastName();
+    // resetPassword();
   };
   return (
     <div className="register">
@@ -110,7 +162,7 @@ export default function Register() {
               title="Register"
               className="pry"
               type="submit"
-              onClick={handleSubmit}
+              onClick={graphqlRegister}
             />
           </form>
 
