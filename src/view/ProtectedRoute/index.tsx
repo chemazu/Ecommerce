@@ -11,7 +11,7 @@ const ProtectedRoute = ({
 
 }) => {
   const getLoggedIn = () => {
-    const token = localStorage.getItem("LoggedIn") || null;
+    const token = localStorage.getItem("token") || null;
     if (token == null) {
       return false;
     }

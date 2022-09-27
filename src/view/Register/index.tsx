@@ -10,11 +10,10 @@ import { AuthContext } from "../../context/AuthContext";
 import { AuthContextType } from "../../@types/auth.d";
 
 export default function Register() {
-  const [createUser, { data, loading, error }] = useMutation(CREATEUSER);
-
-  console.log(CREATEUSER);
+  const [createUser] = useMutation(CREATEUSER);
 
   const navigate = useNavigate();
+
   const { signInWithGoogle } = React.useContext(AuthContext) as AuthContextType;
 
   const {
@@ -38,7 +37,8 @@ export default function Register() {
   } = useInput("");
 
   const { mail, contact, lock } = importContent();
-  const graphqlRegister = (e: any) => {
+  
+  const handleRegisterSubmit = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     createUser({
       variables: {
@@ -49,23 +49,12 @@ export default function Register() {
         type: "customer",
       },
       onCompleted: ({ createUser }) => {
-        console.log(createUser);
         localStorage.setItem("token", JSON.stringify(createUser.user));
         if (localStorage.getItem("user")) {
           navigate("/dashboard");
         }
       },
     })
-      .then((res: any) => {
-        // console.log(res, "res", res.data.createUser.token);
-        // console.log(res, "res", res.data.createUser.user);
-
-        localStorage.setItem("token", res.data.createUser.token);
-        localStorage.setItem("user", JSON.stringify(res.data.createUser.user));
-        if (localStorage.getItem("token")) {
-          navigate("/dashboard");
-        }
-      })
       .catch((err) => {
         console.log(err);
       })
@@ -76,17 +65,7 @@ export default function Register() {
         resetPassword();
       });
   };
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLInputElement>
-  ): Promise<any> => {
-    e.preventDefault();
-    // graphqlRegister();
-    // const data = await signup(`${firstname} ${lastname}`, email, password);
-    // history("/dashboard");
-    // resetFirstname();
-    // resetLastname();
-    // resetPassword();
-  };
+
   return (
     <div className="register">
       <div className="left"></div>
@@ -150,7 +129,7 @@ export default function Register() {
               title="Register"
               className="pry"
               type="submit"
-              onClick={graphqlRegister}
+              onClick={handleRegisterSubmit}
             />
           </form>
 
