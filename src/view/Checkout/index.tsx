@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { PaystackButton } from "react-paystack";
 import { ShopContext } from "../../context/ShopContext";
 import { ShopContextType } from "../../@types/shop.d";
+import { useMutation } from "@apollo/client";
+import LOGIN from "../../graphql/schema/login.schema";
 import Button from "../../components/Button";
 import "./style.scss";
 import { useInput } from "../../hooks/input-hook";
@@ -22,10 +24,9 @@ export default function Checkout() {
     return Number(((total + 15) * 100).toFixed(2));
   };
   // let navigate=useNavigate()
-const handlePaystackSuccess= ()=>{
-  navigate("/order")
-
-}
+  const handlePaystackSuccess = () => {
+    navigate("/order");
+  };
   const componentProps = {
     email,
     amount: getTotalPrice(),
@@ -42,8 +43,10 @@ const handlePaystackSuccess= ()=>{
     },
     publicKey: process.env.REACT_APP_PAYSTACK_TEST_PUBLIC_KEY || "",
     text: `Pay ₦${getTotalPrice() / 100}`,
-    onSuccess: () =>{handlePaystackSuccess()},
-      // alert("Thanks for doing business with us! Come back soon!!"),
+    onSuccess: () => {
+      handlePaystackSuccess();
+    },
+    // alert("Thanks for doing business with us! Come back soon!!"),
     onClose: () => alert("Wait! You need this oil, don't go!!!!"),
   };
   const navigate = useNavigate();
@@ -53,22 +56,42 @@ const handlePaystackSuccess= ()=>{
     change: changePassword,
     reset: resetPassword,
   } = useInput("");
-  const { login, signInWithGoogle } = React.useContext(
-    AuthContext
-  ) as AuthContextType;
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLInputElement>
-  ): Promise<any> => {
+  const { signInWithGoogle } = React.useContext(AuthContext) as AuthContextType;
+  const [login] = useMutation(LOGIN);
+
+  // const handleSubmit = async (
+  //   e: React.FormEvent<HTMLInputElement>
+  // ): Promise<any> => {
+  //   e.preventDefault();
+  //   login(email, password);
+  //   navigate("/dashboard");
+  //   resetPassword();
+  //   resetEmail();
+  // };
+  let handleSubmit = (e: any) => {
     e.preventDefault();
-    login(email, password);
-    navigate("/dashboard");
-    resetPassword();
-    resetEmail();
+    login({
+      variables: {
+        email,
+        password,
+      },
+      onCompleted: ({ login }) => {
+        localStorage.removeItem("token");
+        localStorage.setItem("token", login.token);
+        if (localStorage.getItem("token")) {
+          navigate("/dashboard");
+        }
+        // localStorage.setItem("token", JSON.stringify(login.user));
+      },
+    }).then(() => {
+      resetEmail();
+      resetPassword();
+    });
   };
 
   return (
     <div className="checkout-page">
-      <div className="user-info">
+      {/* <div className="user-info">
         <div className="top">
           <p>
             If you have already registered, please, enter your details in the
@@ -96,7 +119,7 @@ const handlePaystackSuccess= ()=>{
                     />
                   </div>
                 </div>
-                <div className="mini-login-button-wrapper">
+                <div className="button-wrapper">
                   <Button
                     title="Login"
                     className="pry"
@@ -112,7 +135,7 @@ const handlePaystackSuccess= ()=>{
           <p>Back to Cart</p>
           <p>I dont have an account</p>
         </div>
-      </div>
+      </div> */}
       <div className="order-summary">
         <h2>Order Summary</h2>
         <div className="cart-total">

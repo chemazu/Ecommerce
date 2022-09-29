@@ -28,6 +28,13 @@
     .top {
       border: 1px solid #e6e6e6;
       padding: 20px;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      p{
+        font-size: 14px;
+      }
+
     }
     .bottom {
       display: flex;
@@ -47,17 +54,21 @@
 }
 
 .right {
-  display: flexbox;
+  display: flex;
   // padding: 7.5vh;
+  width: 100%;
   .checkout-form-wrapper {
     display: grid;
     // padding: 20px 30px;
     grid-row-gap: 20px;
+  width: 100%;
+box-sizing: border-box;
     form {
       display: grid;
       // grid-template-columns: 1fr 1fr;
+      box-sizing: border-box;
 
-      grid-gap: 7.5%;
+      // grid-gap: 7.5%;
       // justify-content: end;
       .auth-form-item {
         width: 100%;
@@ -93,6 +104,14 @@
               outline: none;
             }
           }
+        }
+      }
+      .button-wrapper {
+        width: 100%;
+        padding:  5% 0;
+        box-sizing: content-box;
+        button{
+          width: 100%;
         }
       }
     }
