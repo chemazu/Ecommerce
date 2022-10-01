@@ -33,6 +33,8 @@ export default function Login() {
       onCompleted: ({ login }) => {
         localStorage.removeItem("token");
         localStorage.setItem("token", login.token);
+        localStorage.setItem("loggedInUser", JSON.stringify(login.user));
+
         if (localStorage.getItem("token")) {
           navigate("/dashboard");
         }

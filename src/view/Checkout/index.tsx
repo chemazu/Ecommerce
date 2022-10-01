@@ -13,12 +13,31 @@ import { AuthContext } from "../../context/AuthContext";
 import { AuthContextType } from "../../@types/auth.d";
 import CartItem from "../../components/CartItem";
 export default function Checkout() {
-  const { value: email, change: changeEmail, reset: resetEmail } = useInput("");
-  console.log(localStorage)
-  const [name, setName] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
+  console.log(localStorage.getItem("loggedInUser"));
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+  let a = 0;
+  if (loggedInUser) {
+    console.log("first");
+  }
+  console.log(a);
+  const {
+    value: email,
+    change: changeEmail,
+    reset: resetEmail,
+  } = useInput(`${loggedInUser.email}` || "");
+  const {
+    value: name,
+    change: changeName,
+    reset: resetName,
+  } = useInput(`${loggedInUser.firstname} ${loggedInUser.lastname}` || "");
+  const { value: phone, change: changePhone, reset: resetPhone } = useInput("");
+  const {
+    value: instructions,
+    change: changeInstructions,
+    reset: resetInstructions,
+  } = useInput("");
+
   const { cart } = React.useContext(ShopContext) as ShopContextType;
-  console.log(cart[0]);
 
   const getTotalPrice = () => {
     let total = 0;
@@ -118,15 +137,15 @@ export default function Checkout() {
           </div>
           <div className="input-wrapper">
             <label>Name</label>
-            <input type="text" />
+            <input type="text" {...changeName} />
           </div>
           <div className="input-wrapper">
             <label>Email</label>
-            <input type="text" />
+            <input type="email" {...changeEmail} />
           </div>
           <div className="input-wrapper">
             <label>Phone</label>
-            <input type="text" />
+            <input type="text" {...changePhone} />
           </div>
           <div className="input-wrapper">
             <label>Special Instructions</label>
@@ -140,9 +159,9 @@ export default function Checkout() {
       <div className="order-summary">
         <h2>Order Summary</h2>
         <div className="order-items">
-        {cart.map((item, index) => {
-              return <CartItem key={index} item={item} />;
-            })}
+          {cart.map((item, index) => {
+            return <CartItem key={index} item={item} />;
+          })}
         </div>
         <div className="logistics">
           <div className="logistics-item">
