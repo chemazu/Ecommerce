@@ -91,48 +91,73 @@ export default function Checkout() {
 
   return (
     <div className="checkout-page">
-      <div className="billing-info">mmm</div>
+      {/* <div className="user-info">
+        <div className="top">
+          <p>
+            If you have already registered, please, enter your details in the
+            boxes below. If you are a new customer, please, go to the{" "}
+            <Link to="/register">register</Link> section.
+          </p>
+          <div className="right">
+            <div className="checkout-form-wrapper">
+              <form>
+                <div className="auth-form-item">
+                  <p>Email: </p>
+                  <div className="input-item">
+                    <img src={mail} alt="" />
+                    <input type="email" placeholder="Email" {...changeEmail} />
+                  </div>
+                </div>
+                <div className="auth-form-item">
+                  <p>Password: </p>
+                  <div className="input-item">
+                    <img src={lock} alt="" />
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      {...changePassword}
+                    />
+                  </div>
+                </div>
+                <div className="button-wrapper">
+                  <Button
+                    title="Login"
+                    className="pry"
+                    type="submit"
+                    onClick={handleSubmit}
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div className="bottom">
+          <p>Back to Cart</p>
+          <p>I dont have an account</p>
+        </div>
+      </div> */}
       <div className="order-summary">
         <h2>Order Summary</h2>
-        <div className="order-items">
-          <div className="checkout-item">
-            <p>item</p>
-            <p>item</p>
-            <p>item</p>
-            <p>item</p>
+        <div className="cart-total">
+          <h2>Cart Total</h2>
+          <div className="price-breakdown">
+            <div className="sub-total">
+              <h4>Sub Total</h4>
+              <p>{getTotalPrice() / 100}</p>
+            </div>
+            <div className="shipping">
+              <h4>shipping cost</h4>
+
+              <div className="shipping-cost">
+                <p>₦15.00</p>
+              </div>
+            </div>
+            <div className="total">
+              <h2>Total</h2>
+              <p>₦{getTotalPrice() / 100}</p>
+            </div>
+            <PaystackButton {...componentProps} className="checkout" />
           </div>
-          <div className="checkout-item">
-            <p>item</p>
-            <p>item</p>
-            <p>item</p>
-            <p>item</p>
-          </div>
-          <div className="checkout-item">
-            <p>item</p>
-            <p>item</p>
-            <p>item</p>
-            <p>item</p>
-          </div>
-        </div>
-        <div className="logistics">
-          <div className="logistics-item">
-            <p>Delivery</p>
-            <p>$350.99</p>
-          </div>
-          <div className="logistics-item">
-            <p>Discount</p>
-            <p>$50.99</p>
-          </div>
-        </div>
-        <div className="coupon">
-          <div className="input-wrapper">
-            <input type="text" />
-            <Button title="Apply" className="sec" />
-          </div>
-        </div>
-        <div className="order-total">
-          <p> Order Total</p>
-          <p>$570.99</p>
         </div>
       </div>
     </div>

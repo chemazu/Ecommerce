@@ -22,7 +22,7 @@ function Dashboard() {
     <div className="dashboard">
       <div className="left">
         <p>Dashboard</p>
-        <p>Shop</p>
+        <p>Orders</p>
         <p>Profile</p>
         <p>Cart</p>
         <Button

@@ -1,125 +1,69 @@
 @import "../../App.scss";
-
 .checkout-page {
   display: grid;
   grid-template-columns: 3fr 2fr;
-  grid-gap: 10px;
-  padding-top: 10vh;
-
-  .divider {
-    display: grid;
-    grid-template-columns: 4fr 1fr 4fr;
-
-    text-align: center;
-    align-items: center;
-    hr {
-      //   height: 0.5px;
-      //   color: $pry;
-      border: 0.5px solid black;
-    }
-  }
-  .user-info {
-    display: flex;
-    flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
-    padding: 25px 15%;
-    text-align: left;
-    .top {
-      border: 1px solid #e6e6e6;
-      padding: 20px;
-      justify-content: center;
-      display: flex;
-      flex-direction: column;
-      p{
-        font-size: 14px;
-      }
-
-    }
-    .bottom {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 0;
-    }
-  }
+  padding: 50px 5%;
+  grid-gap: 5%;
   .order-summary {
-    display: grid;
-    grid-gap: 30px;
-    padding: 50px 0;
-    padding-right: 15%;
-    .cart-total {
-      padding: 0;
+    background-color: #fcfcfc;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 10% 7.5%;
+    width: 100%;
+    box-sizing: border-box;
+    p {
+      color: grey;
+      font-size: 14px;
     }
-  }
-}
+    h2 {
+      font-size: 15px;
+      padding-bottom: 1rem;
+    }
+    .order-items {
+      width: 100%;
 
-.right {
-  display: flex;
-  // padding: 7.5vh;
-  width: 100%;
-  .checkout-form-wrapper {
-    display: grid;
-    // padding: 20px 30px;
-    grid-row-gap: 20px;
-  width: 100%;
-box-sizing: border-box;
-    form {
-      display: grid;
-      // grid-template-columns: 1fr 1fr;
-      box-sizing: border-box;
-
-      // grid-gap: 7.5%;
-      // justify-content: end;
-      .auth-form-item {
+      .checkout-item {
         width: 100%;
-        height: fit-content;
-        span {
-          font-size: 85%;
-        }
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
         p {
-          padding: 5px 0;
           font-size: 14px;
         }
-        .input-item {
-          padding: 5px 10px;
-          // display: flex;
-          display: grid;
-          grid-template-columns: 1fr 9fr;
-          border-radius: 4px;
-          border: 1px solid #c5c3c3;
-          transition: all 0.2s ease-in-out;
-
-          &:hover {
-            border: 2px solid $pry;
-            box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.04), 0 2px 2px #c6538c98;
-          }
-
-          img {
-            width: 15px;
-            padding: 5px;
-          }
-          input {
-            border: 0px;
-            &:focus {
-              outline: none;
-            }
-          }
-        }
       }
-      .button-wrapper {
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .logistics,
+    .coupon,
+    .order-total {
+      width: 100%;
+      padding: 1rem 0;
+      border-bottom: 1px solid #e5e5e5;
+      p {
+        padding: 0.5rem 0;
+      }
+      .input-wrapper {
         width: 100%;
-        padding:  5% 0;
-        box-sizing: content-box;
-        button{
+        display: grid;
+        grid-template-columns: 70% 25%;
+        grid-gap: 5%;
+        button {
           width: 100%;
         }
       }
+      .logistics-item {
+        display: flex;
+        justify-content: space-between;
+      }
     }
-  }
-}
-.mini-login-button-wrapper {
-  padding: 15px 0;
-  button {
-    width: 60%;
+    .order-total {
+      display: flex;
+      justify-content: space-between;
+      p {
+        color: #000;
+        font-weight: 700;
+      }
+    }
   }
 }
