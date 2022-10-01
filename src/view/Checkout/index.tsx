@@ -11,11 +11,15 @@ import importContent from "../../resources/importContent";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { AuthContextType } from "../../@types/auth.d";
+import CartItem from "../../components/CartItem";
 export default function Checkout() {
   const { value: email, change: changeEmail, reset: resetEmail } = useInput("");
+  console.log(localStorage)
   const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const { cart } = React.useContext(ShopContext) as ShopContextType;
+  console.log(cart[0]);
+
   const getTotalPrice = () => {
     let total = 0;
     cart.map((item: any) => {
@@ -130,39 +134,24 @@ export default function Checkout() {
           </div>
         </form>
         <div className="pay">
-          <Button title="Pay $50" className="pry" />
+          <PaystackButton {...componentProps} className="pry" />
         </div>
       </div>
       <div className="order-summary">
         <h2>Order Summary</h2>
         <div className="order-items">
-          <div className="checkout-item">
-            <p>item</p>
-            <p>item</p>
-            <p>item</p>
-            <p>item</p>
-          </div>
-          <div className="checkout-item">
-            <p>item</p>
-            <p>item</p>
-            <p>item</p>
-            <p>item</p>
-          </div>
-          <div className="checkout-item">
-            <p>item</p>
-            <p>item</p>
-            <p>item</p>
-            <p>item</p>
-          </div>
+        {cart.map((item, index) => {
+              return <CartItem key={index} item={item} />;
+            })}
         </div>
         <div className="logistics">
           <div className="logistics-item">
             <p>Delivery</p>
-            <p>$350.99</p>
+            <p>₦15.00</p>
           </div>
           <div className="logistics-item">
             <p>Discount</p>
-            <p>$50.99</p>
+            <p>$0.00</p>
           </div>
         </div>
         <div className="coupon">
@@ -173,7 +162,7 @@ export default function Checkout() {
         </div>
         <div className="order-total">
           <p> Order Total</p>
-          <p>$570.99</p>
+          <p>₦ {getTotalPrice() / 100}</p>
         </div>
       </div>
     </div>
