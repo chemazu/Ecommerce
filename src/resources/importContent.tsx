@@ -33,12 +33,16 @@ import up from "./up.svg";
 import person from "./person.svg";
 import brand from "./brand1.png";
 import brand1 from "./brand.png";
+import pickup from "./pickup.svg";
+import delivery from "./delivery.svg";
+
 
 
 
 export default function importContent() {
   return {
     brand,brand1,
+    pickup,delivery,
     flag,
     up,
     person,

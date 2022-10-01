@@ -50,7 +50,7 @@ export default function Checkout() {
     onClose: () => alert("Wait! You need this oil, don't go!!!!"),
   };
   const navigate = useNavigate();
-  const { mail, lock } = importContent();
+  const { mail, lock, pickup, delivery } = importContent();
   const {
     value: password,
     change: changePassword,
@@ -91,7 +91,48 @@ export default function Checkout() {
 
   return (
     <div className="checkout-page">
-      <div className="billing-info">mmm</div>
+      <div className="billing-info">
+        <h2> {"<"} Back</h2>
+        <div className="delivery">
+          <input type="checkbox" />
+          <img src={delivery} alt="delivery" />
+
+          <p>Get it delivered in only 30 minutes</p>
+        </div>
+        <div className="pick-up">
+          <input type="checkbox" />
+
+          <img src={pickup} alt="pickup" />
+
+          <p>Pick up available in 3 stores near you</p>
+        </div>
+
+        <form>
+          <div className="input-wrapper">
+            <label>Shipping Address</label>
+            <input type="text" placeholder="autofill if logged in" />
+          </div>
+          <div className="input-wrapper">
+            <label>Name</label>
+            <input type="text" />
+          </div>
+          <div className="input-wrapper">
+            <label>Email</label>
+            <input type="text" />
+          </div>
+          <div className="input-wrapper">
+            <label>Phone</label>
+            <input type="text" />
+          </div>
+          <div className="input-wrapper">
+            <label>Special Instructions</label>
+            <textarea />
+          </div>
+        </form>
+        <div className="pay">
+          <Button title="Pay $50" className="pry" />
+        </div>
+      </div>
       <div className="order-summary">
         <h2>Order Summary</h2>
         <div className="order-items">

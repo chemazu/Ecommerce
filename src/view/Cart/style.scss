@@ -10,6 +10,13 @@
       padding-bottom: 50px;
     }
   }
+  .shipping {
+    display: flex;
+    justify-content: space-between;
+    div {
+      display: block;
+    }
+  }
 }
 .cart-item-image {
   width: 60%;
@@ -64,10 +71,4 @@
     }
   }
 }
-.shipping {
-  display: flex;
-  justify-content: space-between;
-  div {
-    display: block;
-  }
-}
+
