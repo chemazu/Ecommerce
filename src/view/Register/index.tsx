@@ -148,10 +148,10 @@ export default function Register() {
 
           <p>
             Already have an account{" "}
-            <h4 className="highlight">
+            <p className="highlight">
               {" "}
               <Link to="/login">Log in </Link>
-            </h4>
+            </p>
           </p>
         </div>
       </div>

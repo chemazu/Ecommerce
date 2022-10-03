@@ -31,20 +31,41 @@ export default function Login() {
         password,
       },
       onCompleted: ({ login }) => {
-        localStorage.removeItem("token");
-        localStorage.setItem("token", login.token);
-        localStorage.setItem("loggedInUser", JSON.stringify(login.user));
-
-        if (localStorage.getItem("token")) {
-          navigate("/dashboard");
-        }
+        // localStorage.removeItem("token");
+        // localStorage.setItem("token", login.token);
+        // localStorage.setItem("loggedInUser", JSON.stringify(login.user));
+        // if (localStorage.getItem("token")) {
+        //   navigate("/dashboard");
+        // }
         // localStorage.setItem("token", JSON.stringify(login.user));
       },
-    }).then(() => {
-      resetEmail();
-      resetPassword();
-    });
+    })
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.data.login.token);
+        localStorage.setItem(
+          "loggedInUser",
+          JSON.stringify(res.data.login.user)
+        );
+
+        if (res.data.login.token === localStorage.getItem("token")) {
+          console.log("redirect");
+          navigate("/dashboard");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        resetEmail();
+        resetPassword();
+      });
   };
+  // React.useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     navigate("/dashboard");
+  //   }
+  // }, [navigate]);
 
   return (
     <div className="login">
@@ -53,7 +74,7 @@ export default function Login() {
         <div className="form-wrapper">
           <h2>Login</h2>
           <p>
-            Sign in to your <h4 className="highlight">Stacked</h4> account
+            Sign in to your <p className="highlight">Stacked</p> account
           </p>
 
           <form>

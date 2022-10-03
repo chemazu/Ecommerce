@@ -25,11 +25,14 @@ export default function Checkout() {
     change: changeEmail,
     reset: resetEmail,
   } = useInput(`${loggedInUser.email}` || "");
-  const {
-    value: name,
-    change: changeName,
-    reset: resetName,
-  } = useInput(`${loggedInUser.firstname} ${loggedInUser.lastname}` || "");
+  // const {
+  //   value: name,
+  //   change: changeName,
+  //   reset: resetName,
+  // } = useInput(`${loggedInUser.firstname} ${loggedInUser.lastname}` || "");
+  const [name, setName] = React.useState(
+    loggedInUser ? `${loggedInUser.firstname} ${loggedInUser.lastname}` : ""
+  );
   const { value: phone, change: changePhone, reset: resetPhone } = useInput("");
   const {
     value: instructions,
@@ -137,7 +140,13 @@ export default function Checkout() {
           </div>
           <div className="input-wrapper">
             <label>Name</label>
-            <input type="text" {...changeName} />
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
           </div>
           <div className="input-wrapper">
             <label>Email</label>
