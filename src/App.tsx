@@ -17,37 +17,40 @@ import Wishlist from "./view/Wishlist";
 import Header from "./components/Header";
 
 function App() {
-
   const getLoggedIn = () => {
-    const token = localStorage.getItem("LoggedIn") || null;
-    if (token == null) {
+    const token = localStorage.getItem("token") || null;
+    if (token === null) {
       return false;
     }
     return true;
   };
   return (
     <div className="App">
-      <Header/>
+      <Header />
       <div className="main">
-      <AuthProvider>
-        <ShopProvider>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/shop/*" element={<Shop />} />
-            <Route path="/shop/cart" element={<Cart />} />
-            <Route path="wishlist" element={<Wishlist />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/order" element={<OrderConfirmation />} />
-            <Route
-              path="/dashboard"
-              element={ProtectedRoute({ children: <Dashboard /> })}
-            />
-            <Route path="*" element={<p>There's nothing here: 404!</p>} />
-          </Routes>
-        </ShopProvider>
-      </AuthProvider>
+        <AuthProvider>
+          <ShopProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/shop/*" element={<Shop />} />
+              <Route path="/shop/cart" element={<Cart />} />
+              <Route path="wishlist" element={<Wishlist />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/order" element={<OrderConfirmation />} />
+
+              <Route
+                path="/dashboard"
+                element={ProtectedRoute({
+                  children: <Dashboard />,
+                  auth: getLoggedIn(),
+                })}
+              />
+              <Route path="*" element={<p>There's nothing here: 404!</p>} />
+            </Routes>
+          </ShopProvider>
+        </AuthProvider>
       </div>
     </div>
   );
