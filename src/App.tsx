@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.scss";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Register from "./view/Register";
 import Login from "./view/Login";
 import Dashboard from "./view/Dashboard";
@@ -17,13 +17,6 @@ import Wishlist from "./view/Wishlist";
 import Header from "./components/Header";
 
 function App() {
-  const getLoggedIn = () => {
-    const token = localStorage.getItem("token") || null;
-    if (token === null) {
-      return false;
-    }
-    return true;
-  };
   return (
     <div className="App">
       <Header />
@@ -43,8 +36,7 @@ function App() {
               <Route
                 path="/dashboard"
                 element={ProtectedRoute({
-                  children: <Dashboard />,
-                  auth: getLoggedIn(),
+                  children: <Dashboard />
                 })}
               />
               <Route path="*" element={<p>There's nothing here: 404!</p>} />
