@@ -52,6 +52,9 @@
     text-align: center;
   }
 }
+table {
+  width: 100%;
+}
 .cart-page {
   display: grid;
   grid-template-columns: 3fr 2fr;
@@ -71,4 +74,3 @@
     }
   }
 }
-

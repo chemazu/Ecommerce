@@ -27,7 +27,7 @@ export default function Cart() {
       <div className="cart-page">
         <div className="cart-items">
           <h2>Shopping Cart</h2>
-          <div className="table">
+          {/* <div className="table">
             <div className="table-heading">
               <span> </span>
               <span> </span>
@@ -39,7 +39,19 @@ export default function Cart() {
             {cart.map((item, index) => {
               return <TableBody key={index} item={item} />;
             })}
-          </div>
+          </div> */}
+          <table>
+            <thead>
+              <tr>
+                <td>1Fs</td>
+                <td>1Fs</td>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Sub Total</td>
+              </tr>
+            </thead>
+          </table>
 
           <Button
             title="Clear Cart"

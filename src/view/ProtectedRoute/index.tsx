@@ -1,30 +1,13 @@
-import React, { useState } from "react";
-import { Navigate, Route, RouteProps, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-interface Props extends RouteProps {
-  // isAuth?: boolean;
-}
-const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
-  let navigate = useNavigate();
-  React.useEffect(() => {
-    const data = window.localStorage.getItem("token");
+function ProtectedRoute({ children }: { children?: any }) {
+  const token = JSON.parse(localStorage.getItem("token") || "false");
+  if (!token) {
+    // not logged in so redirect to login page with the return url
+    return <Navigate to="/login" />;
+  }
 
-    if (data === null) {
-      navigate("/login");
-    }
-  }, [navigate]);
-
-  // const getLoggedIn = () => {
-  //   const token = localStorage.getItem("token") || null;
-  //   if (token == null) {
-  //     return false;
-  //   }
-  //   return true;
-  // };
-  // eslint-disable-next-line no-self-compare
-
+  // authorized so return child components
   return children;
-
-  // return getLoggedIn() ? children : <Navigate to="/login" replace />;
-};
+}
 export default ProtectedRoute;
