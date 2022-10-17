@@ -20,8 +20,10 @@ export default function OrderConfirmation() {
     cart.map((item: any) => {
       total += Number(item.price * item.quantity);
     });
-    return Number(((total + 15) * 100).toFixed(2));
+    // return Number(((total + 15) * 100).toFixed(2));
+    return total;
   };
+  let finalTotal = 15 + Number(getTotalPrice());
   return (
     <div className="order-wrapper">
       <div className="order">
@@ -62,24 +64,24 @@ export default function OrderConfirmation() {
         <div className="price-breakdown">
           <div className="breakdown-item">
             <p>Sub Total</p>
-            <p>10</p>
+            <p> ₦ {getTotalPrice()}</p>
           </div>
           <div className="breakdown-item">
             <p>Express Shipping</p>
-            <p>10</p>
+            <p> ₦ 15.00</p>
           </div>{" "}
           <div className="breakdown-item">
             <p>Taxes</p>
-            <p>10</p>
+            <p>0</p>
           </div>{" "}
           <div className="breakdown-item">
             <p>Discount</p>
-            <p>10</p>
+            <p>0</p>
           </div>
         </div>
         <div className="total">
           <p>Total</p>
-          <p> ₦ {getTotalPrice() / 100}</p>
+          <p> ₦ {finalTotal}</p>
         </div>
         <p className="thanks">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum fugiat

@@ -34,6 +34,9 @@
     }
     .order-breakdown {
       //   padding: 2.5% 5%;
+      table tbody tr td {
+        text-align: left;
+      }
     }
     .price-breakdown {
       width: 100%;
