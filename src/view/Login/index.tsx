@@ -25,6 +25,7 @@ export default function Login() {
 
   let handleSubmit = (e: any) => {
     e.preventDefault();
+    console.log("first");
     login({
       variables: {
         email,
@@ -42,13 +43,15 @@ export default function Login() {
     })
       .then((res) => {
         console.log(res);
-        localStorage.setItem("token", res.data.login.token);
+        localStorage.setItem("token", JSON.stringify(res.data.login.token));
         localStorage.setItem(
           "loggedInUser",
           JSON.stringify(res.data.login.user)
         );
 
-        if (res.data.login.token === localStorage.getItem("token")) {
+        if (
+          res.data.login.token === JSON.parse(localStorage.getItem("token")||"")
+        ) {
           console.log("redirect");
           navigate("/dashboard");
         }
