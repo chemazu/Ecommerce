@@ -1,0 +1,27 @@
+.order{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    .thanks{
+        padding: 50px 15%;
+        height: 100%;
+        // display: grid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    }
+    .order-details{
+        padding: 50px 15%;
+
+        .product-card{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+        .order-details{
+            .order-total{
+                display: block;
+            }
+        }
+    }
+}

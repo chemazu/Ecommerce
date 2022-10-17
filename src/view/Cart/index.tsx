@@ -55,14 +55,6 @@ export default function Cart() {
               {cart.map((item, index) => {
                 return <TableBody key={index} item={item} />;
               })}
-              {/* <tr>
-                <td>1Fs</td>
-                <td>1Fs</td>
-                <td>Product</td>
-                <td>Price</td>
-                <td>Quantity</td>
-                <td>Sub Total</td>
-              </tr> */}
             </tbody>
           </table>
           {/* <table>
@@ -218,20 +210,15 @@ const TableBody = ({ item }: any) => {
     // </tr>
     <tr>
       <td onClick={removeFromCart}>X</td>
-      {/* <td></td>
-       */}
-      {/* <td className="cart-image">img</td> */}
-    <img src={sample} className="cart-item-image" alt={name} />
+      <img src={sample} className="cart-item-image" alt={name} />
 
       <td>{name}</td>
       <td>₦{price}</td>
       <td>
         <>+</>
         <> </>
-
         {quantity}
         <> </>
-
         <>-</>
       </td>
       <td>₦{(quantity * price).toFixed(2)} </td>

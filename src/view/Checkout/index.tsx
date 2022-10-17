@@ -25,11 +25,7 @@ export default function Checkout() {
     change: changeEmail,
     reset: resetEmail,
   } = useInput(`${loggedInUser.email}` || "");
-  // const {
-  //   value: name,
-  //   change: changeName,
-  //   reset: resetName,
-  // } = useInput(`${loggedInUser.firstname} ${loggedInUser.lastname}` || "");
+ 
   const [name, setName] = React.useState(
     loggedInUser ? `${loggedInUser.firstname} ${loggedInUser.lastname}` : ""
   );
