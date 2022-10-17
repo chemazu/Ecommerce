@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import Pagination from "../../components/Pagination/Pagination";
+// import Pagination from "../../components/Pagination/Pagination";
 import "./style.scss";
 import ShopItem from "../../components/ShopItem";
 export default function ShopPagination({
@@ -46,13 +46,13 @@ export default function ShopPagination({
           <p>out of {data.length}</p>
         </div>
         <div className="pagination-display-holder">
-          <Pagination
+          {/* <Pagination
             className="pagination-bar"
             currentPage={currentPage}
             totalCount={data.length}
             pageSize={PageSize}
             onPageChange={(page: any) => setCurrentPage(page)}
-          />
+          /> */}
         </div>
       </div>
     </div>

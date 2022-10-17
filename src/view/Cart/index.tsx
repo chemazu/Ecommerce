@@ -43,6 +43,31 @@ export default function Cart() {
           <table>
             <thead>
               <tr>
+                <td></td>
+                <td></td>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Sub</td>
+              </tr>
+            </thead>
+            <tbody>
+              {cart.map((item, index) => {
+                return <TableBody key={index} item={item} />;
+              })}
+              {/* <tr>
+                <td>1Fs</td>
+                <td>1Fs</td>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Sub Total</td>
+              </tr> */}
+            </tbody>
+          </table>
+          {/* <table>
+            <thead>
+              <tr>
                 <td>1Fs</td>
                 <td>1Fs</td>
                 <td>Product</td>
@@ -51,7 +76,12 @@ export default function Cart() {
                 <td>Sub Total</td>
               </tr>
             </thead>
-          </table>
+            <tbody>
+              {cart.map((item, index) => {
+                return <TableBody key={index} item={item} />;
+              })}
+            </tbody>
+          </table> */}
 
           <Button
             title="Clear Cart"
@@ -166,23 +196,46 @@ const TableBody = ({ item }: any) => {
   //   localStorage.setItem("cart", JSON.stringify(cart));
   // };
   return (
-    <div className="table-body">
-      <h3 onClick={removeFromCart}>X</h3>
-      <img src={sample} className="cart-item-image" />
-      <span>{name}</span>
-      <span style={{ padding: " 0 20px" }}>{price} </span>
-      <span>
-        <span style={{ paddingRight: "10px" }} onClick={increaseQuantity}>
-          +
-        </span>
-        <span>{quantity}</span>
-        <span onClick={decreaseQuantity} className="qtn-btn">
-          -
-        </span>
-      </span>
-      <span>{(quantity * price).toFixed(2)} </span>
-      {/* <Button title="Remove" className="pry" onClick={removeFromCart} /> */}
-    </div>
+    // <tr className="table-body">
+    //   <td onClick={removeFromCart}>X</td>
+    //   <td>
+    //     <img src={sample} className="cart-item-image" alt={name} />
+    //   </td>
+    //   <td>{name}</td>
+    //   <td>{price} </td>
+    //   <td>{quantity}</td>
+    //   {/* <span>
+    //     <span style={{ paddingRight: "10px" }} onClick={increaseQuantity}>
+    //       +
+    //     </span>
+    //     <span>{quantity}</span>
+    //     <span onClick={decreaseQuantity} className="qtn-btn">
+    //       -
+    //     </span>
+    //   </span> */}
+    //   <td>{(quantity * price).toFixed(2)} </td>
+    //   {/* <Button title="Remove" className="pry" onClick={removeFromCart} /> */}
+    // </tr>
+    <tr>
+      <td onClick={removeFromCart}>X</td>
+      {/* <td></td>
+       */}
+      {/* <td className="cart-image">img</td> */}
+    <img src={sample} className="cart-item-image" alt={name} />
+
+      <td>{name}</td>
+      <td>₦{price}</td>
+      <td>
+        <>+</>
+        <> </>
+
+        {quantity}
+        <> </>
+
+        <>-</>
+      </td>
+      <td>₦{(quantity * price).toFixed(2)} </td>
+    </tr>
   );
 };
 {
