@@ -45,16 +45,45 @@ export default function Header() {
               </h1>
             </div>
             <div className="menu-items">
-              <Link to="/">Home</Link>
-              <Link to="/shop">Shop</Link>
-              <Link to="/shop/cart">Cart</Link>
-              <Link to="/dashboard">Dashboard</Link>
+              <Link
+                to="/"
+                onClick={() => {
+                  setShowMenu(false);
+                }}
+              >
+                Home
+              </Link>
+              <Link
+                to="/shop"
+                onClick={() => {
+                  setShowMenu(false);
+                }}
+              >
+                Shop
+              </Link>
+              <Link
+                to="/shop/cart"
+                onClick={() => {
+                  setShowMenu(false);
+                }}
+              >
+                Cart
+              </Link>
+              <Link
+                to="/dashboard"
+                onClick={() => {
+                  setShowMenu(false);
+                }}
+              >
+                Dashboard
+              </Link>
               <div className="auth-wrapper">
                 <Button
                   title="Login"
                   className="pry"
                   onClick={() => {
                     navigate("/login");
+                    setShowMenu(false);
                   }}
                 />{" "}
                 <Button
@@ -62,6 +91,7 @@ export default function Header() {
                   className="pry"
                   onClick={() => {
                     navigate("/register");
+                    setShowMenu(false);
                   }}
                 />
               </div>
