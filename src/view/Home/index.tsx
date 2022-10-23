@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
@@ -48,7 +49,7 @@ export default function Home() {
             </div>
             <div className="socials">
               {social.map((item, index) => {
-                return <img src={item} alt={`${item}`} key={index} />;
+                return <Link to="/#"><img src={item} alt={`${item}`} key={index} /></Link>;
               })}
             </div>
           </div>

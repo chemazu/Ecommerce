@@ -30,7 +30,7 @@ $sec: #fff;
       .image {
         width: 100%;
         text-align: center;
-        position: relative;
+        // position: relative;
         background: url("../../resources/home-bg.svg");
         background-repeat: no-repeat;
         background-position: center;
@@ -39,7 +39,7 @@ $sec: #fff;
         img {
           width: 55%;
           z-index: 40;
-          position: relative;
+          // position: relative;
           top: 0;
           right: 0;
         }
@@ -161,6 +161,9 @@ $sec: #fff;
       width: 70%;
       img{
         width: 20px;
+        &:hover{
+          cursor: pointer;
+        }
       }
     }
   }
