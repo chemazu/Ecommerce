@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
-import Header from "../../components/Header";
 import importContent from "../../resources/importContent";
 import "./style.scss";
 export default function Home() {
@@ -26,7 +25,6 @@ export default function Home() {
   const sponsor = [sponsor1, sponsor2, sponsor3, sponsor4];
   return (
     <div className="home">
-      {/* <Header /> */}
       <div className="home-desktop">
         <div className="hero">
           <div className="text">
@@ -77,9 +75,6 @@ export default function Home() {
               />
             </div>
           </div>
-          {/* <div className="image">
-            <img src={heroImage} alt="" />
-          </div> */}
         </div>
         <div className="sponsors">
           {sponsor.map((item, index) => (
@@ -114,7 +109,6 @@ export default function Home() {
 
         <div className="call-to-action">
           <h1>Dont hesistate to take the best path foward </h1>
-          {/* <h1 className="highlight">the best path foward</h1> */}
           <div className="stats">
             <div className="stat">
               <div className="stat-top">
@@ -164,16 +158,7 @@ export default function Home() {
         </div>
       </div>
       <div className="mobile">
-        {/* <div className="mobile-hero">
-          <div className="text">
-            <h2>Stay connected</h2>
-            <h2 style={{ paddingBottom: "20px" }}>Buy trading cards</h2>
-            <p style={{ paddingBottom: "10px" }}>
-              Buy the best trading cards, sport, comic,NFTs
-            </p>
-            <p>Manage collection ,stay up to date with the best deals</p>
-          </div>
-        </div> */}
+
       </div>
       <div className="dummy-footer" style={{ padding: "20px 0" }}></div>
     </div>

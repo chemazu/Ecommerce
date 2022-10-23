@@ -15,9 +15,14 @@
           padding: 15px 0;
           font-family: "Joan", serif;
         }
-        h3 {
+        h3 ,h4{
           padding: 15px 0;
           font-family: "Joan", serif;
+        }
+        h4{
+          &:hover {
+            cursor: pointer;
+          }
         }
         p {
           padding: 10px 0;
@@ -70,7 +75,7 @@
             p {
               padding: 0 10%;
             }
-            .cart-item-number{
+            .cart-item-number {
               // padding: 20px;
               position: absolute;
               z-index: 25;
@@ -79,7 +84,6 @@
               background-color: red;
               left: 50%;
               // height: 100%;
-              
             }
           }
           .cart-drop-down-wrapper {
@@ -150,6 +154,59 @@
       justify-content: space-between;
       &:hover {
         cursor: pointer;
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .shop {
+    .shop-body {
+      padding: 20px 0;
+
+      .shop-left {
+        // display: none;
+      padding: 0px 5%;
+
+        width: 50%;
+        position: absolute;
+        z-index: 4;
+        background-color: #fff;
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+        .sub-item{
+          display: none;
+        }
+
+      }
+      .shop-right {
+      padding: 20px 5%;
+
+        width: 100%;
+        .shop-right-heading {
+          display: grid;
+          grid-template-columns: 4fr 1fr;
+          .search-div {
+            display: flex;
+            width: 100%;
+          }
+          .cart-wrapper {
+            width: 100%;
+          }
+          .sort {
+            width: 100%;
+            padding: 10px 0;
+          }
+          .filter{
+            width: 100%;
+            text-align: center;
+            &:hover{
+              cursor: pointer;
+            }
+          }
+        }
+
+        .shop-items-wrapper {
+          grid-template-columns: 1fr;
+        }
       }
     }
   }

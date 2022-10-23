@@ -15,6 +15,7 @@ export default function Shop() {
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
   let { cartsvg } = importContent();
   // let categories = ["category1", "category2","category3"]
+  let [showLeft, setShowLeft] = React.useState(false);
   let [searchField, setSearchField] = useState("");
   let [sortBy, setSortBy] = useState("alphabetically");
   let [filterQuery, setFilterQuery] = useState({});
@@ -53,7 +54,7 @@ export default function Shop() {
         <h1>Trading Cards & Collectibles</h1>
       </div>
       <div className="shop-body">
-        <div className="shop-left">
+        <div className="shop-left desktop">
           <div className="sub-item">
             <h2>Categories</h2>
             {categoryFilter.map((item, index) => {
@@ -71,6 +72,9 @@ export default function Shop() {
                 />
               );
             })}
+            <div className="filter-options">
+              <h3>Close</h3>
+            </div>
             <>
               {Object.keys(filterQuery).length > 0 && (
                 <p
@@ -84,6 +88,49 @@ export default function Shop() {
             </>
           </div>
         </div>
+        {showLeft && (
+          <div className="shop-left mobile">
+            <div className="sub-item">
+              <h2>Categories</h2>
+              {categoryFilter.map((item, index) => {
+                return <p key={index}>{item}</p>;
+              })}
+            </div>
+            <div className="filters">
+              <h2>Filters</h2>
+              {filterOptions.map((item: any, index: number) => {
+                return (
+                  <DisplayFilter
+                    item={item}
+                    setFilterQuery={setFilterQuery}
+                    filterQuery={filterQuery}
+                  />
+                );
+              })}
+          
+
+              <>
+                {Object.keys(filterQuery).length > 0 && (
+                  <p
+                    onClick={() => {
+                      setFilterQuery({});
+                    }}
+                  >
+                    Clear Filter X
+                  </p>
+                )}
+              </>
+              <h4
+                onClick={() => {
+                  setShowLeft(false);
+                }}
+              >
+                Close X
+              </h4>
+            </div>
+          </div>
+        )}
+
         <div className="shop-right">
           <div className="shop-right-heading">
             <div className="search-div">
@@ -97,19 +144,19 @@ export default function Shop() {
               />
               <Button title="Search" className="pry" />
             </div>
-            <div className="cart-wrapper" >
+            <div className="cart-wrapper">
               <div className="cart">
                 <Link to="/shop/cart">
-                <img
-                  src={cartsvg}
-                  alt="svg"
-                  onClick={() => {
-                    // navigate("cart");
-                    // setShowCart(!showCart);
-                    // setShowSort(false);
-                    // setShowFilter(false);
-                  }}
-                />
+                  <img
+                    src={cartsvg}
+                    alt="svg"
+                    onClick={() => {
+                      // navigate("cart");
+                      // setShowCart(!showCart);
+                      // setShowSort(false);
+                      // setShowFilter(false);
+                    }}
+                  />
                 </Link>
               </div>
             </div>
@@ -127,6 +174,15 @@ export default function Shop() {
                 <option value="priceLow">Price : Low to High</option>
                 <option value="priceHigh">Price : High to Low</option>
               </select>
+            </div>
+            <div className=" mobile filter">
+              <p
+                onClick={() => {
+                  setShowLeft(!showLeft);
+                }}
+              >
+                Filter
+              </p>
             </div>
           </div>
           <div className="shop-items-wrapper">
