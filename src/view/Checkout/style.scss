@@ -6,7 +6,8 @@
   grid-gap: 5%;
   max-height: 100vh;
   box-sizing: border-box;
-  input,textarea{
+  input,
+  textarea {
     border: 1px solid #e5e5e5;
   }
   .billing-info {
@@ -19,7 +20,7 @@
 
     h2 {
       font-size: 15px;
-      padding-bottom: .5rem;
+      padding-bottom: 0.5rem;
     }
     .delivery,
     .pick-up {
@@ -36,36 +37,36 @@
         width: 1.2rem;
         padding: 0 12px;
       }
-      p{
+      p {
         font-size: 12px;
         font-weight: 600;
         color: rgb(51, 50, 50);
       }
     }
-    .pick-up{
+    .pick-up {
       border: 1px solid #e5e5e5;
       background-color: transparent;
-
     }
-    form{
-        box-sizing: border-box;
+    form {
+      box-sizing: border-box;
 
-        .input-wrapper{
-            width: 100%;
-            box-sizing: border-box;
-            padding: 7.5px 0px;
-            label{
-                font-size: 14px;
-                display: block;
-                padding: 5px 0;
-                padding-bottom: 7.5px;
-                color:grey;
-            }
-            input,textarea{
-                width: 70%;
-                padding: 5px 7.5px;
-            }
+      .input-wrapper {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 7.5px 0px;
+        label {
+          font-size: 14px;
+          display: block;
+          padding: 5px 0;
+          padding-bottom: 7.5px;
+          color: grey;
         }
+        input,
+        textarea {
+          width: 70%;
+          padding: 5px 7.5px;
+        }
+      }
     }
   }
   .order-summary {
@@ -115,8 +116,8 @@
         button {
           width: 100%;
         }
-        input{
-            padding: 5px 7.5px;
+        input {
+          padding: 5px 7.5px;
         }
       }
       .logistics-item {
@@ -130,6 +131,25 @@
       p {
         color: #000;
         font-weight: 700;
+      }
+    }
+  }
+}
+@media screen and(max-width:480px) {
+  .checkout-page {
+    display: block;
+
+    padding: 0 5%;
+    max-height: max-content;
+    .billing-info,
+    .order-summary {
+      margin: 5% 0;
+      form .input-wrapper {
+        input,
+        textarea {
+          width: 100%;
+          box-sizing: border-box;
+        }
       }
     }
   }
