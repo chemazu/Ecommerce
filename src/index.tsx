@@ -9,6 +9,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import ReactDOM from "react-dom";
 import "./index.css";
+
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 const httpLink = createHttpLink({
