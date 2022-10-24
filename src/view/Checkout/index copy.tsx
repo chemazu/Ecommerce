@@ -2,49 +2,47 @@ import React from "react";
 import { PaystackButton } from "react-paystack";
 import { ShopContext } from "../../context/ShopContext";
 import { ShopContextType } from "../../@types/shop.d";
+import { useMutation } from "@apollo/client";
+import LOGIN from "../../graphql/schema/login.schema";
 import Button from "../../components/Button";
 import "./style.scss";
 import { useInput } from "../../hooks/input-hook";
 import importContent from "../../resources/importContent";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { AuthContextType } from "../../@types/auth.d";
 import CartItem from "../../components/CartItem";
-import { useMutation } from "@apollo/client";
-import CREATEPAYMENT from "../../graphql/schema/createPayment.schema";
 export default function Checkout() {
-  const [createPayment] = useMutation(CREATEPAYMENT);
-  console.log(useMutation(CREATEPAYMENT));
-  const navigate = useNavigate();
   const { cart } = React.useContext(ShopContext) as ShopContextType;
-  const { pickup, delivery } = importContent();
   let [deliveryCost, setDeliveryCost] = React.useState(true);
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
   let autofillUser = {
     shippingAddress: "",
-    username: "",
-    phone: "",
-    email: "",
-    firstname: "",
-    lastname: "",
+    username:"",
+    phone:"",
+    email:"",
+    firstname:"",
+    lastname:""
+
   };
-  const {
-    value: name,
-    change: changeName,
-    reset: resetName,
-  } = useInput(autofillUser.username);
+ 
+ 
   const {
     value: email,
     change: changeEmail,
     reset: resetEmail,
-  } = useInput(autofillUser.email);
+  } = useInput(`${loggedInUser.email}` || "");
+
+  const [name, setName] = React.useState(
+    loggedInUser ? `${loggedInUser.firstname} ${loggedInUser.lastname}` : ""
+  );
+  const { value: phone, change: changePhone, reset: resetPhone } = useInput("");
   const {
-    value: phone,
-    change: changePhone,
-    reset: resetPhone,
-  } = useInput(autofillUser.phone);
-  const {
-    value: shipping,
-    change: changeShipping,
-    reset: resetShipping,
-  } = useInput(autofillUser.shippingAddress);
+    value: instructions,
+    change: changeInstructions,
+    reset: resetInstructions,
+  } = useInput("");
+
   const getTotalPrice = () => {
     let total = 0;
     cart.map((item: any) => {
@@ -53,21 +51,7 @@ export default function Checkout() {
     return Number(((total + 15) * 100).toFixed(2));
   };
   // let navigate=useNavigate()
-  const handlePaystackSuccess = async () => {
-    createPayment({
-      variables: {
-        userId: "6332f653762c7392ea7480e1",
-        amount: 30,
-        platform: "paystack",
-      },
-
-    })
-      .then((res: any) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err[0]);
-      });
+  const handlePaystackSuccess = () => {
     navigate("/order");
   };
   const componentProps = {
@@ -86,20 +70,43 @@ export default function Checkout() {
     },
     publicKey: process.env.REACT_APP_PAYSTACK_TEST_PUBLIC_KEY || "",
     text: `Pay ₦${getTotalPrice() / 100}`,
-    onSuccess: (res: any) => {
-      console.log(res);
+    onSuccess: () => {
       handlePaystackSuccess();
-      // message:"Approved"
-      // redirecturl :  "?trxref=T909069567568481&reference=T909069567568481"
-      // reference :  "T909069567568481"
-      // status :  "success"
-      // trans : "2216544096"
-      // transaction :  "2216544096"
-      // trxref :  "T909069567568481"
     },
     // alert("Thanks for doing business with us! Come back soon!!"),
-    onClose: () => alert("Thanks for doing business with us! Come back soon!!"),
+    onClose: () => alert("Wait! You need this oil, don't go!!!!"),
   };
+  const navigate = useNavigate();
+  const { mail, lock, pickup, delivery } = importContent();
+  const {
+    value: password,
+    change: changePassword,
+    reset: resetPassword,
+  } = useInput("");
+  const { signInWithGoogle } = React.useContext(AuthContext) as AuthContextType;
+  const [login] = useMutation(LOGIN);
+
+  let handleSubmit = (e: any) => {
+    e.preventDefault();
+    login({
+      variables: {
+        email,
+        password,
+      },
+      onCompleted: ({ login }) => {
+        localStorage.removeItem("token");
+        localStorage.setItem("token", login.token);
+        if (localStorage.getItem("token")) {
+          navigate("/dashboard");
+        }
+        // localStorage.setItem("token", JSON.stringify(login.user));
+      },
+    }).then(() => {
+      resetEmail();
+      resetPassword();
+    });
+  };
+
   return (
     <div className="checkout-page">
       <div className="billing-info">
@@ -134,16 +141,16 @@ export default function Checkout() {
         <form>
           <div className="input-wrapper">
             <label>Shipping Address</label>
-            <input type="text" {...changeShipping} />
+            <input type="text" placeholder="autofill if logged in" />
           </div>
           <div className="input-wrapper">
             <label>Name</label>
             <input
               type="text"
-              {...changeName}
-              // onChange={(e) => {
-              //   setName(e.target.value);
-              // }}
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
             />
           </div>
           <div className="input-wrapper">
