@@ -1,7 +1,10 @@
 import { Navigate } from "react-router-dom";
+import React from "react"
 
 function ProtectedRoute({ children }: { children?: any }) {
   const token = JSON.parse(localStorage.getItem("token") || "false");
+
+  
   if (!token) {
     // not logged in so redirect to login page with the return url
     return <Navigate to="/login" />;

@@ -14,7 +14,7 @@ function Dashboard() {
 
   const handleLogout = () => {
     logout();
-    localStorage.removeItem("LoggedIn");
+    localStorage.removeItem("token");
     history("/login");
   };
 
