@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { PaystackButton } from "react-paystack";
 import { ShopContext } from "../../context/ShopContext";
 import { ShopContextType } from "../../@types/shop.d";
@@ -8,11 +8,12 @@ import Button from "../../components/Button";
 import "./style.scss";
 import { useInput } from "../../hooks/input-hook";
 import importContent from "../../resources/importContent";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { AuthContextType } from "../../@types/auth.d";
 import CartItem from "../../components/CartItem";
 export default function Checkout() {
+  let [deliveryCost, setDeliveryCost] = React.useState(true);
   console.log(localStorage.getItem("loggedInUser"));
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
   let a = 0;
@@ -25,7 +26,7 @@ export default function Checkout() {
     change: changeEmail,
     reset: resetEmail,
   } = useInput(`${loggedInUser.email}` || "");
- 
+
   const [name, setName] = React.useState(
     loggedInUser ? `${loggedInUser.firstname} ${loggedInUser.lastname}` : ""
   );
@@ -81,15 +82,6 @@ export default function Checkout() {
   const { signInWithGoogle } = React.useContext(AuthContext) as AuthContextType;
   const [login] = useMutation(LOGIN);
 
-  // const handleSubmit = async (
-  //   e: React.FormEvent<HTMLInputElement>
-  // ): Promise<any> => {
-  //   e.preventDefault();
-  //   login(email, password);
-  //   navigate("/dashboard");
-  //   resetPassword();
-  //   resetEmail();
-  // };
   let handleSubmit = (e: any) => {
     e.preventDefault();
     login({
@@ -115,14 +107,27 @@ export default function Checkout() {
     <div className="checkout-page">
       <div className="billing-info">
         <h2> {"<"} Back</h2>
-        <div className="delivery">
-          <input type="checkbox" />
+        <div className={`delivery ${deliveryCost ? "active" : ""}`}>
+          <input
+            type="checkbox"
+            checked={deliveryCost}
+            onClick={() => {
+              setDeliveryCost(true);
+            }}
+          />
           <img src={delivery} alt="delivery" />
 
           <p>Get it delivered in only 30 minutes</p>
         </div>
-        <div className="pick-up">
-          <input type="checkbox" />
+        <div className={`pick-up ${!deliveryCost ? "active" : ""}`}>
+          {/* <div className="pick-up"> */}
+          <input
+            type="checkbox"
+            checked={!deliveryCost}
+            onClick={() => {
+              setDeliveryCost(false);
+            }}
+          />
 
           <img src={pickup} alt="pickup" />
 
@@ -170,9 +175,15 @@ export default function Checkout() {
         </div>
         <div className="logistics">
           <div className="logistics-item">
-            <p>Delivery</p>
+            <p>Shipping</p>
             <p>₦15.00</p>
           </div>
+          {deliveryCost && (
+            <div className="logistics-item">
+              <p>Delivery</p>
+              <p>₦15.00</p>
+            </div>
+          )}
           <div className="logistics-item">
             <p>Discount</p>
             <p>$0.00</p>

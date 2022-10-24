@@ -79,7 +79,7 @@ const CartItem = ({ item }: any) => {
   return (
     <div className="checkout-item">
       <div className="left">
-        <p>x{quantity}</p>
+        <p>{quantity}x</p>
         <p>{name}</p>
       </div>
       <div className="right">
