@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Joan&family=Montserrat:wght@300;600;900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.App {
+  max-height: 100vh;
+  height: 100vh;
+}
+
+.highlight {
+  color: #c6538c;
+  display: inline;
+}
+
+.highlight-1 {
+  padding: 5px 7.5px;
+  background-color: #c6538c;
+  width: fit-content;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.main {
+  padding-top: 60px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 480px) {
+  .desktop {
+    display: none;
+  }
+}
+.checkout-page {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  padding: 50px 5%;
+  grid-gap: 5%;
+  max-height: 100vh;
+  box-sizing: border-box;
+}
+.checkout-page input,
+.checkout-page textarea {
+  border: 1px solid #e5e5e5;
+}
+.checkout-page .billing-info {
+  background-color: #fcfcfc;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 50px 5%;
+  width: 100%;
+  box-sizing: border-box;
+}
+.checkout-page .billing-info h2 {
+  font-size: 15px;
+  padding-bottom: 0.5rem;
+}
+.checkout-page .billing-info .delivery,
+.checkout-page .billing-info .pick-up {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e5e5;
+  background-color: transparent;
+  margin: 10px 0;
+  padding: 10px 25px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+.checkout-page .billing-info .delivery:hover,
+.checkout-page .billing-info .pick-up:hover {
+  cursor: pointer;
+}
+.checkout-page .billing-info .delivery img,
+.checkout-page .billing-info .pick-up img {
+  width: 1.2rem;
+  padding: 0 12px;
+}
+.checkout-page .billing-info .delivery p,
+.checkout-page .billing-info .pick-up p {
+  font-size: 12px;
+  font-weight: 600;
+  color: #333232;
+}
+.checkout-page .billing-info .active {
+  background-color: rgba(217, 166, 192, 0.49);
+  border: 1px solid rgba(198, 83, 140, 0.6039215686);
+}
+.checkout-page .billing-info .active:hover {
+  cursor: auto;
+}
+.checkout-page .billing-info form {
+  box-sizing: border-box;
+}
+.checkout-page .billing-info form .input-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7.5px 0px;
+}
+.checkout-page .billing-info form .input-wrapper label {
+  font-size: 14px;
+  display: block;
+  padding: 5px 0;
+  padding-bottom: 7.5px;
+  color: grey;
+}
+.checkout-page .billing-info form .input-wrapper input,
+.checkout-page .billing-info form .input-wrapper textarea {
+  width: 70%;
+  padding: 5px 7.5px;
+}
+.checkout-page .order-summary {
+  background-color: #fcfcfc;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 30px 7.5%;
+  width: 100%;
+  box-sizing: border-box;
+  height: 70%;
+}
+.checkout-page .order-summary p {
+  font-size: 14px;
+}
+.checkout-page .order-summary h2 {
+  font-size: 15px;
+  padding-bottom: 1rem;
+}
+.checkout-page .order-summary .order-items {
+  width: 100%;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+.checkout-page .order-summary .order-items .checkout-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+.checkout-page .order-summary .logistics,
+.checkout-page .order-summary .coupon,
+.checkout-page .order-summary .order-total {
+  width: 100%;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+.checkout-page .order-summary .logistics p,
+.checkout-page .order-summary .coupon p,
+.checkout-page .order-summary .order-total p {
+  padding: 0.5rem 0;
+}
+.checkout-page .order-summary .logistics .input-wrapper,
+.checkout-page .order-summary .coupon .input-wrapper,
+.checkout-page .order-summary .order-total .input-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 70% 25%;
+  grid-gap: 5%;
+}
+.checkout-page .order-summary .logistics .input-wrapper button,
+.checkout-page .order-summary .coupon .input-wrapper button,
+.checkout-page .order-summary .order-total .input-wrapper button {
+  width: 100%;
+}
+.checkout-page .order-summary .logistics .input-wrapper input,
+.checkout-page .order-summary .coupon .input-wrapper input,
+.checkout-page .order-summary .order-total .input-wrapper input {
+  padding: 5px 7.5px;
+}
+.checkout-page .order-summary .logistics .logistics-item,
+.checkout-page .order-summary .coupon .logistics-item,
+.checkout-page .order-summary .order-total .logistics-item {
+  display: flex;
+  justify-content: space-between;
+}
+.checkout-page .order-summary .order-total {
+  display: flex;
+  justify-content: space-between;
+}
+.checkout-page .order-summary .order-total p {
+  color: #000;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 480px) {
+  .checkout-page {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0 5%;
+    max-height: max-content;
+  }
+  .checkout-page .billing-info,
+.checkout-page .order-summary {
+    margin: 5% 0;
+  }
+  .checkout-page .billing-info form .input-wrapper input,
+.checkout-page .billing-info form .input-wrapper textarea,
+.checkout-page .order-summary form .input-wrapper input,
+.checkout-page .order-summary form .input-wrapper textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

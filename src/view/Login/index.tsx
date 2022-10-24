@@ -50,10 +50,12 @@ export default function Login() {
         );
 
         if (
-          res.data.login.token === JSON.parse(localStorage.getItem("token")||"")
+          res.data.login.token ==
+          JSON.parse(localStorage.getItem("token") || "")
         ) {
-          console.log("redirect");
           navigate("/dashboard");
+
+          console.log("redirect");
         }
       })
       .catch((err) => {

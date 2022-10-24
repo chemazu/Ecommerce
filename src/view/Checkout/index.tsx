@@ -10,11 +10,14 @@ import { useNavigate } from "react-router-dom";
 import CartItem from "../../components/CartItem";
 import { useMutation } from "@apollo/client";
 import CREATEPAYMENT from "../../graphql/schema/createPayment.schema";
+import CREATEORDER from "../../graphql/schema/createOrder.schema";
 export default function Checkout() {
   const [createPayment] = useMutation(CREATEPAYMENT);
-  console.log(useMutation(CREATEPAYMENT));
+  const [createOrder] = useMutation(CREATEORDER);
+
   const navigate = useNavigate();
   const { cart } = React.useContext(ShopContext) as ShopContextType;
+  console.log(cart);
   const { pickup, delivery } = importContent();
   let [deliveryCost, setDeliveryCost] = React.useState(true);
   let autofillUser = {
@@ -53,6 +56,22 @@ export default function Checkout() {
     return Number(((total + 15) * 100).toFixed(2));
   };
   // let navigate=useNavigate()
+  const handleCreateOrder = async (paymentId: any)=>{
+    createOrder({
+      variables: {
+        userId: "6332f653762c7392ea7480e1",
+        paymentId: paymentId,
+        orderTotal: 50,
+        orderItems: ["p","p"],
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err[0]);
+      });
+  }
   const handlePaystackSuccess = async () => {
     createPayment({
       variables: {
@@ -60,10 +79,11 @@ export default function Checkout() {
         amount: 30,
         platform: "paystack",
       },
-
     })
       .then((res: any) => {
-        console.log(res);
+        console.log(res.data.createPayment.paymentId);
+        handleCreateOrder(res.data.createPayment.paymentId)
+
       })
       .catch((err) => {
         console.log(err[0]);
