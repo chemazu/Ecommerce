@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 
 export default function Shop() {
   const { cart, setCart } = React.useContext(ShopContext) as ShopContextType;
+  console.log(cart)
   let { cartsvg } = importContent();
   // let categories = ["category1", "category2","category3"]
   let [showLeft, setShowLeft] = React.useState(false);

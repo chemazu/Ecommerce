@@ -7,15 +7,16 @@ var OrderItem_1 = require("../../components/OrderItem");
 var AuthContext_1 = require("../../context/AuthContext");
 var react_router_dom_1 = require("react-router-dom");
 var Button_1 = require("../../components/Button");
+var ShopContext_1 = require("../../context/ShopContext");
 function Dashboard() {
     var history = react_router_dom_1.useNavigate();
-    var _a = react_1["default"].useState(false), logoutState = _a[0], setLogoOutState = _a[1];
-    var _b = importContent_1["default"](), contact = _b.contact, bag = _b.bag, trend = _b.trend;
+    var _a = importContent_1["default"](), contact = _a.contact, bag = _a.bag, trend = _a.trend;
     var logout = react_1["default"].useContext(AuthContext_1.AuthContext).logout;
+    var _b = react_1["default"].useContext(ShopContext_1.ShopContext), isAuth = _b.isAuth, setIsAuth = _b.setIsAuth;
     var handleLogout = function () {
         logout();
         localStorage.removeItem("token");
-        setLogoOutState(!logoutState);
+        setIsAuth(false);
         history("/login");
     };
     return (react_1["default"].createElement("div", { className: "dashboard" },

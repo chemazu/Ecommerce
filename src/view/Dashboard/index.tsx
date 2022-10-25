@@ -6,17 +6,21 @@ import { AuthContext } from "../../context/AuthContext";
 import { AuthContextType } from "../../@types/auth.d";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
+import { ShopContextType } from "../../@types/shop.d";
+import { ShopContext } from "../../context/ShopContext";
 
 function Dashboard() {
   const history = useNavigate();
-  let [logoutState, setLogoOutState] = React.useState(false);
   const { contact, bag, trend } = importContent();
   const { logout } = React.useContext(AuthContext) as AuthContextType;
+  const { isAuth, setIsAuth } = React.useContext(
+    ShopContext
+  ) as ShopContextType;
 
   const handleLogout = () => {
     logout();
     localStorage.removeItem("token");
-    setLogoOutState(!logoutState);
+    setIsAuth(false);
     history("/login");
   };
 

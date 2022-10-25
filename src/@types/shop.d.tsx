@@ -3,8 +3,10 @@ export type CartItem = {
   name: string;
 };
 export type ShopContextType = {
-  cart:CartItem[];
-  setCart:any
-  productData:any;
-  setProductData:any;
+  cart: CartItem[];
+  setCart: any;
+  productData: any;
+  setProductData: any;
+  isAuth: any;
+  setIsAuth: any;
 };

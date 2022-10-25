@@ -48,6 +48,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var react_1 = require("react");
+var react_paystack_1 = require("react-paystack");
 var ShopContext_1 = require("../../context/ShopContext");
 var Button_1 = require("../../components/Button");
 require("./style.scss");
@@ -188,7 +189,8 @@ function Checkout() {
                 react_1["default"].createElement("div", { className: "input-wrapper" },
                     react_1["default"].createElement("label", null, "Special Instructions"),
                     react_1["default"].createElement("textarea", null))),
-            react_1["default"].createElement("div", { className: "pay" })),
+            react_1["default"].createElement("div", { className: "pay" },
+                react_1["default"].createElement(react_paystack_1.PaystackButton, __assign({}, componentProps, { className: "pry" })))),
         react_1["default"].createElement("div", { className: "order-summary" },
             react_1["default"].createElement("h2", null, "Order Summary"),
             react_1["default"].createElement("div", { className: "order-items" }, cart.map(function (item, index) {

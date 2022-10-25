@@ -180,7 +180,7 @@ export default function Checkout() {
           </div>
         </form>
         <div className="pay">
-          {/* <PaystackButton {...componentProps} className="pry" /> */}
+          <PaystackButton {...componentProps} className="pry" />
         </div>
       </div>
       <div className="order-summary">

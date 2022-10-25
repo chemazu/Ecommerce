@@ -20,13 +20,15 @@ var Button_1 = require("../../components/Button");
 var importContent_1 = require("../../resources/importContent");
 var react_router_dom_1 = require("react-router-dom");
 var AuthContext_1 = require("../../context/AuthContext");
+var ShopContext_1 = require("../../context/ShopContext");
 function Login() {
     var navigate = react_router_dom_1.useNavigate();
     var _a = importContent_1["default"](), mail = _a.mail, lock = _a.lock;
     var signInWithGoogle = react_1["default"].useContext(AuthContext_1.AuthContext).signInWithGoogle;
+    var _b = react_1["default"].useContext(ShopContext_1.ShopContext), isAuth = _b.isAuth, setIsAuth = _b.setIsAuth;
     var login = client_1.useMutation(login_schema_1["default"])[0];
-    var _b = input_hook_1.useInput(""), email = _b.value, changeEmail = _b.change, resetEmail = _b.reset;
-    var _c = input_hook_1.useInput(""), password = _c.value, changePassword = _c.change, resetPassword = _c.reset;
+    var _c = input_hook_1.useInput(""), email = _c.value, changeEmail = _c.change, resetEmail = _c.reset;
+    var _d = input_hook_1.useInput(""), password = _d.value, changePassword = _d.change, resetPassword = _d.reset;
     var handleSubmit = function (e) {
         e.preventDefault();
         console.log("first");
@@ -49,6 +51,7 @@ function Login() {
             .then(function (res) {
             console.log(res);
             localStorage.setItem("token", JSON.stringify(res.data.login.token));
+            setIsAuth(JSON.stringify(res.data.login.token));
             localStorage.setItem("loggedInUser", JSON.stringify(res.data.login.user));
             if (res.data.login.token ==
                 JSON.parse(localStorage.getItem("token") || "")) {

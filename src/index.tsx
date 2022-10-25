@@ -1,6 +1,9 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
+import ShopProvider from "./context/ShopContext";
+
 import {
+  
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
@@ -34,9 +37,13 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <ShopProvider>
+
       <ApolloProvider client={client}>
         <App />
       </ApolloProvider>
+      </ShopProvider>
+
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

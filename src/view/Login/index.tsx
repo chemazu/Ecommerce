@@ -8,12 +8,16 @@ import importContent from "../../resources/importContent";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { AuthContextType } from "../../@types/auth.d";
-
+import { ShopContextType } from "../../@types/shop.d";
+import { ShopContext } from "../../context/ShopContext";
 export default function Login() {
   const navigate = useNavigate();
   const { mail, lock } = importContent();
 
   const { signInWithGoogle } = React.useContext(AuthContext) as AuthContextType;
+  const { isAuth, setIsAuth } = React.useContext(
+    ShopContext
+  ) as ShopContextType;
   const [login] = useMutation(LOGIN);
 
   const { value: email, change: changeEmail, reset: resetEmail } = useInput("");
@@ -44,6 +48,7 @@ export default function Login() {
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", JSON.stringify(res.data.login.token));
+        setIsAuth(JSON.stringify(res.data.login.token));
         localStorage.setItem(
           "loggedInUser",
           JSON.stringify(res.data.login.user)
@@ -53,6 +58,7 @@ export default function Login() {
           res.data.login.token ==
           JSON.parse(localStorage.getItem("token") || "")
         ) {
+ 
           navigate("/dashboard");
 
           console.log("redirect");
