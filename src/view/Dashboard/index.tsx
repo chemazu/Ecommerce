@@ -9,12 +9,14 @@ import Button from "../../components/Button";
 
 function Dashboard() {
   const history = useNavigate();
+  let [logoutState, setLogoOutState] = React.useState(false);
   const { contact, bag, trend } = importContent();
   const { logout } = React.useContext(AuthContext) as AuthContextType;
 
   const handleLogout = () => {
     logout();
     localStorage.removeItem("token");
+    setLogoOutState(!logoutState);
     history("/login");
   };
 

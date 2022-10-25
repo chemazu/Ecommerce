@@ -9,11 +9,13 @@ var react_router_dom_1 = require("react-router-dom");
 var Button_1 = require("../../components/Button");
 function Dashboard() {
     var history = react_router_dom_1.useNavigate();
-    var _a = importContent_1["default"](), contact = _a.contact, bag = _a.bag, trend = _a.trend;
+    var _a = react_1["default"].useState(false), logoutState = _a[0], setLogoOutState = _a[1];
+    var _b = importContent_1["default"](), contact = _b.contact, bag = _b.bag, trend = _b.trend;
     var logout = react_1["default"].useContext(AuthContext_1.AuthContext).logout;
     var handleLogout = function () {
         logout();
         localStorage.removeItem("token");
+        setLogoOutState(!logoutState);
         history("/login");
     };
     return (react_1["default"].createElement("div", { className: "dashboard" },

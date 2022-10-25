@@ -3,7 +3,13 @@ exports.__esModule = true;
 var react_router_dom_1 = require("react-router-dom");
 var react_1 = require("react");
 function ProtectedRoute(_a) {
+    // let [check, setCheck] = React.useState(
+    //   JSON.parse(localStorage.getItem("token") || "false")
+    // );
     var children = _a.children;
+    // React.useEffect(() => {
+    //   setCheck(JSON.parse(localStorage.getItem("token") || "false"));
+    // }, [localStorage]);
     var token = JSON.parse(localStorage.getItem("token") || "false");
     if (!token) {
         // not logged in so redirect to login page with the return url
