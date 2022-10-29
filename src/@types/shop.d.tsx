@@ -1,6 +1,13 @@
 export type CartItem = {
-  id: string;
+  cardtype: string;
+  category: string;
+  img1: string;
+  img2: string;
   name: string;
+  price: number;
+  property: string;
+  quantity: number;
+  year: number;
 };
 export type ShopContextType = {
   cart: CartItem[];

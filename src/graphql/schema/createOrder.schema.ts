@@ -1,17 +1,17 @@
 import { gql } from "@apollo/client";
 
 const CREATEORDER = gql`
-  mutation Mutation(
-    $orderItems: [String]!
+  mutation CreateOrder(
     $userId: String
-    $orderTotal: Int
+    $orderTotal: Float
     $paymentId: String
+    $orderItems: [OrderItems]
   ) {
     createOrder(
-      orderItems: $orderItems
       userId: $userId
       orderTotal: $orderTotal
       paymentId: $paymentId
+      orderItems: $orderItems
     ) {
       status
       orderId

@@ -17,7 +17,7 @@ export default function Checkout() {
 
   const navigate = useNavigate();
   const { cart } = React.useContext(ShopContext) as ShopContextType;
-  console.log(cart);
+
   const { pickup, delivery } = importContent();
   let [deliveryCost, setDeliveryCost] = React.useState(true);
   let autofillUser = {
@@ -28,6 +28,7 @@ export default function Checkout() {
     firstname: "",
     lastname: "",
   };
+
   const {
     value: name,
     change: changeName,
@@ -56,40 +57,61 @@ export default function Checkout() {
     return Number(((total + 15) * 100).toFixed(2));
   };
   // let navigate=useNavigate()
-  const handleCreateOrder = async (paymentId: any)=>{
+  const handleCreateOrder = async (paymentId: any) => {
     createOrder({
       variables: {
         userId: "6332f653762c7392ea7480e1",
         paymentId: paymentId,
-        orderTotal: 50,
-        orderItems: ["p","p"],
+        orderTotal: getTotalPrice(),
+        orderItems: cart,
       },
     })
       .then((res) => {
         console.log(res);
       })
       .catch((err) => {
-        console.log(err[0]);
+        console.log(err);
       });
-  }
-  const handlePaystackSuccess = async () => {
-    createPayment({
-      variables: {
-        userId: "6332f653762c7392ea7480e1",
-        amount: 30,
-        platform: "paystack",
-      },
-    })
-      .then((res: any) => {
-        console.log(res.data.createPayment.paymentId);
-        handleCreateOrder(res.data.createPayment.paymentId)
-
-      })
-      .catch((err) => {
-        console.log(err[0]);
-      });
-    navigate("/order");
   };
+  const handlePaystackSuccess = (paystackResponse: {
+    message: string;
+    redirecturl: string;
+    reference: string;
+    status: string;
+    trans: string;
+    transaction: string;
+    trxref: string;
+  }) =>
+    // {
+    //   console.log("payment", {
+    //     userId: "6332f653762c7392ea7480e1",
+    //     amount: getTotalPrice(),
+    //     paystackResponse,
+    //   });
+    //   console.log("order", {
+    //     paymentId: "null",
+    //     userId: "6332f653762c7392ea7480e1",
+    //     orderTotal: getTotalPrice(),
+    //     orderItems: cartArray(cart),
+    //   });
+    // };
+    {
+      createPayment({
+        variables: {
+          userId: "6332f653762c7392ea7480e1",
+          amount: getTotalPrice(),
+          paystackResponse,
+        },
+      })
+        .then((res: any) => {
+          console.log(res.data.createPayment.paymentId);
+          handleCreateOrder(res.data.createPayment.paymentId);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      navigate("/order");
+    };
   const componentProps = {
     email,
     amount: getTotalPrice(),
@@ -108,7 +130,7 @@ export default function Checkout() {
     text: `Pay ₦${getTotalPrice() / 100}`,
     onSuccess: (res: any) => {
       console.log(res);
-      handlePaystackSuccess();
+      handlePaystackSuccess(res);
       // message:"Approved"
       // redirecturl :  "?trxref=T909069567568481&reference=T909069567568481"
       // reference :  "T909069567568481"
@@ -124,27 +146,25 @@ export default function Checkout() {
     <div className="checkout-page">
       <div className="billing-info">
         <h2> {"<"} Back</h2>
-        <div className={`delivery ${deliveryCost ? "active" : ""}`}>
-          <input
-            type="checkbox"
-            checked={deliveryCost}
-            onClick={() => {
-              setDeliveryCost(true);
-            }}
-          />
+        <div
+          className={`delivery ${deliveryCost ? "active" : ""}`}
+          onClick={() => {
+            setDeliveryCost(true);
+          }}
+        >
+          <input type="checkbox" checked={deliveryCost} />
           <img src={delivery} alt="delivery" />
 
           <p>Get it delivered in only 30 minutes</p>
         </div>
-        <div className={`pick-up ${!deliveryCost ? "active" : ""}`}>
+        <div
+          className={`pick-up ${!deliveryCost ? "active" : ""}`}
+          onClick={() => {
+            setDeliveryCost(false);
+          }}
+        >
           {/* <div className="pick-up"> */}
-          <input
-            type="checkbox"
-            checked={!deliveryCost}
-            onClick={() => {
-              setDeliveryCost(false);
-            }}
-          />
+          <input type="checkbox" checked={!deliveryCost} />
 
           <img src={pickup} alt="pickup" />
 
@@ -181,6 +201,72 @@ export default function Checkout() {
         </form>
         <div className="pay">
           <PaystackButton {...componentProps} className="pry" />
+          
+          {/* <button
+            onClick={() => {
+              createOrder({
+                // variables: {
+                //   userId: "6332f653762c7392ea7480e1",
+                //   amount: 6,
+                //   paystackResponse: {
+                //     message: "null",
+                //     redirecturl: "null",
+                //     reference: "null",
+                //     status: "null",
+                //     trans: "null",
+                //     transaction: "null",
+                //     trxref: "null",
+                //   },
+                // },
+                // variables: {
+                //   orderTotal: 5.9,
+                //   userId: "6332f653762c7392ea7480e1",
+                //   paymentId: "6332f653762c7392ea7480e1",
+                //   orderItems: [
+                //     // ...cart,
+                //     {
+                //       cardtype: cart[0].cardtype,
+                //       category: cart[0].category,
+                //       img1: cart[0].img1,
+                //       img2: cart[0].img2,
+                //       name: cart[0].name,
+                //       price: 7,
+                //       property: "null",
+                //       quantity: 5,
+                //       year: 5,
+                //     },
+                //   ],
+                // },
+                variables: {
+                  orderTotal: 67.8,
+                  userId: "6332f653762c7392ea7480e1",
+                  paymentId: "6332f653762c7392ea7480e1",
+                  orderItems: cart
+                  // [
+                  //   {
+                  //     cardtype: "null",
+                  //     category: "null",
+                  //     img1: "null",
+                  //     img2: "null",
+                  //     name: "null",
+                  //     price: 8.7,
+                  //     property: "null",
+                  //     quantity: 6.8,
+                  //     year: 2022,
+                  //   },
+                  // ],
+                },
+              })
+                .then((res) => {
+                  console.log(res);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            }}
+          >
+            Stuff
+          </button> */}
         </div>
       </div>
       <div className="order-summary">

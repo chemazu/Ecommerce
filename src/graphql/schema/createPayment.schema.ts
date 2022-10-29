@@ -1,8 +1,16 @@
 import { gql } from "@apollo/client";
 
 const CREATEPAYMENT = gql`
-  mutation Mutation($userId: String, $amount: Int, $platform: String) {
-    createPayment(userId: $userId, amount: $amount, platform: $platform) {
+  mutation CreatePayment(
+    $userId: String
+    $amount: Float
+    $paystackResponse: PaystackResponse
+  ) {
+    createPayment(
+      userId: $userId
+      amount: $amount
+      paystackResponse: $paystackResponse
+    ) {
       status
       paymentId
     }

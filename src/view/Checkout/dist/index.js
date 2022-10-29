@@ -65,7 +65,6 @@ function Checkout() {
     var createOrder = client_1.useMutation(createOrder_schema_1["default"])[0];
     var navigate = react_router_dom_1.useNavigate();
     var cart = react_1["default"].useContext(ShopContext_1.ShopContext).cart;
-    console.log(cart);
     var _a = importContent_1["default"](), pickup = _a.pickup, delivery = _a.delivery;
     var _b = react_1["default"].useState(true), deliveryCost = _b[0], setDeliveryCost = _b[1];
     var autofillUser = {
@@ -94,37 +93,34 @@ function Checkout() {
                 variables: {
                     userId: "6332f653762c7392ea7480e1",
                     paymentId: paymentId,
-                    orderTotal: 50,
-                    orderItems: ["p", "p"]
+                    orderTotal: getTotalPrice(),
+                    orderItems: cart
                 }
             })
                 .then(function (res) {
                 console.log(res);
             })["catch"](function (err) {
-                console.log(err[0]);
+                console.log(err);
             });
             return [2 /*return*/];
         });
     }); };
-    var handlePaystackSuccess = function () { return __awaiter(_this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            createPayment({
-                variables: {
-                    userId: "6332f653762c7392ea7480e1",
-                    amount: 30,
-                    platform: "paystack"
-                }
-            })
-                .then(function (res) {
-                console.log(res.data.createPayment.paymentId);
-                handleCreateOrder(res.data.createPayment.paymentId);
-            })["catch"](function (err) {
-                console.log(err[0]);
-            });
-            navigate("/order");
-            return [2 /*return*/];
+    var handlePaystackSuccess = function (paystackResponse) {
+        createPayment({
+            variables: {
+                userId: "6332f653762c7392ea7480e1",
+                amount: getTotalPrice(),
+                paystackResponse: paystackResponse
+            }
+        })
+            .then(function (res) {
+            console.log(res.data.createPayment.paymentId);
+            handleCreateOrder(res.data.createPayment.paymentId);
+        })["catch"](function (err) {
+            console.log(err);
         });
-    }); };
+        navigate("/order");
+    };
     var componentProps = {
         email: email,
         amount: getTotalPrice(),
@@ -143,7 +139,7 @@ function Checkout() {
         text: "Pay \u20A6" + getTotalPrice() / 100,
         onSuccess: function (res) {
             console.log(res);
-            handlePaystackSuccess();
+            handlePaystackSuccess(res);
             // message:"Approved"
             // redirecturl :  "?trxref=T909069567568481&reference=T909069567568481"
             // reference :  "T909069567568481"
@@ -161,16 +157,16 @@ function Checkout() {
                 " ",
                 "<",
                 " Back"),
-            react_1["default"].createElement("div", { className: "delivery " + (deliveryCost ? "active" : "") },
-                react_1["default"].createElement("input", { type: "checkbox", checked: deliveryCost, onClick: function () {
-                        setDeliveryCost(true);
-                    } }),
+            react_1["default"].createElement("div", { className: "delivery " + (deliveryCost ? "active" : ""), onClick: function () {
+                    setDeliveryCost(true);
+                } },
+                react_1["default"].createElement("input", { type: "checkbox", checked: deliveryCost }),
                 react_1["default"].createElement("img", { src: delivery, alt: "delivery" }),
                 react_1["default"].createElement("p", null, "Get it delivered in only 30 minutes")),
-            react_1["default"].createElement("div", { className: "pick-up " + (!deliveryCost ? "active" : "") },
-                react_1["default"].createElement("input", { type: "checkbox", checked: !deliveryCost, onClick: function () {
-                        setDeliveryCost(false);
-                    } }),
+            react_1["default"].createElement("div", { className: "pick-up " + (!deliveryCost ? "active" : ""), onClick: function () {
+                    setDeliveryCost(false);
+                } },
+                react_1["default"].createElement("input", { type: "checkbox", checked: !deliveryCost }),
                 react_1["default"].createElement("img", { src: pickup, alt: "pickup" }),
                 react_1["default"].createElement("p", null, "Pick up available in 3 stores near you")),
             react_1["default"].createElement("form", null,

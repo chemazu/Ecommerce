@@ -19,7 +19,7 @@ import { ShopContext } from "./context/ShopContext";
 // import { ShopContext } from "../context/ShopContext";
 
 function App() {
-  const { isAuth, setIsAuth } = React.useContext(
+  const { isAuth, setIsAuth, } = React.useContext(
     ShopContext
   ) as ShopContextType;
   console.log(isAuth);
