@@ -2,58 +2,91 @@ $pry: #c6538c;
 $sec: #fff;
 .dashboard {
   display: grid;
-  grid-template-columns: 2fr 12fr;
-  height: 100%;
-  grid-gap: 50px;
-  padding: 50px 5%;
-  .right {
-      h2{
-          padding-bottom: 75px;
-      }
-    .top {
+  grid-template-columns: 3fr 12fr;
+  // height: 100%;
+  // padding: 0px 5%;
+  background-color: #fbfbfb;
+
+  .left {
+    background-color: #fff;
+    padding-top: 20%;
+    box-shadow: 0 5px 20px rgb(0 0 0 / 4%);
+    .left-menu {
       display: flex;
+      flex-direction: column;
+      height: 40%;
+      padding: 5% 10%;
       justify-content: space-between;
-      .one {
-        background-color: aliceblue;
-        width: 255px;
-        height: 150px;
-        padding-left: 25px;
-        padding: 25px 0 15px 25px;
-        box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25);
-        &:hover {
-          cursor: pointer;
-          background-color: $pry;
-          color: #fff;
+    }
+  }
+  .right {
+    // background-color: green;
+    padding: 2.5% 5%;
+    .profile-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-          img {
-            display: none;
-          }
-        }
+      background: #ffffff;
+      // border: 1px solid rgba(33, 63, 125, 0.06);
+      // box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+      // border-radius: 4px;
+      margin-bottom: 5%;
+      // border-radius: 4px;
 
-        p {
-          padding: 5px 0;
-        }
+      .content {
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 2.5%;
         img {
-          width: 40px;
+          width: 4rem;
+          padding: 25px;
+          background-color: #21407d55;
+          border-radius: 50%;
         }
       }
     }
-    .bottom{
-        display:grid;
-        grid-template-columns: 4fr 3fr;
-        .two{
-            .heading{
-display: grid;
-grid-template-columns: 1fr 1fr 2fr 2fr 1fr;
-grid-gap: 10px;
-border:2px solid $pry;
-padding: 10px;
+    .profile-details {
+      background: #fff;
+      border: 1px solid rgba(33, 63, 125, 0.06);
+      border-radius: 4px;
+      box-shadow: 3px 5px 20px rgb(0 0 0 / 4%);
+      padding: 15px 2.5%;
 
-            }
-            .order-item{
-                border-top: 0px;
-            }
+      .personal {
+        border-bottom: 1px solid rgba(33, 64, 125, 0.267);
+        padding: 10px 0 15px;
+        .top {
+          padding: 2% 0;
         }
+        .bottom {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          .edu-item {
+            padding: 2% 0;
+            p {
+              color: #545f7d;
+              font-family: Work Sans, sans-serif;
+              font-size: 11px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 14px;
+              padding: 5px 0;
+              text-transform: uppercase;
+            }
+            h4 {
+              color: #3b4256;
+              font-family: Work Sans, sans-serif;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 18px;
+            }
+          }
+        }
+      }
     }
   }
 }

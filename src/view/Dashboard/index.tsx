@@ -1,100 +1,168 @@
 import React from "react";
-import "./style.scss";
-import importContent from "../../resources/importContent";
-import OrderItem from "../../components/OrderItem";
-import { AuthContext } from "../../context/AuthContext";
-import { AuthContextType } from "../../@types/auth.d";
-import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
-import { ShopContextType } from "../../@types/shop.d";
-import { ShopContext } from "../../context/ShopContext";
+import "./style.scss";
 
-function Dashboard() {
-  const history = useNavigate();
-  const { contact, bag, trend } = importContent();
-  const { logout } = React.useContext(AuthContext) as AuthContextType;
-  const { isAuth, setIsAuth } = React.useContext(
-    ShopContext
-  ) as ShopContextType;
-
-  const handleLogout = () => {
-    logout();
-    localStorage.removeItem("token");
-    setIsAuth(false);
-    history("/login");
-  };
-
+export default function Dashboard() {
   return (
     <div className="dashboard">
       <div className="left">
-        <p>Dashboard</p>
-        <p>Orders</p>
-        <p>Profile</p>
-        <p>Cart</p>
-        <Button
-          title="Log Out"
-          className="pry"
-          type="submit"
-          onClick={handleLogout}
-        />
+        <div className="left-menu">
+          <p>Profile</p>
+          <p>Orders</p>
+          <p>Settings</p> <p>Profile</p>
+          <p>Orders</p>
+          <p>Settings</p>
+          <Button className="sec" title="Log Out" />
+        </div>
       </div>
-
       <div className="right">
-        <h2>Dashboard Hi ,Chukwuemeka</h2>
-        <div className="top">
-          <div className="one users">
-            <img src={contact} alt="Users" />
-            <h3>Users</h3>
-            <p>239,233</p>
-            <p style={{ borderTop: "1px solid #fff", width: "90%" }}>
-              Lorem ipsum dolor.
-            </p>
-          </div>
-          <div className="one sales">
-            <img src={bag} alt="Users" />
-            <h3>Sales</h3>
-            <p>$ 239,233</p>
-            <p style={{ borderTop: "1px solid #fff", width: "90%" }}>
-              Lorem ipsum dolor.
-            </p>
-          </div>
-          <div className="one trend">
-            <img src={trend} alt="Users" />
-            <h3>Trending</h3>
-            <p>239,233</p>
-            <p style={{ borderTop: "1px solid #fff", width: "90%" }}>
-              Lorem ipsum dolor.
-            </p>
+        <div className="profile-banner">
+          <div className="content">
+            <img
+              src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/725.jpg"
+              alt="profile"
+            />
+            <div className="user-info">
+              <p>Chukwuemeka Chemazu</p>
+              <p>GWQUSEH1</p>
+            </div>
+            <div className="rating">
+              <p>User tier</p>
+              <p>Stars</p>
+            </div>
           </div>
         </div>
-        <div className="bottom">
-          <div className="two">
-            <h2>Order History</h2>
-            <div className="heading">
-              <div className="id">
-                <h3>Id</h3>
-              </div>
-              <div className="img">
-                <h3>Image</h3>
-              </div>
-              <div className="product">
-                <h3>Product</h3>
-              </div>
-              <div className="price">
-                <h3>Price</h3>
-              </div>
-              <div className="quantity">
-                <h3>Quantity</h3>
-              </div>
+        <div className="profile-details">
+          {/* <div className="personal-info">
+        Personal Information
+FULL NAME
+
+Darian Rolfson
+PHONE NUMBER
+
+494-278-0946
+EMAIL ADDRESS
+
+Maverick.Hyatt83@gmail.com
+BVN
+
+815809412
+GENDER
+
+Male
+MARITAL STATUS
+
+Single
+CHILDREN
+
+None
+TYPE OF RESIDENCE
+
+Parent’s Apartment
+        </div> */}
+          <div className="personal">
+            <div className="top">
+              <h4>Personal Information</h4>
             </div>
-            <div className="body">
-              <OrderItem />
+            <div className="bottom">
+              <div className="edu-item">
+                <p>Full Name</p>
+                <h4>Darian Rolfson</h4>
+              </div>
+              <div className="edu-item">
+                <p>Phone Number</p>
+                <h4>494-278-0946</h4>
+              </div>
+              <div className="edu-item">
+                <p>Email Address</p>
+                <h4>Maverick.Hyatt83@gmail.com</h4>
+              </div>
+              <div className="edu-item">
+                <p>TWITTER</p>
+                <h4> @lendsqr</h4>
+              </div>
+              <div className="edu-item">
+                <p> FACEBOOK </p>
+                <h4> @lendsqr</h4>
+              </div>
+              <div className="edu-item">
+                <p>INSTAGRAM</p>
+                <h4> @lendsqr</h4>
+              </div>
             </div>
           </div>
-          <div className="three">Wishlist</div>
+          <div className="personal address">
+            <div className="top">
+              <h4>Address</h4>
+            </div>
+            <div className="bottom">
+              <div className="edu-item">
+                <p>Full Name</p>
+                <h4>Darian Rolfson</h4>
+              </div>
+              <div className="edu-item">
+                <p>Phone Number</p>
+                <h4>494-278-0946</h4>
+              </div>
+              <div className="edu-item">
+                <p>Email Address</p>
+                <h4>Maverick.Hyatt83@gmail.com</h4>
+              </div>
+              <div className="edu-item">
+                <p>TWITTER</p>
+                <h4> @lendsqr</h4>
+              </div>
+              <div className="edu-item">
+                <p> FACEBOOK </p>
+                <h4> @lendsqr</h4>
+              </div>
+              <div className="edu-item">
+                <p>INSTAGRAM</p>
+                <h4> @lendsqr</h4>
+              </div>
+            </div>
+          </div>
+          <div className="personal address">
+            <div className="top">
+              <h4>Payment</h4>
+            </div>
+            <div className="bottom">
+              <div className="edu-item">
+                <p>Full Name</p>
+                <h4>Darian Rolfson</h4>
+              </div>
+              <div className="edu-item">
+                <p>Phone Number</p>
+                <h4>494-278-0946</h4>
+              </div>
+              <div className="edu-item">
+                <p>Email Address</p>
+                <h4>Maverick.Hyatt83@gmail.com</h4>
+              </div>
+              <div className="edu-item">
+                <p>TWITTER</p>
+                <h4> @lendsqr</h4>
+              </div>
+              <div className="edu-item">
+                <p> FACEBOOK </p>
+                <h4> @lendsqr</h4>
+              </div>
+              <div className="edu-item">
+                <p>INSTAGRAM</p>
+                <h4> @lendsqr</h4>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-export default Dashboard;
+let MenuItem = () => {
+  return (
+    <div className="menu-item">
+      <img />
+      <p>Profile</p>
+    </div>
+  );
+};

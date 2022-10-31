@@ -71,6 +71,9 @@ export default function Checkout() {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        navigate("/order");
       });
   };
   const handlePaystackSuccess = (paystackResponse: {
@@ -110,7 +113,6 @@ export default function Checkout() {
         .catch((err) => {
           console.log(err);
         });
-      navigate("/order");
     };
   const componentProps = {
     email,
@@ -201,7 +203,7 @@ export default function Checkout() {
         </form>
         <div className="pay">
           <PaystackButton {...componentProps} className="pry" />
-          
+
           {/* <button
             onClick={() => {
               createOrder({

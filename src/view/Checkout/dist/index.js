@@ -101,6 +101,8 @@ function Checkout() {
                 console.log(res);
             })["catch"](function (err) {
                 console.log(err);
+            })["finally"](function () {
+                navigate("/order");
             });
             return [2 /*return*/];
         });
@@ -119,7 +121,6 @@ function Checkout() {
         })["catch"](function (err) {
             console.log(err);
         });
-        navigate("/order");
     };
     var componentProps = {
         email: email,
