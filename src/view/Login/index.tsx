@@ -14,7 +14,6 @@ export default function Login() {
   const navigate = useNavigate();
   const { mail, lock } = importContent();
 
-  const { signInWithGoogle } = React.useContext(AuthContext) as AuthContextType;
   const { isAuth, setIsAuth } = React.useContext(
     ShopContext
   ) as ShopContextType;
@@ -58,7 +57,6 @@ export default function Login() {
           res.data.login.token ==
           JSON.parse(localStorage.getItem("token") || "")
         ) {
- 
           navigate("/dashboard");
 
           console.log("redirect");
@@ -121,13 +119,6 @@ export default function Login() {
             or
             <hr />
           </div>
-
-          <Button
-            title=" Sign up with Google"
-            className="google"
-            type=""
-            onClick={signInWithGoogle}
-          />
           <div className="bottom-text">
             <p>Don't have an account ?</p>
             <h4 className="highlight">
